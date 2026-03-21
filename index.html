@@ -3,628 +3,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Philippe — Founder, 20n Research Laboratory</title>
+    <title>Nick0</title>
     <meta name="description" content="Building the first universal brain for humanoid robots. 19, Paris. Founder of 20n Research Laboratory.">
-    <meta name="keywords" content="Nicolas Philippe, nick0, 20n, robotics, AI, active inference, neuromorphic, Paris, portfolio">
-    <meta name="author" content="Nicolas Philippe">
-    <link rel="canonical" href="https://nick0.xyz/">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nick0.xyz/">
-    <meta property="og:title" content="Nicolas Philippe">
+    <meta property="og:title" content="Nick0">
     <meta property="og:description" content="Building the first universal brain for robots.">
     <meta property="og:image" content="https://nick0.xyz/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nicolas Philippe">
-    <meta name="twitter:description" content="Building the first universal brain for robots.">
+    <meta name="twitter:title" content="Nick0">
     <meta name="twitter:image" content="https://nick0.xyz/og-image.png">
-
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://nick0.xyz/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" as="style" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" rel="stylesheet">
-
     <style>
 :root {
-    --bg-primary: #020202;
-    --bg-secondary: #0d0d0d;
-    --bg-tertiary: #141414;
-    --accent: #e8e8e8;
-    --accent-muted: #666666;
-    --highlight: #f0f0f0;
-    --neon: #00ff88;
-    --neon-dim: rgba(0,255,136,0.08);
-    --border: rgba(255,255,255,0.06);
+    --bg: #f5f3f0;
+    --bg-card: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #888888;
+    --text-light: #aaaaaa;
+    --accent: #00cc6a;
+    --accent-dim: rgba(0,204,106,0.08);
+    --border: rgba(0,0,0,0.06);
+    --shadow: 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.08);
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
-    background: var(--bg-primary);
-    color: var(--accent);
+    background: var(--bg);
+    color: var(--text);
     font-family: 'DM Mono', monospace;
     font-size: 14px;
     line-height: 1.6;
-    cursor: none;
     overflow-x: hidden;
 }
 
-/* --- Custom Cursor --- */
-.cursor-dot {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: #fff;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-}
-.cursor-ring {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
-}
-.cursor-ring.hovering {
-    width: 40px;
-    height: 40px;
-    border-color: var(--neon);
-}
-
-/* --- Grain overlay --- */
+/* Grain */
 .grain {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 9000;
-    opacity: 0.03;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9000; opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px 256px;
+    background-repeat: repeat; background-size: 256px 256px;
 }
 
-/* --- Dot grid behind hero --- */
-.dot-grid {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.04;
-    background-image: radial-gradient(circle, #fff 0.5px, transparent 0.5px);
-    background-size: 24px 24px;
-    pointer-events: none;
-}
-
-/* --- Reveal animations --- */
+/* Reveal */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(4px);
+    opacity: 0; transform: translateY(24px); filter: blur(4px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
 }
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+.reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+/* === NAV === */
+nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(245,243,240,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
 }
+.nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px; color: var(--text);
+    text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--text-muted); text-decoration: none;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--text); }
 
 /* === HERO === */
 .hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 120px 24px 80px; position: relative;
 }
-
-.hero-site-label {
-    position: absolute;
-    top: 32px;
-    left: 32px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-muted);
-    letter-spacing: 0.05em;
+.dot-grid {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.04;
+    background-image: radial-gradient(circle, #000 0.5px, transparent 0.5px);
+    background-size: 28px 28px; pointer-events: none;
 }
-
 .hero-name {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(42px, 8vw, 96px);
-    font-weight: 400;
-    color: var(--highlight);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 24px;
+    font-size: clamp(56px, 10vw, 120px);
+    font-weight: 400; color: var(--text);
+    letter-spacing: -0.04em; line-height: 1;
+    margin-bottom: 28px;
 }
-
 .hero-tagline {
     font-family: 'DM Mono', monospace;
-    font-size: clamp(14px, 2vw, 18px);
-    color: var(--accent-muted);
-    height: 1.6em;
-    letter-spacing: -0.01em;
+    font-size: clamp(14px, 2vw, 17px);
+    color: var(--text-muted); height: 1.6em;
 }
 .hero-tagline .cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--accent-muted);
-    margin-left: 2px;
+    display: inline-block; width: 2px; height: 1em;
+    background: var(--text-muted); margin-left: 2px;
     vertical-align: text-bottom;
-    animation: cursor-blink 0.8s step-end infinite;
+    animation: blink 0.8s step-end infinite;
 }
-@keyframes cursor-blink { 50% { opacity: 0; } }
-
+@keyframes blink { 50% { opacity: 0; } }
 .hero-meta {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-muted);
-    margin-top: 16px;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    letter-spacing: 0.03em;
+    font-size: 12px; color: var(--text-light);
+    margin-top: 20px; opacity: 0;
+    transition: opacity 0.6s ease; letter-spacing: 0.03em;
 }
-.hero-meta.show { opacity: 0.5; }
-
+.hero-meta.show { opacity: 1; }
 .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 18px;
-    color: var(--accent-muted);
-    opacity: 0;
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%); font-size: 20px;
+    color: var(--text-light); opacity: 0;
     transition: opacity 0.6s ease;
-    animation: scroll-pulse 2s ease-in-out infinite;
+    animation: scroll-bob 2s ease-in-out infinite;
 }
-.scroll-indicator.show { opacity: 0.4; }
-@keyframes scroll-pulse {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
+.scroll-indicator.show { opacity: 0.5; }
+@keyframes scroll-bob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(6px); }
 }
 
 /* === SECTIONS === */
-section {
-    padding: 120px 24px;
-}
+section { padding: 100px 24px; }
 .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 48px;
-    text-align: center;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.14em; margin-bottom: 48px; text-align: center;
+}
+.section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400; color: var(--text);
+    text-align: center; margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+.section-subtitle {
+    font-size: 14px; color: var(--text-muted);
+    text-align: center; max-width: 500px;
+    margin: 0 auto 56px; line-height: 1.7;
 }
 
 /* === MANIFESTE === */
-.manifeste {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-}
+.manifeste { max-width: 640px; margin: 0 auto; text-align: center; }
 .manifeste p {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(18px, 2.5vw, 22px);
-    line-height: 1.7;
-    margin-bottom: 32px;
+    line-height: 1.75; margin-bottom: 36px;
 }
-.manifeste .m-highlight { color: var(--highlight); }
-.manifeste .m-muted { color: var(--accent-muted); }
-.manifeste .m-neon { color: var(--neon); }
+.manifeste .m-dark { color: var(--text); }
+.manifeste .m-muted { color: var(--text-muted); }
+.manifeste .m-accent { color: var(--accent); font-weight: 500; }
 
-/* === 20n PROJECT === */
-.project-20n {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
+/* === PROJECT CARDS === */
+.projects-grid {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
 }
-
-.project-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--neon);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    opacity: 0.6;
-    margin-bottom: 16px;
+.project-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 32px;
+    text-decoration: none; color: inherit;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: block; position: relative; overflow: hidden;
 }
-
-.project-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 4vw, 40px);
-    color: var(--highlight);
-    font-weight: 400;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-}
-
-.project-subtitle {
-    font-size: 14px;
-    color: var(--accent-muted);
-    margin-bottom: 24px;
-}
-
-.project-desc {
-    font-size: 14px;
-    color: var(--accent);
-    line-height: 1.7;
-    margin-bottom: 32px;
-    opacity: 0.8;
-}
-
-.project-metrics {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-muted);
-    line-height: 2;
-    margin-bottom: 32px;
-    padding: 20px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-}
-.project-metrics .metric-label { color: var(--neon); opacity: 0.7; }
-.project-metrics .metric-arrow { color: var(--accent-muted); opacity: 0.3; }
-
-.project-links a {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 6px 0;
-    transition: color 0.2s ease;
-}
-.project-links a:hover { color: var(--neon); }
-.project-links a::before { content: '\2192\00a0'; color: var(--accent-muted); }
-
-.project-video {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    aspect-ratio: 16/10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-.project-video .play-btn {
-    width: 56px;
-    height: 56px;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    transition: border-color 0.2s ease;
-}
-.project-video:hover .play-btn { border-color: var(--neon); }
-.project-video .play-btn svg { fill: rgba(255,255,255,0.4); width: 18px; height: 18px; margin-left: 3px; }
-.project-video .video-caption {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-muted);
-    opacity: 0.5;
-}
-
-/* === CARDS GRID === */
-.cards-grid {
-    max-width: 860px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.card {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 28px;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
+.project-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(0,255,136,0.15);
-    box-shadow: 0 8px 32px rgba(0,255,136,0.04);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(0,204,106,0.2);
 }
-
-.card-tag {
+.project-card .card-tag {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 16px; opacity: 0.7;
+}
+.project-card .card-title {
+    font-family: 'Instrument Serif', serif; font-size: 28px;
+    color: var(--text); font-weight: 400; margin-bottom: 8px;
+}
+.project-card .card-subtitle {
+    font-size: 13px; color: var(--text-muted); margin-bottom: 16px;
+}
+.project-card .card-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.7;
+    margin-bottom: 20px; opacity: 0.8;
+}
+.project-card .card-arrow {
+    font-size: 13px; color: var(--accent);
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--neon);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.5;
-    margin-bottom: 14px;
+}
+.project-card.featured {
+    grid-column: 1 / -1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    align-items: center;
+}
+.project-card.featured .card-visual {
+    background: var(--bg); border-radius: 8px;
+    aspect-ratio: 16/10; display: flex; align-items: center;
+    justify-content: center; border: 1px solid var(--border);
+}
+.project-card.featured .card-visual span {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--text-light);
 }
 
-.card-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 24px;
-    color: var(--highlight);
-    font-weight: 400;
-    margin-bottom: 6px;
+/* === MILESTONES === */
+.milestones {
+    max-width: 700px; margin: 0 auto;
+    position: relative; padding-left: 32px;
+}
+.milestones::before {
+    content: ''; position: absolute; left: 6px; top: 8px;
+    bottom: 8px; width: 1px; background: var(--border);
+}
+.milestone {
+    position: relative; padding-bottom: 40px; padding-left: 28px;
+}
+.milestone::before {
+    content: ''; position: absolute; left: -29px; top: 6px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); opacity: 0.6;
+}
+.milestone-date {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.milestone-title {
+    font-family: 'Instrument Serif', serif; font-size: 20px;
+    color: var(--text); margin-bottom: 6px;
+}
+.milestone-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.6;
 }
 
-.card-subtitle {
-    font-size: 13px;
-    color: var(--accent-muted);
-    margin-bottom: 16px;
+/* === STACK === */
+.stack-grid {
+    max-width: 600px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
 }
-
-.card-desc {
-    font-size: 13px;
-    color: var(--accent);
-    opacity: 0.6;
-    line-height: 1.65;
-    margin-bottom: 16px;
+.stack-tag {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--text-muted); border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 6px;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
-
-.card-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-.card-link:hover { color: var(--neon); }
-.card-link::before { content: '\2192\00a0'; }
+.stack-tag:hover { border-color: var(--accent); color: var(--accent); }
 
 /* === ABOUT === */
-.about {
-    max-width: 560px;
-    margin: 0 auto;
-    text-align: center;
-}
-.about-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 32px;
-}
+.about { max-width: 560px; margin: 0 auto; text-align: center; }
 .about p {
     font-family: 'Instrument Serif', serif;
-    font-size: 17px;
-    line-height: 1.75;
-    color: var(--accent);
-    opacity: 0.8;
-    margin-bottom: 20px;
-}
-.about-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 36px;
-}
-.about-badges span {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-muted);
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
+    font-size: 17px; line-height: 1.8;
+    color: var(--text); opacity: 0.75; margin-bottom: 20px;
 }
 
 /* === CONTACT === */
-.contact {
-    text-align: center;
-    padding: 140px 24px 60px;
-}
+.contact { text-align: center; padding: 120px 24px 60px; }
 .contact-headline {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(32px, 5vw, 48px);
-    color: var(--highlight);
-    font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 40px;
+    color: var(--text); font-weight: 400;
+    line-height: 1.3; margin-bottom: 36px;
     letter-spacing: -0.02em;
 }
 .contact-email {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 16px;
-    color: var(--neon);
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
+    display: inline-block; font-family: 'DM Mono', monospace;
+    font-size: 16px; color: var(--accent);
+    text-decoration: none; padding: 12px 24px;
+    border-radius: 8px; transition: background 0.2s ease;
     margin-bottom: 40px;
 }
-.contact-email:hover { background: var(--neon-dim); }
-
+.contact-email:hover { background: var(--accent-dim); }
 .contact-links {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    color: var(--accent-muted);
-    margin-bottom: 60px;
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    color: var(--text-muted); margin-bottom: 60px;
 }
 .contact-links a {
-    color: var(--accent-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    margin: 0 10px;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.2s ease; margin: 0 12px;
 }
-.contact-links a:hover { color: var(--accent); }
-
+.contact-links a:hover { color: var(--text); }
 .copyright {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--accent-muted);
-    opacity: 0.3;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--text-light); opacity: 0.5;
+}
+
+/* Divider */
+.section-divider {
+    width: 40px; height: 1px; background: var(--border);
+    margin: 0 auto 48px;
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-    .hero-site-label { top: 20px; left: 20px; }
-    section { padding: 80px 20px; }
-    .project-20n { grid-template-columns: 1fr; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .cursor-dot, .cursor-ring { display: none; }
-    body { cursor: auto; }
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 11px; }
+    section { padding: 70px 20px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .milestones { padding-left: 24px; }
+    .milestone { padding-left: 20px; }
 }
 @media (max-width: 480px) {
-    section { padding: 60px 16px; }
-    .card { padding: 22px; }
+    section { padding: 50px 16px; }
+    .project-card { padding: 24px; }
+    .nav-links { gap: 12px; }
 }
 
-/* --- Focus visible --- */
-a:focus-visible {
-    outline: 1px solid var(--neon);
-    outline-offset: 3px;
-}
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     </style>
 </head>
 <body>
 
 <div class="grain"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
-<!-- ====== HERO ====== -->
+<!-- NAV -->
+<nav>
+    <a href="/" class="nav-logo">Nick0</a>
+    <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
     <div class="dot-grid"></div>
-    <div class="hero-site-label">nick0.xyz</div>
-    <h1 class="hero-name">Nicolas Philippe</h1>
+    <h1 class="hero-name">Nick0</h1>
     <div class="hero-tagline" id="typewriter"><span class="cursor"></span></div>
     <div class="hero-meta" id="heroMeta">19 &mdash; Paris &mdash; Founder, 20n Research Laboratory</div>
     <div class="scroll-indicator" id="scrollIndicator">&darr;</div>
 </section>
 
-<!-- ====== MANIFESTE ====== -->
+<!-- MANIFESTE -->
 <section>
     <div class="manifeste">
-        <p class="reveal m-highlight">The next intelligence won't be trained.<br>It will be born.</p>
-        <p class="reveal m-muted">While the industry scales parameters and stacks GPUs,<br>we're doing something different:<br>a single neuromorphic brain that controls any robot body &mdash;<br>without pre-training, without fine-tuning, without retraining.</p>
-        <p class="reveal m-neon">Zero cloud. 20 watts. Adapts in 30 seconds.</p>
+        <p class="reveal m-dark">The next intelligence won't be trained.<br>It will be born.</p>
+        <p class="reveal m-muted">While the industry scales parameters and stacks GPUs, we're doing something different: a single neuromorphic brain that controls any robot body &mdash; without pre-training, without fine-tuning, without retraining.</p>
+        <p class="reveal m-accent">Zero cloud. 20 watts. Adapts in 30 seconds.</p>
     </div>
 </section>
 
-<!-- ====== 20n PROJECT ====== -->
-<section>
-    <div class="section-label reveal">FLAGSHIP PROJECT</div>
-    <div class="project-20n">
-        <div class="reveal">
-            <div class="project-tag">Flagship Project &mdash; 2026</div>
-            <h2 class="project-title">20n Research Laboratory</h2>
-            <p class="project-subtitle">A universal brain for humanoid robots</p>
-            <p class="project-desc">One neuromorphic architecture. Any robot body. No retraining required.<br><br>Inspired by Active Inference, Predictive Coding, and the Free Energy Principle: the same principles that govern biological intelligence.</p>
-            <div class="project-metrics">
-                <div><span class="metric-label">MAXSURV</span> <span class="metric-arrow">&rarr;</span> 1000 steps</div>
-                <div><span class="metric-label">PATH</span> <span class="metric-arrow">&rarr;</span> 4.06 meters</div>
-                <div><span class="metric-label">HARDWARE</span> <span class="metric-arrow">&rarr;</span> CPU only, no GPU</div>
-                <div><span class="metric-label">CLOUD</span> <span class="metric-arrow">&rarr;</span> zero dependency</div>
-                <div><span class="metric-label">BODIES</span> <span class="metric-arrow">&rarr;</span> Walker2d &middot; Ant &middot; Humanoid</div>
-            </div>
-            <div class="project-links">
-                <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
-                <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">github.com/Nick0-ai</a>
-            </div>
-        </div>
-        <div class="reveal">
-            <div class="project-video">
-                <div class="play-btn">
-                    <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
-                </div>
-                <div class="video-caption">Demo coming soon</div>
-            </div>
-            <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent-muted);opacity:0.4;text-align:center;margin-top:12px;">"Same brain. Three bodies. No retraining."</p>
-        </div>
-    </div>
-</section>
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="section-label reveal">Projects</div>
+    <div class="section-title reveal">What I've built</div>
+    <div class="section-subtitle reveal">From research labs to consumer brands. Each project is a proof point.</div>
 
-<!-- ====== PROOF OF EXECUTION ====== -->
-<section>
-    <div class="section-label reveal">EXECUTION TRACK RECORD</div>
-    <div class="cards-grid">
+    <div class="projects-grid">
 
-        <div class="card reveal">
+        <!-- 20n — Featured -->
+        <a href="20n.html" class="project-card featured reveal">
+            <div>
+                <div class="card-tag">Flagship &middot; Deep Tech &middot; 2026</div>
+                <div class="card-title">20n Research Laboratory</div>
+                <div class="card-subtitle">A universal brain for humanoid robots</div>
+                <div class="card-desc">One neuromorphic architecture inspired by Active Inference. Any robot body. No retraining. CPU only, 20 watts. Same brain controls Walker2d, Ant, and Humanoid.</div>
+                <div class="card-arrow">&rarr; View project</div>
+            </div>
+            <div class="card-visual"><span>Demo coming soon</span></div>
+        </a>
+
+        <!-- PAACT -->
+        <a href="paact.html" class="project-card reveal">
             <div class="card-tag">iOS App &middot; Jan 2026</div>
-            <h3 class="card-title">PAACT</h3>
-            <p class="card-subtitle">Anti-procrastination productivity app</p>
-            <p class="card-desc">Built and shipped in 7 days post-hackathon. Swift, SwiftUI, Core Data. Published to App Store.</p>
-            <a href="https://paact.app" target="_blank" rel="noopener" class="card-link">paact.app</a>
-        </div>
+            <div class="card-title">PAACT</div>
+            <div class="card-subtitle">Anti-procrastination productivity app</div>
+            <div class="card-desc">Built and shipped in 7 days. Swift, SwiftUI, Core Data. Published on the App Store.</div>
+            <div class="card-arrow">&rarr; View project</div>
+        </a>
 
-        <div class="card reveal">
-            <div class="card-tag">Hackathon Win &middot; Jan 2026</div>
-            <h3 class="card-title">Innov Hack Paris</h3>
-            <p class="card-subtitle">1st place out of 150 participants</p>
-            <p class="card-desc">10-hour non-stop competition. Team of 4. Won with 20n concept. Pitched in front of 150 people.</p>
-        </div>
-
-        <div class="card reveal">
+        <!-- GlowGum -->
+        <a href="glowgum.html" class="project-card reveal">
             <div class="card-tag">Consumer Brand &middot; 2025</div>
-            <h3 class="card-title">GlowGum</h3>
-            <p class="card-subtitle">First skincare chewing gum brand</p>
-            <p class="card-desc">Built solo. 12,000 TikTok followers in 15 days. Supplier negotiation, brand strategy, digital marketing.</p>
-            <a href="https://tiktok.com/@glowgum_" target="_blank" rel="noopener" class="card-link">@glowgum_</a>
-        </div>
+            <div class="card-title">GlowGum</div>
+            <div class="card-subtitle">First skincare chewing gum brand</div>
+            <div class="card-desc">Built solo. 12,000 TikTok followers in 15 days. Full brand from scratch.</div>
+            <div class="card-arrow">&rarr; View project</div>
+        </a>
 
-        <div class="card reveal">
+        <!-- Friday -->
+        <a href="friday.html" class="project-card reveal">
             <div class="card-tag">AI Agent &middot; 2025</div>
-            <h3 class="card-title">Friday</h3>
-            <p class="card-subtitle">Autonomous Mac control agent</p>
-            <p class="card-desc">Computer vision + accessibility API. Full keyboard/mouse autonomy. Stepping stone toward physical robot control.</p>
-        </div>
+            <div class="card-title">Friday</div>
+            <div class="card-subtitle">Autonomous Mac control agent</div>
+            <div class="card-desc">Computer vision + Accessibility API. Full keyboard/mouse autonomy. Stepping stone toward physical robot control.</div>
+            <div class="card-arrow">&rarr; View project</div>
+        </a>
+
+        <!-- Innov Hack -->
+        <a href="#" class="project-card reveal" style="cursor:default;">
+            <div class="card-tag">Hackathon &middot; Jan 2026</div>
+            <div class="card-title">Innov Hack Paris</div>
+            <div class="card-subtitle">1st place out of 150 participants</div>
+            <div class="card-desc">10-hour non-stop competition. Team of 4. Won with 20n concept. Pitched in front of 150 people.</div>
+        </a>
 
     </div>
 </section>
 
-<!-- ====== ABOUT ====== -->
+<!-- MILESTONES -->
 <section>
+    <div class="section-label reveal">Timeline</div>
+    <div class="section-title reveal">Key milestones</div>
+    <div class="section-divider"></div>
+
+    <div class="milestones">
+        <div class="milestone reveal">
+            <div class="milestone-date">March 2026</div>
+            <div class="milestone-title">Same brain, three bodies, no retraining</div>
+            <div class="milestone-desc">20n milestone: one architecture controls Walker2d, Ant, and Humanoid simultaneously. MaxSurv 1000 steps, 4.06m trajectory. CPU only.</div>
+        </div>
+        <div class="milestone reveal">
+            <div class="milestone-date">January 2026</div>
+            <div class="milestone-title">Won Innov Hack Paris</div>
+            <div class="milestone-desc">1st place out of 150 participants. Pitched the 20n concept. Built PAACT in 7 days right after.</div>
+        </div>
+        <div class="milestone reveal">
+            <div class="milestone-date">January 2026</div>
+            <div class="milestone-title">Founded 20n Research Laboratory</div>
+            <div class="milestone-desc">Started building a biomimetic brain for robots. Active Inference, Predictive Coding, Free Energy Principle.</div>
+        </div>
+        <div class="milestone reveal">
+            <div class="milestone-date">2025</div>
+            <div class="milestone-title">Built Friday &mdash; autonomous Mac agent</div>
+            <div class="milestone-desc">Computer vision + Accessibility API. Multi-LLM. Full desktop autonomy. Stepping stone to physical robot control.</div>
+        </div>
+        <div class="milestone reveal">
+            <div class="milestone-date">2025</div>
+            <div class="milestone-title">Launched GlowGum</div>
+            <div class="milestone-desc">Solo e-commerce brand. 12k TikTok followers in 15 days. Full brand strategy, supplier negotiation, digital marketing.</div>
+        </div>
+        <div class="milestone reveal">
+            <div class="milestone-date">2022 &mdash; 2024</div>
+            <div class="milestone-title">Building since 16</div>
+            <div class="milestone-desc">Websites for local businesses, learning to code, first experiments with AI and automation.</div>
+        </div>
+    </div>
+</section>
+
+<!-- STACK -->
+<section>
+    <div class="section-label reveal">Stack & Interests</div>
+    <div class="section-title reveal">What I work with</div>
+    <div class="section-divider"></div>
+    <div class="stack-grid reveal">
+        <span class="stack-tag">Active Inference</span>
+        <span class="stack-tag">Predictive Coding</span>
+        <span class="stack-tag">Neuromorphic</span>
+        <span class="stack-tag">Free Energy Principle</span>
+        <span class="stack-tag">MuJoCo</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Swift</span>
+        <span class="stack-tag">SwiftUI</span>
+        <span class="stack-tag">PyTorch</span>
+        <span class="stack-tag">Gymnasium</span>
+        <span class="stack-tag">Computer Vision</span>
+        <span class="stack-tag">HTML/CSS/JS</span>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
     <div class="about">
-        <div class="about-title reveal">About</div>
-        <p class="reveal">I'm Nicolas, 19, building 20n Research Laboratory from Paris.</p>
+        <div class="section-label reveal">About</div>
+        <p class="reveal">I'm Nick0, 19, building 20n Research Laboratory from Paris.</p>
         <p class="reveal">No CS degree. No research lab backing. Just a conviction that the next leap in robotics won't come from scaling &mdash; it'll come from architecture.</p>
         <p class="reveal">I've been building since I was 16: websites for local businesses, an e-commerce brand with 12k followers, iOS apps, AI agents. Each one taught me how to move fast and ship things that work.</p>
         <p class="reveal">20n is the bet I'm willing to go all-in on.</p>
-        <div class="about-badges reveal">
-            <span>Active Inference</span>
-            <span>Predictive Coding</span>
-            <span>Neuromorphic</span>
-            <span>Free Energy Principle</span>
-            <span>MuJoCo</span>
-            <span>Swift</span>
-            <span>Python</span>
-        </div>
     </div>
 </section>
 
-<!-- ====== CONTACT ====== -->
-<section class="contact">
+<!-- CONTACT -->
+<section class="contact" id="contact">
     <div class="contact-headline reveal">Let's build something<br>that matters.</div>
-    <div class="reveal">
-        <a href="mailto:contact@nick0.xyz" class="contact-email">contact@nick0.xyz</a>
-    </div>
+    <div class="reveal"><a href="mailto:contact@nick0.xyz" class="contact-email">contact@nick0.xyz</a></div>
     <div class="contact-links reveal">
         <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
         <span>&middot;</span>
@@ -632,98 +494,43 @@ a:focus-visible {
         <span>&middot;</span>
         <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
     </div>
-    <div class="copyright">&copy; 2026 Nicolas Philippe &mdash; Paris</div>
+    <div class="copyright">&copy; 2026 Nick0 &mdash; Paris</div>
 </section>
 
 <script>
-// ============================================
-// CUSTOM CURSOR
-// ============================================
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mx = -100, my = -100, rx = -100, ry = -100;
-
-document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-});
-
-function cursorLoop() {
-    rx += (mx - rx) * 0.15;
-    ry += (my - ry) * 0.15;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(cursorLoop);
-}
-cursorLoop();
-
-// Hover effect on interactive elements
-document.querySelectorAll('a, .card, .project-video').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-});
-
-// ============================================
-// TYPEWRITER
-// ============================================
-const typewriterEl = document.getElementById('typewriter');
+// Typewriter
+const tw = document.getElementById('typewriter');
 const tagline = 'Building the first universal brain for robots.';
 let ti = 0;
-
-function waitForFonts() {
-    document.fonts.load('400 18px "DM Mono"').then(() => {
-        document.fonts.ready.then(() => {
-            setTimeout(typewriterTick, 400);
-        });
-    });
-}
-
-function typewriterTick() {
+document.fonts.load('400 17px "DM Mono"').then(() => {
+    document.fonts.ready.then(() => setTimeout(tick, 400));
+});
+function tick() {
     if (ti < tagline.length) {
-        typewriterEl.textContent = tagline.substring(0, ti + 1);
-        const cursorSpan = document.createElement('span');
-        cursorSpan.className = 'cursor';
-        typewriterEl.appendChild(cursorSpan);
+        tw.textContent = tagline.substring(0, ti + 1);
+        const c = document.createElement('span');
+        c.className = 'cursor';
+        tw.appendChild(c);
         ti++;
-        const ch = tagline[ti - 1];
-        const delay = ch === '.' ? 120 : ch === ',' ? 80 : ch === ' ' ? 40 : 35;
-        setTimeout(typewriterTick, delay);
+        const ch = tagline[ti-1];
+        setTimeout(tick, ch === '.' ? 120 : ch === ',' ? 80 : ch === ' ' ? 40 : 30);
     } else {
-        // Keep cursor blinking for 2s then fade
         setTimeout(() => {
-            const cursor = typewriterEl.querySelector('.cursor');
-            if (cursor) {
-                cursor.style.transition = 'opacity 0.5s ease';
-                cursor.style.opacity = '0';
-            }
-            // Show meta + scroll indicator
+            const c = tw.querySelector('.cursor');
+            if (c) { c.style.transition = 'opacity 0.5s'; c.style.opacity = '0'; }
             document.getElementById('heroMeta').classList.add('show');
-            setTimeout(() => {
-                document.getElementById('scrollIndicator').classList.add('show');
-            }, 300);
+            setTimeout(() => document.getElementById('scrollIndicator').classList.add('show'), 300);
         }, 2000);
     }
 }
 
-waitForFonts();
-
-// ============================================
-// SCROLL REVEAL
-// ============================================
-const revealObs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-            // Stagger if multiple siblings visible at once
-            const siblings = e.target.parentElement.querySelectorAll('.reveal');
-            let idx = 0;
-            siblings.forEach((s, j) => { if (s === e.target) idx = j; });
-            setTimeout(() => e.target.classList.add('visible'), idx * 80);
-            revealObs.unobserve(e.target);
-        }
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
