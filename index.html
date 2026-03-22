@@ -3,830 +3,817 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick0</title>
+    <title>Nick0 — Builder, 19, Paris</title>
     <meta name="description" content="19, Paris. Self-taught. Founder of 20n Research Laboratory. Morphology-agnostic robot control through Active Inference.">
     <meta property="og:title" content="Nick0">
     <meta property="og:description" content="19, Paris. Morphology-agnostic robot control through Active Inference.">
     <meta property="og:image" content="https://nick0.xyz/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nick0">
-    <meta name="twitter:image" content="https://nick0.xyz/og-image.png">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://nick0.xyz/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" as="style" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
 :root {
-    --bg: #f5f3f0;
-    --bg-card: #ffffff;
-    --text: #1a1a1a;
-    --text-muted: #555555;
-    --text-light: #999999;
-    --border: rgba(0,0,0,0.08);
+    --bg: #ffffff;
+    --bg-alt: #f7f7f7;
+    --text: #111111;
+    --text-secondary: #555555;
+    --text-tertiary: #888888;
+    --accent: #ff6600;
+    --accent-hover: #e55c00;
+    --border: #e5e5e5;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-    counter-reset: section;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
 }
-
-/* Grain */
-.grain {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 9000; opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat; background-size: 256px 256px;
-}
+img { display: block; max-width: 100%; }
 
 /* Reveal */
 .reveal {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* Utilities */
-.wide { max-width: 1200px; width: 92%; margin: 0 auto; }
-
-.section-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 48px;
-}
-.section-num::before {
-    counter-increment: section;
-    content: '0' counter(section) ' \2014  ';
-}
-
-hr.editorial-rule {
-    border: none;
-    height: 1px;
-    background: var(--border);
-    margin: 0;
-}
+/* Container */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
 /* === NAV === */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
-    background: transparent;
-    border-bottom: 1px solid transparent;
-    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-}
-nav.scrolled {
-    background: rgba(245,243,240,0.9);
+    background: rgba(255,255,255,0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom-color: var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
 }
 .nav-logo {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px; color: var(--text);
+    font-weight: 800; font-size: 18px; color: var(--text);
     text-decoration: none; letter-spacing: -0.02em;
 }
-.nav-links { display: flex; gap: 28px; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
-    font-family: 'DM Mono', monospace; font-size: 12px;
-    color: var(--text-light); text-decoration: none;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    transition: color 0.2s ease;
+    font-size: 14px; font-weight: 500; color: var(--text-secondary);
+    text-decoration: none; transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--text); }
+.nav-cta {
+    background: var(--accent) !important; color: #fff !important;
+    padding: 8px 16px; border-radius: 6px;
+    font-size: 14px !important; font-weight: 600 !important;
+    transition: background 0.15s !important;
+}
+.nav-cta:hover { background: var(--accent-hover) !important; }
 
 /* === HERO === */
 .hero {
-    min-height: 90vh; display: flex; flex-direction: column;
-    justify-content: center;
-    padding: 120px 24px 80px;
+    padding: 140px 24px 80px;
+    text-align: center;
 }
-.hero-inner {
-    max-width: 1200px; width: 92%; margin: 0 auto;
-}
-.hero-name {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(64px, 12vw, 140px);
-    font-weight: 400; color: var(--text);
-    letter-spacing: -0.04em; line-height: 1;
-    margin-bottom: 32px;
-}
-.hero-tagline {
-    font-family: 'DM Mono', monospace;
-    font-size: clamp(14px, 2vw, 17px);
-    color: var(--text-muted); height: 1.6em;
-}
-.hero-tagline .cursor {
-    display: inline-block; width: 1.5px; height: 1em;
-    background: var(--text-muted); margin-left: 2px;
-    vertical-align: text-bottom;
-    animation: blink 0.8s step-end infinite;
-}
-@keyframes blink { 50% { opacity: 0; } }
-.hero-meta {
-    font-size: 13px; color: var(--text-light);
-    margin-top: 24px; opacity: 0;
-    transition: opacity 0.6s ease; letter-spacing: 0.03em;
-}
-.hero-meta.show { opacity: 1; }
-.scroll-indicator {
-    position: absolute; bottom: 40px; left: 50%;
-    transform: translateX(-50%); font-size: 18px;
-    color: var(--text-light); opacity: 0;
-    transition: opacity 0.6s ease;
-    animation: scroll-bob 2s ease-in-out infinite;
-}
-.scroll-indicator.show { opacity: 0.4; }
-@keyframes scroll-bob {
-    0%,100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
-}
-
-/* === SOMMAIRE === */
-.sommaire { padding: 80px 24px 100px; }
-
-.pull-quote {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 4.5vw, 48px);
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    border-left: 2px solid var(--text);
-    padding-left: 32px;
-    margin-bottom: 64px;
-    max-width: 800px;
-}
-
-.sommaire-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 80px;
-    align-items: start;
-}
-
-.sommaire-body p {
-    font-family: 'DM Mono', monospace;
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--text-muted);
+.hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff4ec; color: var(--accent);
+    font-size: 13px; font-weight: 600;
+    padding: 6px 14px; border-radius: 20px;
     margin-bottom: 24px;
 }
-.sommaire-body p strong {
-    color: var(--text);
-    font-weight: 500;
+.hero-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-dot 2s ease-in-out infinite;
 }
-
-.sommaire-sidebar {
-    border-left: 1px solid var(--border);
-    padding-left: 32px;
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
-.sidebar-item { margin-bottom: 28px; }
-.sidebar-item:last-child { margin-bottom: 0; }
-.sidebar-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 4px;
-}
-.sidebar-value {
-    font-family: 'Instrument Serif', serif;
-    font-size: 20px;
-    color: var(--text);
-}
-
-/* === FEATURED SPREAD === */
-.project-spread {
-    padding: 100px 24px;
-}
-.project-spread--featured {
-    background: var(--bg-card);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.spread-link {
-    text-decoration: none; color: inherit; display: block;
-}
-
-.spread-grid {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 60px;
-    align-items: start;
-}
-
-.spread-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-}
-
-.spread-title {
-    font-family: 'Instrument Serif', serif;
-    font-weight: 400;
-    color: var(--text);
+.hero h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 1.05;
-    margin-bottom: 18px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text);
 }
-.spread-title--large {
-    font-size: clamp(60px, 10vw, 120px);
-}
-
-.spread-subtitle {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(18px, 2.5vw, 22px);
-    color: var(--text-muted);
+.hero h1 .accent { color: var(--accent); }
+.hero-sub {
+    font-size: clamp(17px, 2.5vw, 20px);
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto 36px;
     line-height: 1.6;
 }
+.hero-actions {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 12px 24px; border-radius: 8px;
+    font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all 0.15s;
+    cursor: pointer; border: none;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: #ccc; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
 
-.spread-desc {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px; line-height: 1.8;
-    color: var(--text-muted);
-    margin-bottom: 32px;
+/* === STATS BAR === */
+.stats-bar {
+    padding: 48px 24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-alt);
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+.stat-number {
+    font-size: 36px; font-weight: 800;
+    color: var(--text); letter-spacing: -0.02em;
+    line-height: 1;
+}
+.stat-number .accent { color: var(--accent); }
+.stat-label {
+    font-size: 13px; color: var(--text-tertiary);
+    margin-top: 8px; font-weight: 500;
 }
 
-.spread-visual {
-    margin: 24px 0;
+/* === SECTIONS === */
+.section { padding: 80px 24px; }
+.section--alt { background: var(--bg-alt); }
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.section-tag {
+    font-size: 13px; font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+}
+.section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.section-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
 }
 
-.spread-arrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px; color: var(--text-light);
-    transition: color 0.2s ease;
-}
-.spread-link:hover .spread-arrow { color: var(--text); }
-
-/* Architecture preview SVG */
-.arch-preview { width: 100%; height: auto; }
-.arch-preview text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; fill: var(--text-muted);
-}
-.arch-preview .node {
-    fill: var(--bg-card); stroke: var(--border); stroke-width: 1;
-}
-.arch-preview .node-core {
-    fill: var(--bg-card); stroke: var(--text); stroke-width: 1.2; opacity: 0.6;
-}
-.arch-preview .arrow {
-    stroke: var(--text-light); stroke-width: 1; fill: none;
-    opacity: 0.35; marker-end: url(#arrowhead);
-}
-
-/* === PROJECTS EDITORIAL === */
-.projects-editorial { padding: 100px 24px 60px; }
-
-.project-row {
-    display: block;
+/* === FEATURED PROJECT (20n) === */
+.featured-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
     text-decoration: none; color: inherit;
-    padding: 48px 0;
+    display: block;
 }
-a.project-row:hover .spread-arrow { color: var(--text); }
-
-.project-row-grid {
+.featured-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+}
+.featured-img {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 400px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+.featured-img::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(255,102,0,0.15) 0%, transparent 60%);
+}
+.featured-img svg { position: relative; z-index: 1; width: 100%; max-width: 320px; height: auto; }
+
+.featured-content {
+    padding: 44px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+.featured-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+}
+.featured-label .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+}
+.featured-h2 {
+    font-size: 32px; font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+.featured-tagline {
+    font-size: 16px; color: var(--text-secondary);
+    margin-bottom: 20px; line-height: 1.6;
+}
+.featured-desc {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 1.7; margin-bottom: 24px;
+}
+.featured-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.tag {
+    font-size: 12px; font-weight: 500;
+    padding: 4px 10px; border-radius: 4px;
+    background: var(--bg-alt); color: var(--text-secondary);
+}
+.featured-link {
+    font-size: 14px; font-weight: 600;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 4px;
 }
 
-.project-row-headline--right { text-align: right; }
+/* === PROJECT CARDS === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none; color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+}
+.project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-.spread-title--medium {
-    font-size: clamp(36px, 5vw, 56px);
+.card-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.card-img--friday {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+}
+.card-img--paact {
+    background: linear-gradient(135deg, #fef3e2 0%, #fde8cd 100%);
+}
+.card-img--glowgum {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+.card-img--freelance {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+
+.card-img-placeholder {
+    font-size: 48px;
+    opacity: 0.6;
+}
+.card-img--friday .card-img-placeholder { color: #6366f1; }
+.card-img--paact .card-img-placeholder { color: #f59e0b; }
+.card-img--glowgum .card-img-placeholder { color: #22c55e; }
+.card-img--freelance .card-img-placeholder { color: #a855f7; }
+
+.card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex; flex-direction: column;
+}
+.card-meta {
+    font-size: 12px; font-weight: 500;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+}
+.card-title {
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.card-desc {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 1.6; flex: 1;
+}
+.card-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; font-weight: 600;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 4px;
 }
 
 /* === TIMELINE === */
-.timeline-section { padding: 100px 24px 80px; }
-
-.timeline-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
-    align-items: start;
+.timeline {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
 }
-.timeline-header {
-    position: sticky; top: 120px;
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
 }
-.timeline-header h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(36px, 5vw, 52px);
-    font-weight: 400; color: var(--text);
-    line-height: 1.2; letter-spacing: -0.02em;
+.tl-item {
+    position: relative;
+    padding-left: 52px;
+    padding-bottom: 36px;
 }
-
-.milestones-list {}
-.milestone {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+    position: absolute;
+    left: 11px; top: 4px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--border);
 }
-.milestone:first-child { padding-top: 0; }
-.milestone:last-child { border-bottom: none; }
-.milestone-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; color: var(--text-light);
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin-bottom: 8px;
+.tl-item:first-child .tl-dot {
+    border-color: var(--accent);
+    background: var(--accent);
 }
-.milestone-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px; color: var(--text);
-    margin-bottom: 6px;
+.tl-date {
+    font-size: 12px; font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
 }
-.milestone-desc {
-    font-size: 13px; color: var(--text-muted); line-height: 1.7;
+.tl-title {
+    font-size: 16px; font-weight: 700;
+    color: var(--text); margin-bottom: 4px;
 }
-
-/* === FOUNDATIONS (merged Stack + Reading) === */
-.foundations-section {
-    padding: 80px 24px;
-    background: var(--bg-card);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+.tl-desc {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 1.6;
 }
 
-.foundations-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-top: 48px;
-    align-items: start;
+/* === STACK === */
+.stack-flex {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center;
+    max-width: 700px; margin: 0 auto;
 }
-.foundations-heading {
-    font-family: 'Instrument Serif', serif;
-    font-size: 28px; font-weight: 400;
-    color: var(--text); margin-bottom: 24px;
-}
-
-.stack-grid {
-    display: flex; flex-wrap: wrap; gap: 10px;
-}
-.stack-tag {
-    font-family: 'DM Mono', monospace; font-size: 13px;
-    color: var(--text-muted); border: 1px solid var(--border);
-    padding: 8px 16px; border-radius: 4px;
-}
-
-.reading-list {}
-.reading-item {
-    padding: 16px 0; border-bottom: 1px solid var(--border);
-}
-.reading-item:first-child { padding-top: 0; }
-.reading-item:last-child { border-bottom: none; }
-.reading-item a {
-    font-family: 'Instrument Serif', serif;
-    font-size: 17px; color: var(--text);
-    text-decoration: none; transition: color 0.2s ease;
-}
-.reading-item a:hover { color: var(--text-muted); }
-.reading-item .reading-author {
-    font-size: 12px; color: var(--text-light); margin-top: 4px;
-}
-
-/* === ABOUT STATEMENT === */
-.statement-section {
-    padding: 120px 24px 100px;
-}
-.statement {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 4.5vw, 48px);
-    font-weight: 400;
+.stack-chip {
+    font-size: 14px; font-weight: 500;
+    padding: 8px 18px; border-radius: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
     color: var(--text);
+    transition: all 0.15s;
+}
+.stack-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* === ABOUT === */
+.about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-photo {
+    width: 300px; height: 360px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; color: var(--text-tertiary); opacity: 0.3;
+}
+.about-text h3 {
+    font-size: 24px; font-weight: 800;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+}
+.about-text p {
+    font-size: 15px; color: var(--text-secondary);
+    line-height: 1.7; margin-bottom: 16px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+
+/* === READING === */
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.reading-card {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none; color: inherit;
+    transition: all 0.15s;
+}
+.reading-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
+.reading-card-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--text); margin-bottom: 6px;
     line-height: 1.4;
-    letter-spacing: -0.02em;
-    max-width: 900px;
+}
+.reading-card-author {
+    font-size: 12px; color: var(--text-tertiary);
 }
 
-/* === CONTACT === */
-.contact {
-    padding: 80px 24px 60px;
+/* === CTA === */
+.cta-section {
+    padding: 80px 24px;
+    text-align: center;
+    background: var(--text);
+    color: #fff;
 }
-.contact-inner {
-    max-width: 1200px; width: 92%; margin: 0 auto;
+.cta-section h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
 }
-.contact-headline {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: clamp(40px, 6vw, 64px);
-    color: var(--text); font-weight: 400;
-    line-height: 1.3; margin-bottom: 32px;
-    letter-spacing: -0.02em;
+.cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
 }
-.contact-email {
-    display: inline-block; font-family: 'DM Mono', monospace;
-    font-size: 16px; color: var(--text);
-    text-decoration: none; padding: 12px 24px;
-    border: 1px solid var(--border); border-radius: 6px;
-    transition: border-color 0.2s ease; margin-bottom: 40px;
+.cta-section .btn-primary { font-size: 16px; padding: 14px 28px; }
+.cta-links {
+    margin-top: 24px;
+    display: flex; gap: 24px; justify-content: center;
 }
-.contact-email:hover { border-color: var(--text-light); }
-.contact-links {
-    font-family: 'DM Mono', monospace; font-size: 13px;
-    color: var(--text-muted); margin-bottom: 64px;
+.cta-links a {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: color 0.15s;
 }
-.contact-links a {
-    color: var(--text-muted); text-decoration: none;
-    transition: color 0.2s ease; margin-right: 28px;
-}
-.contact-links a:hover { color: var(--text); }
-.copyright {
-    font-family: 'DM Mono', monospace; font-size: 12px;
-    color: var(--text-light); opacity: 0.4;
-    margin-top: 80px;
+.cta-links a:hover { color: #fff; }
+
+/* === FOOTER === */
+footer {
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px; color: var(--text-tertiary);
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 11px; }
-
-    .hero { min-height: 85vh; padding: 100px 20px 60px; }
-    .hero-inner { text-align: center; width: 100%; }
-    .hero-name { font-size: clamp(48px, 14vw, 80px); }
-
-    .sommaire { padding: 60px 20px 80px; }
-    .pull-quote { font-size: clamp(22px, 5.5vw, 32px); padding-left: 20px; margin-bottom: 48px; }
-    .sommaire-grid { grid-template-columns: 1fr; gap: 48px; }
-    .sommaire-sidebar {
-        border-left: none;
-        border-top: 1px solid var(--border);
-        padding-left: 0; padding-top: 32px;
-        display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    }
-
-    .project-spread { padding: 60px 20px; }
-    .spread-grid { grid-template-columns: 1fr; gap: 32px; }
-    .spread-title--large { font-size: clamp(48px, 12vw, 72px); }
-
-    .projects-editorial { padding: 60px 20px 40px; }
-    .project-row { padding: 36px 0; }
-    .project-row-grid { grid-template-columns: 1fr; gap: 16px; }
-    .project-row-headline--right { text-align: left; }
-    .project-row-grid--flipped .project-row-headline { order: -1; }
-
-    .timeline-section { padding: 60px 20px; }
-    .timeline-grid { grid-template-columns: 1fr; gap: 32px; }
-    .timeline-header { position: static; }
-
-    .foundations-section { padding: 60px 20px; }
-    .foundations-grid { grid-template-columns: 1fr; gap: 48px; }
-
-    .statement-section { padding: 80px 20px 60px; }
-
-    .contact { padding: 60px 20px 40px; }
-    .contact-inner { text-align: center; }
-    .contact-links a { margin: 0 12px; }
+@media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-img { min-height: 260px; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; text-align: center; }
+    .about-photo { margin: 0 auto; width: 200px; height: 240px; }
+    .reading-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 480px) {
-    .sommaire { padding: 48px 16px 60px; }
-    .project-spread { padding: 48px 16px; }
-    .projects-editorial { padding: 48px 16px 32px; }
-    .timeline-section { padding: 48px 16px; }
-    .foundations-section { padding: 48px 16px; }
-    .statement-section { padding: 60px 16px 48px; }
-    .contact { padding: 48px 16px 32px; }
+@media (max-width: 600px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 110px 20px 60px; }
+    .hero h1 { font-size: 32px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-number { font-size: 28px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+    .featured-content { padding: 28px; }
 }
 
-a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-<div class="grain"></div>
-
 <!-- NAV -->
-<nav id="nav">
-    <a href="/" class="nav-logo">Nick0</a>
-    <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">Nick<span>0</span></a>
+        <div class="nav-links">
+            <a href="#projects">Projects</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </div>
     </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="position:relative;">
-    <div class="hero-inner">
-        <h1 class="hero-name">Nick0</h1>
-        <div class="hero-tagline" id="typewriter"><span class="cursor"></span></div>
-        <div class="hero-meta" id="heroMeta">19 &mdash; Paris &mdash; Founder, 20n Research Laboratory</div>
-    </div>
-    <div class="scroll-indicator" id="scrollIndicator">&darr;</div>
-</section>
-
-<!-- SOMMAIRE -->
-<section class="sommaire">
-    <div class="wide">
-        <div class="section-num reveal">Sommaire</div>
-
-        <blockquote class="pull-quote reveal">
-            Self-taught since 16. No formal CS education.<br>
-            Building the universal brain for robots.
-        </blockquote>
-
-        <div class="sommaire-grid">
-            <div class="sommaire-body reveal">
-                <p>I founded <strong>20n Research Laboratory</strong>, where I'm building a generative model for morphology-agnostic robot control &mdash; one architecture that adapts to any robot body at runtime, grounded in Active Inference (Friston, 2010) and Predictive Coding.</p>
-                <p><strong>Early results:</strong> a single model controlling Walker2d, Ant, and Humanoid in MuJoCo. Zero training steps. CPU-only inference.</p>
-                <p>Before 20n, I built <strong>Friday</strong> (autonomous macOS agent), shipped <strong>PAACT</strong> to the App Store in 7 days (winning 1st at Innov Hack Paris, 150 participants), and launched <strong>GlowGum</strong> (consumer brand, 12k TikTok followers in 15 days). I've been writing code since I was 16 &mdash; websites, iOS apps, e-commerce, AI agents. Everything I know, I learned by shipping.</p>
-            </div>
-            <aside class="sommaire-sidebar reveal">
-                <div class="sidebar-item">
-                    <div class="sidebar-label">Age</div>
-                    <div class="sidebar-value">19</div>
-                </div>
-                <div class="sidebar-item">
-                    <div class="sidebar-label">Based in</div>
-                    <div class="sidebar-value">Paris</div>
-                </div>
-                <div class="sidebar-item">
-                    <div class="sidebar-label">Education</div>
-                    <div class="sidebar-value">Self-taught</div>
-                </div>
-                <div class="sidebar-item">
-                    <div class="sidebar-label">Current</div>
-                    <div class="sidebar-value">20n Research Lab</div>
-                </div>
-            </aside>
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge reveal"><span class="dot"></span> Currently building 20n Research Lab</div>
+        <h1 class="reveal">I build things that<br><span class="accent">move the world forward.</span></h1>
+        <p class="hero-sub reveal">19 years old, Paris. Self-taught since 16. From e-commerce brands to autonomous agents to robot control architectures. Everything I know, I learned by shipping.</p>
+        <div class="hero-actions reveal">
+            <a href="#projects" class="btn btn-primary">See my work &darr;</a>
+            <a href="mailto:contact@nick0.xyz" class="btn btn-secondary">Get in touch</a>
         </div>
     </div>
 </section>
 
-<!-- FEATURED: 20n -->
-<section class="project-spread project-spread--featured" id="work">
-    <div class="wide">
-        <div class="section-num reveal">Featured</div>
+<!-- STATS -->
+<div class="stats-bar">
+    <div class="container">
+        <div class="stats-grid reveal">
+            <div>
+                <div class="stat-number">4<span class="accent">+</span></div>
+                <div class="stat-label">Projects shipped</div>
+            </div>
+            <div>
+                <div class="stat-number">1<span class="accent">st</span></div>
+                <div class="stat-label">Innov Hack Paris (150 teams)</div>
+            </div>
+            <div>
+                <div class="stat-number">12<span class="accent">k</span></div>
+                <div class="stat-label">TikTok followers in 15 days</div>
+            </div>
+            <div>
+                <div class="stat-number">3<span class="accent">+</span></div>
+                <div class="stat-label">Years building</div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <a href="20n.html" class="spread-link">
-            <div class="spread-grid">
-                <div class="reveal">
-                    <div class="spread-tag">Active Inference &middot; Robotics &middot; 2026</div>
-                    <h2 class="spread-title spread-title--large">20n</h2>
-                    <div class="spread-subtitle">Morphology-agnostic control via variational free energy minimization</div>
+<!-- FEATURED: 20n -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">Featured Project</div>
+            <h2 class="section-title reveal">20n Research Laboratory</h2>
+            <p class="section-subtitle reveal">One generative model. Any robot body. Zero training steps.</p>
+        </div>
+
+        <a href="20n.html" class="featured-card reveal">
+            <div class="featured-grid">
+                <div class="featured-img">
+                    <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Perception-Action Loop diagram -->
+                        <defs>
+                            <marker id="ah" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                                <polygon points="0 0, 6 2, 0 4" fill="#ff6600" opacity="0.8"/>
+                            </marker>
+                        </defs>
+                        <!-- Nodes -->
+                        <rect x="110" y="180" width="100" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        <text x="160" y="203" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Environment</text>
+
+                        <rect x="10" y="100" width="90" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        <text x="55" y="123" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Sensors</text>
+
+                        <rect x="100" y="40" width="120" height="44" rx="8" fill="rgba(255,102,0,0.15)" stroke="#ff6600" stroke-width="1.5"/>
+                        <text x="160" y="58" text-anchor="middle" fill="#ff6600" font-family="Inter,sans-serif" font-size="10px" font-weight="600">Generative Model</text>
+                        <text x="160" y="74" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="9px">p(o,s) — q(s)</text>
+
+                        <rect x="220" y="100" width="90" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        <text x="265" y="123" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Actions</text>
+
+                        <!-- Arrows -->
+                        <line x1="160" y1="180" x2="70" y2="138" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
+                        <line x1="70" y1="100" x2="125" y2="84" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
+                        <line x1="195" y1="84" x2="250" y2="100" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
+                        <line x1="250" y1="136" x2="185" y2="180" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
+
+                        <text x="160" y="20" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="9px">minimize F = complexity − accuracy</text>
+                    </svg>
                 </div>
-                <div class="reveal">
-                    <div class="spread-desc">A single generative model controlling Walker2d, Ant, and Humanoid in MuJoCo without per-environment training. CPU-only inference. Based on Predictive Coding and Expected Free Energy for action selection.</div>
-                    <div class="spread-visual">
-                        <svg class="arch-preview" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                                    <polygon points="0 0, 6 2, 0 4" fill="#999" opacity="0.5"/>
-                                </marker>
-                            </defs>
-                            <rect class="node" x="100" y="165" width="80" height="28" rx="4"/>
-                            <text x="140" y="183" text-anchor="middle">Environment</text>
-                            <rect class="node" x="10" y="90" width="70" height="28" rx="4"/>
-                            <text x="45" y="108" text-anchor="middle">Sensors o</text>
-                            <rect class="node-core" x="90" y="50" width="100" height="36" rx="6"/>
-                            <text x="140" y="65" text-anchor="middle" style="font-size:8px;fill:#1a1a1a;">Generative Model</text>
-                            <text x="140" y="78" text-anchor="middle" style="font-size:7px;">p(o, s) &mdash; q(s)</text>
-                            <rect class="node" x="200" y="90" width="70" height="28" rx="4"/>
-                            <text x="235" y="108" text-anchor="middle">Action a</text>
-                            <text x="140" y="20" text-anchor="middle" style="font-size:8px;fill:#999;opacity:0.7;">minimize F = complexity - accuracy</text>
-                            <rect x="50" y="10" width="180" height="16" rx="3" fill="none" stroke="#999" stroke-width="0.5" opacity="0.25"/>
-                            <line class="arrow" x1="140" y1="165" x2="55" y2="120"/>
-                            <line class="arrow" x1="55" y1="90" x2="110" y2="86"/>
-                            <line class="arrow" x1="170" y1="86" x2="225" y2="90"/>
-                            <line class="arrow" x1="225" y1="118" x2="160" y2="165"/>
-                            <text x="65" y="82" style="font-size:7px;fill:#999;">&epsilon; = o - g(&mu;)</text>
-                        </svg>
+                <div class="featured-content">
+                    <div class="featured-label"><span class="live-dot"></span> Active Research</div>
+                    <h2 class="featured-h2">20n Research Lab</h2>
+                    <div class="featured-tagline">Morphology-agnostic robot control via Active Inference</div>
+                    <div class="featured-desc">A single generative model that controls Walker2d, Ant, and Humanoid in MuJoCo — without per-environment training. CPU-only inference. Grounded in Predictive Coding and Expected Free Energy for action selection.</div>
+                    <div class="featured-tags">
+                        <span class="tag">Active Inference</span>
+                        <span class="tag">MuJoCo</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Robotics</span>
                     </div>
-                    <div class="spread-arrow">Read more &rarr;</div>
+                    <div class="featured-link">Read technical details &rarr;</div>
                 </div>
             </div>
         </a>
     </div>
 </section>
 
-<!-- PROJECTS -->
-<section class="projects-editorial">
-    <div class="wide">
-        <div class="section-num reveal">Projects</div>
+<!-- OTHER PROJECTS -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">Portfolio</div>
+            <h2 class="section-title reveal">What I've built</h2>
+            <p class="section-subtitle reveal">From iOS apps to consumer brands — all shipped, all solo.</p>
+        </div>
 
-        <a href="friday.html" class="project-row reveal">
-            <div class="project-row-grid">
-                <div class="project-row-headline">
-                    <div class="spread-tag">Computer Vision &middot; LLM Agents &middot; 2025</div>
-                    <h3 class="spread-title spread-title--medium">Friday</h3>
+        <div class="projects-grid">
+            <a href="friday.html" class="project-card reveal">
+                <div class="card-img card-img--friday">
+                    <div class="card-img-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
+                    </div>
                 </div>
-                <div class="project-row-body">
-                    <p class="spread-desc">Autonomous macOS agent. Screen capture + OCR + Accessibility API + multi-LLM planning. Full desktop control via perception-action loops.</p>
-                    <div class="spread-arrow">Read more &rarr;</div>
+                <div class="card-body">
+                    <div class="card-meta">Computer Vision &middot; LLM Agents &middot; 2025</div>
+                    <div class="card-title">Friday</div>
+                    <div class="card-desc">Autonomous macOS agent. Screen capture + OCR + Accessibility API + multi-LLM planning. Full desktop control.</div>
                 </div>
-            </div>
-            <hr class="editorial-rule">
-        </a>
+                <div class="card-footer">Explore project &rarr;</div>
+            </a>
 
-        <a href="paact.html" class="project-row reveal">
-            <div class="project-row-grid project-row-grid--flipped">
-                <div class="project-row-body">
-                    <p class="spread-desc">Anti-procrastination app. Swift, SwiftUI, Core Data. Built and shipped to the App Store in 7 days. Won 1st place at Innov Hack Paris, 150 participants.</p>
-                    <div class="spread-arrow">Read more &rarr;</div>
+            <a href="paact.html" class="project-card reveal">
+                <div class="card-img card-img--paact">
+                    <div class="card-img-placeholder">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="13" y2="10"/></svg>
+                    </div>
                 </div>
-                <div class="project-row-headline project-row-headline--right">
-                    <div class="spread-tag">iOS &middot; January 2026</div>
-                    <h3 class="spread-title spread-title--medium">PAACT</h3>
+                <div class="card-body">
+                    <div class="card-meta">iOS &middot; Swift &middot; January 2026</div>
+                    <div class="card-title">PAACT</div>
+                    <div class="card-desc">Anti-procrastination app. Shipped to the App Store in 7 days. Won 1st place at Innov Hack Paris.</div>
                 </div>
-            </div>
-            <hr class="editorial-rule">
-        </a>
+                <div class="card-footer">Explore project &rarr;</div>
+            </a>
 
-        <a href="glowgum.html" class="project-row reveal">
-            <div class="project-row-grid">
-                <div class="project-row-headline">
-                    <div class="spread-tag">E-Commerce &middot; 2025</div>
-                    <h3 class="spread-title spread-title--medium">GlowGum</h3>
+            <a href="glowgum.html" class="project-card reveal">
+                <div class="card-img card-img--glowgum">
+                    <div class="card-img-placeholder">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    </div>
                 </div>
-                <div class="project-row-body">
-                    <p class="spread-desc">Consumer brand built solo. 12k TikTok followers in 15 days. End-to-end operations: product, brand, supply chain, distribution.</p>
-                    <div class="spread-arrow">Read more &rarr;</div>
+                <div class="card-body">
+                    <div class="card-meta">E-Commerce &middot; Brand &middot; 2025</div>
+                    <div class="card-title">GlowGum</div>
+                    <div class="card-desc">Consumer skincare brand built solo. 12k TikTok followers in 15 days. Full ops: product to distribution.</div>
                 </div>
-            </div>
-            <hr class="editorial-rule">
-        </a>
-
-        <div class="project-row reveal">
-            <div class="project-row-grid project-row-grid--flipped">
-                <div class="project-row-body">
-                    <p class="spread-desc">Websites and automation for local businesses. Where I learned to code and ship.</p>
-                </div>
-                <div class="project-row-headline project-row-headline--right">
-                    <div class="spread-tag">2022 &mdash; 2024</div>
-                    <h3 class="spread-title spread-title--medium">Freelance</h3>
-                </div>
-            </div>
+                <div class="card-footer">Explore project &rarr;</div>
+            </a>
         </div>
     </div>
 </section>
 
 <!-- TIMELINE -->
-<section class="timeline-section">
-    <div class="wide">
-        <div class="section-num reveal">Timeline</div>
-        <div class="timeline-grid">
-            <div class="timeline-header reveal">
-                <h2>Key<br>milestones</h2>
+<section class="section" id="timeline">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">Journey</div>
+            <h2 class="section-title reveal">How I got here</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="tl-item reveal">
+                <div class="tl-dot"></div>
+                <div class="tl-date">March 2026</div>
+                <div class="tl-title">One architecture, three MuJoCo bodies</div>
+                <div class="tl-desc">Single generative model controls Walker2d, Ant, and Humanoid. CPU-only inference. No per-environment training.</div>
             </div>
-            <div class="milestones-list">
-                <div class="milestone reveal">
-                    <div class="milestone-date">March 2026</div>
-                    <div class="milestone-title">One architecture, three MuJoCo bodies</div>
-                    <div class="milestone-desc">Single generative model controls Walker2d, Ant, and Humanoid without per-environment training. MaxSurv 1000 steps, 4.06m forward trajectory on Walker2d. CPU-only inference.</div>
-                </div>
-                <div class="milestone reveal">
-                    <div class="milestone-date">January 2026</div>
-                    <div class="milestone-title">1st place, Innov Hack Paris</div>
-                    <div class="milestone-desc">Won 1st out of 150 participants with PAACT. Built and shipped the app to the App Store in 7 days right after the hackathon.</div>
-                </div>
-                <div class="milestone reveal">
-                    <div class="milestone-date">January 2026</div>
-                    <div class="milestone-title">Founded 20n Research Laboratory</div>
-                    <div class="milestone-desc">Started implementing Active Inference for robot locomotion. Initial experiments with Predictive Coding architectures on Gymnasium environments.</div>
-                </div>
-                <div class="milestone reveal">
-                    <div class="milestone-date">2025</div>
-                    <div class="milestone-title">Built Friday</div>
-                    <div class="milestone-desc">Autonomous macOS agent: screen capture, OCR, Accessibility API traversal, multi-LLM planning. The perception-action loop that led to thinking about embodied agents.</div>
-                </div>
-                <div class="milestone reveal">
-                    <div class="milestone-date">2025</div>
-                    <div class="milestone-title">Launched GlowGum</div>
-                    <div class="milestone-desc">Solo e-commerce brand. Supplier negotiation, Shopify, TikTok content strategy. 12k followers in 15 days.</div>
-                </div>
-                <div class="milestone reveal">
-                    <div class="milestone-date">2022 &mdash; 2024</div>
-                    <div class="milestone-title">Started building at 16</div>
-                    <div class="milestone-desc">Websites for local businesses, first automation scripts, learning Python and Swift.</div>
-                </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot"></div>
+                <div class="tl-date">January 2026</div>
+                <div class="tl-title">1st place at Innov Hack Paris</div>
+                <div class="tl-desc">Won 1st out of 150 participants with PAACT. Shipped the app to the App Store in 7 days.</div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot"></div>
+                <div class="tl-date">January 2026</div>
+                <div class="tl-title">Founded 20n Research Laboratory</div>
+                <div class="tl-desc">Started implementing Active Inference for robot locomotion. Predictive Coding architectures on Gymnasium environments.</div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot"></div>
+                <div class="tl-date">2025</div>
+                <div class="tl-title">Built Friday &amp; launched GlowGum</div>
+                <div class="tl-desc">Autonomous macOS agent + solo consumer brand. The year of shipping fast.</div>
+            </div>
+            <div class="tl-item reveal">
+                <div class="tl-dot"></div>
+                <div class="tl-date">2022</div>
+                <div class="tl-title">Started building at 16</div>
+                <div class="tl-desc">First freelance websites, automation scripts, learning Python and Swift by building for real clients.</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FOUNDATIONS (merged Stack + Reading) -->
-<section class="foundations-section">
-    <div class="wide">
-        <div class="section-num reveal">Foundations</div>
-        <div class="foundations-grid">
-            <div class="reveal">
-                <h3 class="foundations-heading">Stack</h3>
-                <div class="stack-grid">
-                    <span class="stack-tag">Python</span>
-                    <span class="stack-tag">PyTorch</span>
-                    <span class="stack-tag">MuJoCo</span>
-                    <span class="stack-tag">Gymnasium</span>
-                    <span class="stack-tag">NumPy / SciPy</span>
-                    <span class="stack-tag">Swift</span>
-                    <span class="stack-tag">SwiftUI</span>
-                    <span class="stack-tag">Computer Vision</span>
-                    <span class="stack-tag">HTML / CSS / JS</span>
-                </div>
-            </div>
-            <div class="reveal">
-                <h3 class="foundations-heading">Reading</h3>
-                <div class="reading-list">
-                    <div class="reading-item">
-                        <a href="https://doi.org/10.1038/nrn2787" target="_blank" rel="noopener">The free-energy principle: a unified brain theory?</a>
-                        <div class="reading-author">Friston, K. (2010) &mdash; Nature Reviews Neuroscience</div>
-                    </div>
-                    <div class="reading-item">
-                        <a href="https://doi.org/10.1162/NECO_a_00912" target="_blank" rel="noopener">Active Inference: A Process Theory</a>
-                        <div class="reading-author">Friston, FitzGerald, Rigoli, Schwartenbeck & Pezzulo (2017)</div>
-                    </div>
-                    <div class="reading-item">
-                        <a href="https://mitpress.mit.edu/9780262045353/" target="_blank" rel="noopener">Active Inference: The Free Energy Principle in Mind, Brain, and Behavior</a>
-                        <div class="reading-author">Parr, Pezzulo & Friston (2022) &mdash; MIT Press</div>
-                    </div>
-                    <div class="reading-item">
-                        <a href="https://doi.org/10.1016/j.jmp.2020.102447" target="_blank" rel="noopener">Active inference on discrete state-spaces: a synthesis</a>
-                        <div class="reading-author">Da Costa, Parr, Sajid, Vesber, Ryan & Friston (2020)</div>
-                    </div>
-                </div>
-            </div>
+<!-- STACK -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">Tech Stack</div>
+            <h2 class="section-title reveal">Tools I work with</h2>
+        </div>
+        <div class="stack-flex reveal">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">PyTorch</span>
+            <span class="stack-chip">MuJoCo</span>
+            <span class="stack-chip">Gymnasium</span>
+            <span class="stack-chip">NumPy</span>
+            <span class="stack-chip">SciPy</span>
+            <span class="stack-chip">Swift</span>
+            <span class="stack-chip">SwiftUI</span>
+            <span class="stack-chip">Core Data</span>
+            <span class="stack-chip">Computer Vision</span>
+            <span class="stack-chip">HTML / CSS / JS</span>
+            <span class="stack-chip">Shopify</span>
         </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section class="statement-section" id="about">
-    <div class="wide">
-        <div class="section-num reveal">About</div>
-        <p class="statement reveal">A single architecture, grounded in theoretical neuroscience, that can control any robot body. The work is early, but the results are real.</p>
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">About</div>
+            <h2 class="section-title reveal">Who I am</h2>
+        </div>
+
+        <div class="about-grid reveal">
+            <div class="about-photo">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="about-text">
+                <h3>Nick0, 19, Paris</h3>
+                <p>Self-taught since 16. No formal CS education. I've been building websites, iOS apps, e-commerce brands, AI agents, and now robot control architectures — all by shipping first, learning second.</p>
+                <p>I founded 20n Research Laboratory to work on what I believe is the most important problem in robotics: one architecture that adapts to any body. The work is grounded in Active Inference and Predictive Coding.</p>
+                <p>Each project taught me something different. Freelance taught me to code. GlowGum taught me distribution. Friday taught me about perception-action loops. 20n is where it all converges.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-    <div class="contact-inner">
-        <div class="contact-headline reveal">Let's talk.</div>
-        <div class="reveal"><a href="mailto:contact@nick0.xyz" class="contact-email">contact@nick0.xyz</a></div>
-        <div class="contact-links reveal">
+<!-- READING -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag reveal">Foundations</div>
+            <h2 class="section-title reveal">What I build on</h2>
+        </div>
+        <div class="reading-grid reveal">
+            <a href="https://doi.org/10.1038/nrn2787" target="_blank" rel="noopener" class="reading-card">
+                <div class="reading-card-title">The free-energy principle: a unified brain theory?</div>
+                <div class="reading-card-author">Friston (2010) — Nature Reviews Neuroscience</div>
+            </a>
+            <a href="https://doi.org/10.1162/NECO_a_00912" target="_blank" rel="noopener" class="reading-card">
+                <div class="reading-card-title">Active Inference: A Process Theory</div>
+                <div class="reading-card-author">Friston et al. (2017) — Neural Computation</div>
+            </a>
+            <a href="https://mitpress.mit.edu/9780262045353/" target="_blank" rel="noopener" class="reading-card">
+                <div class="reading-card-title">Active Inference: The Free Energy Principle in Mind, Brain, and Behavior</div>
+                <div class="reading-card-author">Parr, Pezzulo & Friston (2022) — MIT Press</div>
+            </a>
+            <a href="https://doi.org/10.1016/j.jmp.2020.102447" target="_blank" rel="noopener" class="reading-card">
+                <div class="reading-card-title">Active inference on discrete state-spaces: a synthesis</div>
+                <div class="reading-card-author">Da Costa et al. (2020) — Journal of Mathematical Psychology</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <h2 class="reveal">Let's build something.</h2>
+        <p class="reveal">Open to research collaborations, startup conversations, and interesting problems.</p>
+        <a href="mailto:contact@nick0.xyz" class="btn btn-primary reveal">contact@nick0.xyz</a>
+        <div class="cta-links reveal">
             <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
             <a href="https://linkedin.com/in/nick0-" target="_blank" rel="noopener">LinkedIn</a>
             <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
         </div>
-        <div class="copyright">&copy; 2026 Nick0 &mdash; Paris</div>
     </div>
 </section>
 
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 Nick0 — Paris
+</footer>
+
 <script>
-// Nav scroll effect
-const navEl = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-    navEl.classList.toggle('scrolled', window.scrollY > 100);
-}, { passive: true });
-
-// Typewriter
-const tw = document.getElementById('typewriter');
-const tagline = 'Morphology-agnostic robot control through Active Inference.';
-let ti = 0;
-document.fonts.load('400 17px "DM Mono"').then(() => {
-    document.fonts.ready.then(() => setTimeout(tick, 400));
-});
-function tick() {
-    if (ti < tagline.length) {
-        tw.textContent = tagline.substring(0, ti + 1);
-        const c = document.createElement('span');
-        c.className = 'cursor';
-        tw.appendChild(c);
-        ti++;
-        const ch = tagline[ti-1];
-        setTimeout(tick, ch === '.' ? 120 : ch === ',' ? 80 : ch === ' ' ? 40 : 30);
-    } else {
-        setTimeout(() => {
-            const c = tw.querySelector('.cursor');
-            if (c) { c.style.transition = 'opacity 0.5s'; c.style.opacity = '0'; }
-            document.getElementById('heroMeta').classList.add('show');
-            setTimeout(() => document.getElementById('scrollIndicator').classList.add('show'), 300);
-        }, 2000);
-    }
-}
-
-// Scroll reveal
 const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
