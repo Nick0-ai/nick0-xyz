@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAACT — Nick0</title>
-    <meta name="description" content="PAACT: productivity app built in 7 days. Swift, SwiftUI, Core Data. Published on the App Store.">
+    <meta name="description" content="PAACT: productivity app built in 7 days. Swift, SwiftUI, Core Data. Published on the App Store. Won 1st place at Innov Hack Paris.">
     <meta property="og:title" content="PAACT — Nick0">
-    <meta property="og:description" content="Productivity app. Idea to App Store in 7 days.">
+    <meta property="og:description" content="Productivity app. Idea to App Store in 7 days. 1st place Innov Hack Paris.">
     <meta property="og:image" content="https://nick0.xyz/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -15,17 +15,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" rel="stylesheet">
     <style>
-:root{--bg:#f5f3f0;--bg-card:#fff;--text:#1a1a1a;--text-muted:#888;--text-light:#aaa;--accent:#00cc6a;--accent-dim:rgba(0,204,106,0.08);--border:rgba(0,0,0,0.06)}
+:root{--bg:#f5f3f0;--bg-card:#fff;--text:#1a1a1a;--text-muted:#666;--text-light:#999;--border:rgba(0,0,0,0.08)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:14px;line-height:1.6;overflow-x:hidden}
-.grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9000;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
-.reveal{opacity:0;transform:translateY(24px);filter:blur(4px);transition:opacity .5s ease-out,transform .5s ease-out,filter .5s ease-out}
-.reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
-.back-link{display:inline-block;font-family:'DM Mono',monospace;font-size:13px;color:var(--text-muted);text-decoration:none;letter-spacing:.03em;padding:24px 40px;transition:color .2s ease}
+.grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9000;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.back-link{display:inline-block;font-family:'DM Mono',monospace;font-size:13px;color:var(--text-light);text-decoration:none;letter-spacing:.03em;padding:24px 40px;transition:color .2s ease}
 .back-link:hover{color:var(--text)}
 .project-hero{padding:60px 24px 80px;text-align:center;max-width:800px;margin:0 auto}
-.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;opacity:.7}
+.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}
 .project-title{font-family:'Instrument Serif',serif;font-size:clamp(36px,6vw,64px);font-weight:400;color:var(--text);letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
 .project-subtitle{font-size:15px;color:var(--text-muted);max-width:520px;margin:0 auto 28px;line-height:1.7}
 .project-meta{font-size:12px;color:var(--text-light);letter-spacing:.04em}
@@ -37,16 +37,16 @@ body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font
 .content p{color:var(--text-muted);font-size:14px;line-height:1.75;margin-bottom:16px}
 .content ul{list-style:none;margin-bottom:16px}
 .content ul li{color:var(--text-muted);font-size:14px;line-height:1.75;padding-left:16px;position:relative;margin-bottom:8px}
-.content ul li::before{content:'—';position:absolute;left:0;color:var(--accent);opacity:.5}
+.content ul li::before{content:'\2014';position:absolute;left:0;color:var(--text-light)}
 .stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.s-tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--border);padding:6px 14px;border-radius:6px}
+.s-tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--border);padding:6px 14px;border-radius:4px}
 .project-links{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap}
-.project-link{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);text-decoration:none;padding:10px 20px;border:1px solid rgba(0,204,106,.2);border-radius:8px;transition:background .2s ease,border-color .2s ease}
-.project-link:hover{background:var(--accent-dim);border-color:var(--accent)}
-.footer{text-align:center;padding:60px 24px 40px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);opacity:.5}
+.project-link{font-family:'DM Mono',monospace;font-size:13px;color:var(--text);text-decoration:none;padding:10px 20px;border:1px solid var(--border);border-radius:6px;transition:border-color .2s ease}
+.project-link:hover{border-color:var(--text-light)}
+.footer{text-align:center;padding:60px 24px 40px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);opacity:.4}
 @media(max-width:768px){.back-link{padding:16px 20px}.project-hero{padding:40px 20px 60px}.content{padding:0 20px}}
 @media(max-width:480px){.content{padding:0 16px}.project-hero{padding:32px 16px 48px}.project-links{flex-direction:column}}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a:focus-visible{outline:2px solid var(--text);outline-offset:3px}
     </style>
 </head>
 <body>
@@ -56,7 +56,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 <header class="project-hero">
     <div class="project-tag reveal">iOS &middot; Productivity &middot; January 2026</div>
     <h1 class="project-title reveal">PAACT</h1>
-    <p class="project-subtitle reveal">Anti-procrastination app. Built and shipped to the App Store in 7 days, right after winning Innov Hack Paris.</p>
+    <p class="project-subtitle reveal">Anti-procrastination app. Built and shipped to the App Store in 7 days. Won 1st place at Innov Hack Paris (150 participants).</p>
     <div class="project-meta reveal">
         <span>January 2026</span> &middot; <span>Solo</span> &middot; <span>App Store</span>
     </div>
@@ -91,6 +91,13 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
             <span class="s-tag">Core Data</span>
             <span class="s-tag">UserNotifications</span>
             <span class="s-tag">iOS 17+</span>
+        </div>
+    </div>
+
+    <div class="content-section reveal">
+        <div class="content-label">Links</div>
+        <div class="project-links">
+            <a href="https://paact.app" target="_blank" rel="noopener" class="project-link">&rarr; paact.app</a>
         </div>
     </div>
 

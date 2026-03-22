@@ -21,11 +21,9 @@
     --bg: #f5f3f0;
     --bg-card: #ffffff;
     --text: #1a1a1a;
-    --text-muted: #888888;
-    --text-light: #aaaaaa;
-    --accent: #00cc6a;
-    --accent-dim: rgba(0,204,106,0.08);
-    --border: rgba(0,0,0,0.06);
+    --text-muted: #666666;
+    --text-light: #999999;
+    --border: rgba(0,0,0,0.08);
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -36,18 +34,18 @@ body {
 }
 .grain {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 9000; opacity: 0.03;
+    pointer-events: none; z-index: 9000; opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat; background-size: 256px 256px;
 }
 .reveal {
-    opacity: 0; transform: translateY(24px); filter: blur(4px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 .back-link {
     display: inline-block; font-family: 'DM Mono', monospace;
-    font-size: 13px; color: var(--text-muted); text-decoration: none;
+    font-size: 13px; color: var(--text-light); text-decoration: none;
     letter-spacing: 0.03em; padding: 24px 40px; transition: color 0.2s ease;
 }
 .back-link:hover { color: var(--text); }
@@ -57,8 +55,8 @@ body {
 }
 .project-tag {
     font-family: 'DM Mono', monospace; font-size: 11px;
-    color: var(--accent); text-transform: uppercase;
-    letter-spacing: 0.12em; margin-bottom: 20px; opacity: 0.7;
+    color: var(--text-light); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 20px;
 }
 .project-title {
     font-family: 'Instrument Serif', serif;
@@ -97,14 +95,14 @@ body {
     position: relative; margin-bottom: 8px;
 }
 .content ul li::before {
-    content: '—'; position: absolute; left: 0;
-    color: var(--accent); opacity: 0.5;
+    content: '\2014'; position: absolute; left: 0;
+    color: var(--text-light);
 }
 
 /* Architecture diagram */
 .arch-diagram {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 32px 24px; margin: 28px 0;
+    border-radius: 8px; padding: 32px 24px; margin: 28px 0;
     text-align: center;
 }
 .arch-diagram svg { width: 100%; max-width: 520px; height: auto; }
@@ -119,21 +117,21 @@ body {
     fill: var(--bg); stroke: rgba(0,0,0,0.1); stroke-width: 1;
 }
 .arch-svg .node-core {
-    fill: var(--bg); stroke: var(--accent); stroke-width: 1.5; opacity: 0.85;
+    fill: var(--bg); stroke: var(--text); stroke-width: 1.2; opacity: 0.5;
 }
 .arch-svg .arrow {
-    stroke: var(--accent); stroke-width: 1.2; fill: none;
-    opacity: 0.45; marker-end: url(#ah);
+    stroke: var(--text-light); stroke-width: 1.2; fill: none;
+    opacity: 0.4; marker-end: url(#ah);
 }
 .arch-svg .arrow-dim {
     stroke: var(--text-light); stroke-width: 0.8; fill: none;
-    opacity: 0.3; marker-end: url(#ah2);
+    opacity: 0.25; marker-end: url(#ah2);
 }
 
 /* Equation block */
 .equation-block {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 20px 24px; margin: 20px 0;
+    border-radius: 6px; padding: 20px 24px; margin: 20px 0;
     font-family: 'DM Mono', monospace; font-size: 14px;
     color: var(--text); text-align: center; line-height: 2;
 }
@@ -164,14 +162,14 @@ body {
     color: var(--text-muted);
 }
 .results-table tr:last-child td { border-bottom: none; }
-.results-table .highlight { color: var(--accent); font-weight: 500; }
+.results-table .highlight { color: var(--text); font-weight: 500; }
 
 /* Stack */
 .stack-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .s-tag {
     font-family: 'DM Mono', monospace; font-size: 12px;
     color: var(--text-muted); border: 1px solid var(--border);
-    padding: 6px 14px; border-radius: 6px;
+    padding: 6px 14px; border-radius: 4px;
 }
 
 /* References */
@@ -186,7 +184,7 @@ body {
     font-size: 11px; color: var(--text-light);
 }
 .ref-item a {
-    color: var(--accent); text-decoration: none;
+    color: var(--text); text-decoration: none;
 }
 .ref-item a:hover { text-decoration: underline; }
 
@@ -194,16 +192,16 @@ body {
 .project-links { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
 .project-link {
     font-family: 'DM Mono', monospace; font-size: 13px;
-    color: var(--accent); text-decoration: none;
-    padding: 10px 20px; border: 1px solid rgba(0,204,106,0.2);
-    border-radius: 8px; transition: background 0.2s ease, border-color 0.2s ease;
+    color: var(--text); text-decoration: none;
+    padding: 10px 20px; border: 1px solid var(--border);
+    border-radius: 6px; transition: border-color 0.2s ease;
 }
-.project-link:hover { background: var(--accent-dim); border-color: var(--accent); }
+.project-link:hover { border-color: var(--text-light); }
 
 .footer {
     text-align: center; padding: 60px 24px 40px;
     font-family: 'DM Mono', monospace; font-size: 11px;
-    color: var(--text-light); opacity: 0.5;
+    color: var(--text-light); opacity: 0.4;
 }
 @media (max-width: 768px) {
     .back-link { padding: 16px 20px; }
@@ -217,7 +215,7 @@ body {
     .project-hero { padding: 32px 16px 48px; }
     .project-links { flex-direction: column; }
 }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
     </style>
 </head>
 <body>
@@ -285,10 +283,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
             <svg class="arch-svg" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <marker id="ah" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                        <polygon points="0 0, 6 2, 0 4" fill="#00cc6a" opacity="0.6"/>
+                        <polygon points="0 0, 6 2, 0 4" fill="#999" opacity="0.5"/>
                     </marker>
                     <marker id="ah2" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                        <polygon points="0 0, 6 2, 0 4" fill="#aaa" opacity="0.4"/>
+                        <polygon points="0 0, 6 2, 0 4" fill="#999" opacity="0.3"/>
                     </marker>
                 </defs>
 
@@ -299,18 +297,18 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
                 <!-- Sensory encoding -->
                 <rect class="node" x="40" y="175" width="110" height="34" rx="5"/>
                 <text x="95" y="190" text-anchor="middle" style="font-size:9px;">Sensory Encoding</text>
-                <text x="95" y="202" text-anchor="middle" style="font-size:8px;fill:#aaa;">o &rarr; &epsilon; = o - g(&mu;)</text>
+                <text x="95" y="202" text-anchor="middle" style="font-size:8px;fill:#999;">o &rarr; &epsilon; = o - g(&mu;)</text>
 
                 <!-- Generative Model -->
                 <rect class="node-core" x="150" y="80" width="160" height="56" rx="7"/>
                 <text x="230" y="102" text-anchor="middle" style="font-size:10px;fill:#1a1a1a;">Generative Model</text>
                 <text x="230" y="116" text-anchor="middle" style="font-size:8px;">beliefs &mu;, &Sigma; over hidden states</text>
-                <text x="230" y="128" text-anchor="middle" style="font-size:8px;fill:#00cc6a;opacity:0.7;">minimize F = complexity - accuracy</text>
+                <text x="230" y="128" text-anchor="middle" style="font-size:8px;fill:#999;">minimize F = complexity - accuracy</text>
 
                 <!-- Action selection -->
                 <rect class="node" x="330" y="175" width="110" height="34" rx="5"/>
                 <text x="385" y="190" text-anchor="middle" style="font-size:9px;">Action Selection</text>
-                <text x="385" y="202" text-anchor="middle" style="font-size:8px;fill:#aaa;">argmin G(&pi;)</text>
+                <text x="385" y="202" text-anchor="middle" style="font-size:8px;fill:#999;">argmin G(&pi;)</text>
 
                 <!-- Morphology adapter -->
                 <rect class="node" x="170" y="10" width="120" height="30" rx="5"/>
@@ -318,27 +316,27 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
                 <!-- Arrows: environment -> sensors -->
                 <line class="arrow" x1="195" y1="270" x2="115" y2="211"/>
-                <text x="135" y="248" style="font-size:8px;fill:#aaa;">obs</text>
+                <text x="135" y="248" style="font-size:8px;fill:#999;">obs</text>
 
                 <!-- Arrows: sensors -> gen model -->
                 <line class="arrow" x1="115" y1="175" x2="175" y2="136"/>
-                <text x="125" y="155" style="font-size:8px;fill:#aaa;">&epsilon; (error)</text>
+                <text x="125" y="155" style="font-size:8px;fill:#999;">&epsilon; (error)</text>
 
                 <!-- Arrows: gen model -> action -->
                 <line class="arrow" x1="285" y1="136" x2="355" y2="175"/>
-                <text x="330" y="152" style="font-size:8px;fill:#aaa;">&mu; (beliefs)</text>
+                <text x="330" y="152" style="font-size:8px;fill:#999;">&mu; (beliefs)</text>
 
                 <!-- Arrows: action -> environment -->
                 <line class="arrow" x1="365" y1="211" x2="285" y2="270"/>
-                <text x="340" y="248" style="font-size:8px;fill:#aaa;">act</text>
+                <text x="340" y="248" style="font-size:8px;fill:#999;">act</text>
 
                 <!-- Arrows: adapter -> gen model -->
                 <line class="arrow-dim" x1="230" y1="40" x2="230" y2="78"/>
-                <text x="250" y="62" style="font-size:8px;fill:#aaa;">dims, limits</text>
+                <text x="250" y="62" style="font-size:8px;fill:#999;">dims, limits</text>
 
                 <!-- Predictions downward -->
                 <line class="arrow-dim" x1="175" y1="136" x2="105" y2="175" style="stroke-dasharray:4,3;"/>
-                <text x="110" y="166" style="font-size:7px;fill:#aaa;">g(&mu;) pred</text>
+                <text x="110" y="166" style="font-size:7px;fill:#999;">g(&mu;) pred</text>
             </svg>
             <div class="caption">Fig. 1 &mdash; Perception-action loop. The generative model maintains beliefs over hidden states, receives prediction errors from sensory encoding, and selects actions by minimizing expected free energy. The morphology adapter maps observation/action dimensions at initialization.</div>
         </div>
