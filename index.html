@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nick0</title>
-    <meta name="description" content="Morphology-agnostic robot control through Active Inference. 19, Paris. Founder of 20n Research Laboratory.">
+    <meta name="description" content="19, Paris. Self-taught. Founder of 20n Research Laboratory. Morphology-agnostic robot control through Active Inference.">
     <meta property="og:title" content="Nick0">
-    <meta property="og:description" content="Morphology-agnostic robot control through Active Inference.">
+    <meta property="og:description" content="19, Paris. Morphology-agnostic robot control through Active Inference.">
     <meta property="og:image" content="https://nick0.xyz/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nick0">
@@ -22,7 +22,7 @@
     --bg: #f5f3f0;
     --bg-card: #ffffff;
     --text: #1a1a1a;
-    --text-muted: #666666;
+    --text-muted: #555555;
     --text-light: #999999;
     --border: rgba(0,0,0,0.08);
     --shadow: 0 1px 8px rgba(0,0,0,0.04);
@@ -34,8 +34,8 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
@@ -66,12 +66,12 @@ nav {
 }
 .nav-logo {
     font-family: 'Instrument Serif', serif;
-    font-size: 20px; color: var(--text);
+    font-size: 22px; color: var(--text);
     text-decoration: none; letter-spacing: -0.02em;
 }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a {
-    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
     color: var(--text-light); text-decoration: none;
     letter-spacing: 0.04em; text-transform: uppercase;
     transition: color 0.2s ease;
@@ -86,14 +86,14 @@ nav {
 }
 .hero-name {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(56px, 10vw, 120px);
+    font-size: clamp(64px, 12vw, 140px);
     font-weight: 400; color: var(--text);
     letter-spacing: -0.04em; line-height: 1;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
 }
 .hero-tagline {
     font-family: 'DM Mono', monospace;
-    font-size: clamp(13px, 1.8vw, 16px);
+    font-size: clamp(14px, 2vw, 17px);
     color: var(--text-muted); height: 1.6em;
 }
 .hero-tagline .cursor {
@@ -104,8 +104,8 @@ nav {
 }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-meta {
-    font-size: 12px; color: var(--text-light);
-    margin-top: 20px; opacity: 0;
+    font-size: 13px; color: var(--text-light);
+    margin-top: 24px; opacity: 0;
     transition: opacity 0.6s ease; letter-spacing: 0.03em;
 }
 .hero-meta.show { opacity: 1; }
@@ -123,38 +123,48 @@ nav {
 }
 
 /* === SECTIONS === */
-section { padding: 100px 24px; }
+section { padding: 120px 24px; }
 .section-label {
-    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
     color: var(--text-light); text-transform: uppercase;
-    letter-spacing: 0.14em; margin-bottom: 48px; text-align: center;
+    letter-spacing: 0.14em; margin-bottom: 52px; text-align: center;
 }
 .section-title {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(26px, 3.5vw, 38px);
+    font-size: clamp(30px, 4.5vw, 48px);
     font-weight: 400; color: var(--text);
-    text-align: center; margin-bottom: 20px;
+    text-align: center; margin-bottom: 24px;
     letter-spacing: -0.02em;
 }
 .section-subtitle {
-    font-size: 14px; color: var(--text-muted);
+    font-size: 15px; color: var(--text-muted);
     text-align: center; max-width: 560px;
-    margin: 0 auto 56px; line-height: 1.7;
+    margin: 0 auto 60px; line-height: 1.7;
 }
 
-/* === INTRO === */
-.intro { max-width: 600px; margin: 0 auto; text-align: center; }
-.intro p {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(17px, 2.2vw, 20px);
-    line-height: 1.8; margin-bottom: 32px;
-    color: var(--text-muted);
+/* === OVERVIEW / SOMMAIRE === */
+.overview {
+    max-width: 680px; margin: 0 auto;
 }
-.intro p:first-child { color: var(--text); }
+.overview p {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(19px, 2.5vw, 23px);
+    line-height: 1.85;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+.overview p:first-of-type {
+    color: var(--text);
+    font-size: clamp(21px, 2.8vw, 26px);
+}
+.overview p strong {
+    color: var(--text);
+    font-weight: 400;
+}
 
 /* === FEATURED PROJECT === */
 .featured-project {
-    max-width: 800px; margin: 0 auto;
+    max-width: 860px; margin: 0 auto;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 10px; overflow: hidden;
     text-decoration: none; color: inherit; display: block;
@@ -164,34 +174,34 @@ section { padding: 100px 24px; }
 .featured-inner {
     display: grid; grid-template-columns: 1fr 1fr; gap: 0;
 }
-.featured-text { padding: 40px; }
+.featured-text { padding: 44px; }
 .featured-tag {
-    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
     color: var(--text-light); text-transform: uppercase;
-    letter-spacing: 0.1em; margin-bottom: 16px;
+    letter-spacing: 0.1em; margin-bottom: 18px;
 }
 .featured-title {
-    font-family: 'Instrument Serif', serif; font-size: 32px;
-    color: var(--text); font-weight: 400; margin-bottom: 8px;
+    font-family: 'Instrument Serif', serif; font-size: 36px;
+    color: var(--text); font-weight: 400; margin-bottom: 10px;
     letter-spacing: -0.02em;
 }
 .featured-subtitle {
-    font-size: 13px; color: var(--text-muted); margin-bottom: 16px;
-    line-height: 1.5;
+    font-size: 14px; color: var(--text-muted); margin-bottom: 18px;
+    line-height: 1.6;
 }
 .featured-desc {
-    font-size: 13px; color: var(--text-muted); line-height: 1.7;
-    margin-bottom: 24px;
+    font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    margin-bottom: 28px;
 }
 .featured-arrow {
-    font-size: 12px; color: var(--text-light);
+    font-size: 13px; color: var(--text-light);
     font-family: 'DM Mono', monospace;
     transition: color 0.2s ease;
 }
 .featured-project:hover .featured-arrow { color: var(--text); }
 .featured-visual {
     background: var(--bg); display: flex; align-items: center;
-    justify-content: center; padding: 32px;
+    justify-content: center; padding: 36px;
     border-left: 1px solid var(--border);
 }
 
@@ -214,33 +224,33 @@ section { padding: 100px 24px; }
 
 /* === PROJECT GRID === */
 .projects-grid {
-    max-width: 800px; margin: 0 auto;
+    max-width: 860px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
 }
 .project-card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 28px;
+    border-radius: 10px; padding: 32px;
     text-decoration: none; color: inherit;
     transition: box-shadow 0.25s ease;
     display: block;
 }
 .project-card:hover { box-shadow: var(--shadow-hover); }
 .project-card .card-tag {
-    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
     color: var(--text-light); text-transform: uppercase;
-    letter-spacing: 0.08em; margin-bottom: 14px;
+    letter-spacing: 0.08em; margin-bottom: 16px;
 }
 .project-card .card-title {
-    font-family: 'Instrument Serif', serif; font-size: 22px;
-    color: var(--text); font-weight: 400; margin-bottom: 8px;
+    font-family: 'Instrument Serif', serif; font-size: 24px;
+    color: var(--text); font-weight: 400; margin-bottom: 10px;
 }
 .project-card .card-desc {
-    font-size: 13px; color: var(--text-muted); line-height: 1.65;
+    font-size: 14px; color: var(--text-muted); line-height: 1.7;
 }
 
 /* === MILESTONES === */
 .milestones {
-    max-width: 640px; margin: 0 auto;
+    max-width: 680px; margin: 0 auto;
     position: relative; padding-left: 32px;
 }
 .milestones::before {
@@ -248,113 +258,115 @@ section { padding: 100px 24px; }
     bottom: 8px; width: 1px; background: var(--border);
 }
 .milestone {
-    position: relative; padding-bottom: 36px; padding-left: 28px;
+    position: relative; padding-bottom: 40px; padding-left: 28px;
 }
 .milestone::before {
-    content: ''; position: absolute; left: -29px; top: 7px;
+    content: ''; position: absolute; left: -29px; top: 8px;
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--text-light);
 }
 .milestone-date {
-    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
     color: var(--text-light); text-transform: uppercase;
-    letter-spacing: 0.06em; margin-bottom: 4px;
+    letter-spacing: 0.06em; margin-bottom: 6px;
 }
 .milestone-title {
-    font-family: 'Instrument Serif', serif; font-size: 18px;
-    color: var(--text); margin-bottom: 4px;
+    font-family: 'Instrument Serif', serif; font-size: 20px;
+    color: var(--text); margin-bottom: 6px;
 }
 .milestone-desc {
-    font-size: 12px; color: var(--text-muted); line-height: 1.6;
+    font-size: 13px; color: var(--text-muted); line-height: 1.7;
 }
 
 /* === STACK === */
 .stack-grid {
-    max-width: 560px; margin: 0 auto;
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    max-width: 600px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
 }
 .stack-tag {
-    font-family: 'DM Mono', monospace; font-size: 12px;
+    font-family: 'DM Mono', monospace; font-size: 13px;
     color: var(--text-muted); border: 1px solid var(--border);
-    padding: 7px 14px; border-radius: 4px;
+    padding: 8px 16px; border-radius: 4px;
 }
 
 /* === READING === */
-.reading-list { max-width: 560px; margin: 0 auto; }
+.reading-list { max-width: 600px; margin: 0 auto; }
 .reading-item {
-    padding: 14px 0; border-bottom: 1px solid var(--border);
+    padding: 16px 0; border-bottom: 1px solid var(--border);
 }
 .reading-item:last-child { border-bottom: none; }
 .reading-item a {
     font-family: 'Instrument Serif', serif;
-    font-size: 16px; color: var(--text);
+    font-size: 17px; color: var(--text);
     text-decoration: none; transition: color 0.2s ease;
 }
 .reading-item a:hover { color: var(--text-muted); }
 .reading-item .reading-author {
-    font-size: 12px; color: var(--text-light); margin-top: 3px;
+    font-size: 13px; color: var(--text-light); margin-top: 4px;
 }
 
 /* === ABOUT === */
-.about { max-width: 520px; margin: 0 auto; text-align: center; }
+.about { max-width: 560px; margin: 0 auto; text-align: center; }
 .about p {
     font-family: 'Instrument Serif', serif;
-    font-size: 16px; line-height: 1.8;
-    color: var(--text-muted); margin-bottom: 20px;
+    font-size: 18px; line-height: 1.85;
+    color: var(--text-muted); margin-bottom: 24px;
 }
 
 /* === CONTACT === */
 .contact { text-align: center; padding: 120px 24px 60px; }
 .contact-headline {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(28px, 4vw, 40px);
+    font-size: clamp(32px, 5vw, 48px);
     color: var(--text); font-weight: 400;
-    line-height: 1.3; margin-bottom: 32px;
+    line-height: 1.3; margin-bottom: 36px;
     letter-spacing: -0.02em;
 }
 .contact-email {
     display: inline-block; font-family: 'DM Mono', monospace;
-    font-size: 15px; color: var(--text);
-    text-decoration: none; padding: 10px 20px;
+    font-size: 16px; color: var(--text);
+    text-decoration: none; padding: 12px 24px;
     border: 1px solid var(--border); border-radius: 6px;
-    transition: border-color 0.2s ease; margin-bottom: 36px;
+    transition: border-color 0.2s ease; margin-bottom: 40px;
 }
 .contact-email:hover { border-color: var(--text-light); }
 .contact-links {
-    font-family: 'DM Mono', monospace; font-size: 12px;
-    color: var(--text-muted); margin-bottom: 60px;
+    font-family: 'DM Mono', monospace; font-size: 13px;
+    color: var(--text-muted); margin-bottom: 64px;
 }
 .contact-links a {
     color: var(--text-muted); text-decoration: none;
-    transition: color 0.2s ease; margin: 0 12px;
+    transition: color 0.2s ease; margin: 0 14px;
 }
 .contact-links a:hover { color: var(--text); }
 .copyright {
-    font-family: 'DM Mono', monospace; font-size: 11px;
+    font-family: 'DM Mono', monospace; font-size: 12px;
     color: var(--text-light); opacity: 0.4;
 }
 
 /* Divider */
 .section-divider {
     width: 32px; height: 1px; background: var(--border);
-    margin: 0 auto 48px;
+    margin: 0 auto 52px;
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-links { gap: 16px; }
-    .nav-links a { font-size: 10px; }
-    section { padding: 70px 20px; }
+    .nav-links a { font-size: 11px; }
+    section { padding: 80px 20px; }
     .featured-inner { grid-template-columns: 1fr; }
     .featured-visual { border-left: none; border-top: 1px solid var(--border); min-height: 200px; }
     .projects-grid { grid-template-columns: 1fr; }
     .milestones { padding-left: 24px; }
     .milestone { padding-left: 20px; }
+    .overview p { font-size: 18px; }
+    .overview p:first-of-type { font-size: 20px; }
 }
 @media (max-width: 480px) {
-    section { padding: 50px 16px; }
-    .featured-text { padding: 24px; }
+    section { padding: 60px 16px; }
+    .featured-text { padding: 28px; }
 }
 
 a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
@@ -382,12 +394,15 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
     <div class="scroll-indicator" id="scrollIndicator">&darr;</div>
 </section>
 
-<!-- INTRO -->
+<!-- OVERVIEW / SOMMAIRE -->
 <section>
-    <div class="intro">
-        <p class="reveal">Current robot learning requires environment-specific training for each morphology. Transfer across bodies remains an open problem.</p>
-        <p class="reveal">I'm building a generative model grounded in Active Inference (Friston, 2010) that adapts to new robot morphologies at runtime &mdash; without retraining, without reward shaping, without cloud compute.</p>
-        <p class="reveal">Early results: one architecture, three MuJoCo bodies, zero retraining.</p>
+    <div class="section-label reveal">Overview</div>
+    <div class="overview">
+        <p class="reveal"><strong>I'm Nick0. 19, Paris. Self-taught since 16. No formal CS education.</strong></p>
+        <p class="reveal">I founded <strong>20n Research Laboratory</strong>, where I'm building a generative model for morphology-agnostic robot control &mdash; one architecture that adapts to any robot body at runtime, grounded in Active Inference (Friston, 2010) and Predictive Coding.</p>
+        <p class="reveal"><strong>Early results:</strong> a single model controlling Walker2d, Ant, and Humanoid in MuJoCo. Zero training steps. CPU-only inference.</p>
+        <p class="reveal">Before 20n, I built <strong>Friday</strong> (autonomous macOS agent), shipped <strong>PAACT</strong> to the App Store in 7 days (winning 1st at Innov Hack Paris, 150 participants), and launched <strong>GlowGum</strong> (consumer brand, 12k TikTok followers in 15 days).</p>
+        <p class="reveal">I've been writing code since I was 16 &mdash; websites, iOS apps, e-commerce, AI agents. Everything I know, I learned by shipping.</p>
     </div>
 </section>
 

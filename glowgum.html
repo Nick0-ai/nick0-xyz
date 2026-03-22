@@ -15,31 +15,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=block" rel="stylesheet">
     <style>
-:root{--bg:#f5f3f0;--bg-card:#fff;--text:#1a1a1a;--text-muted:#666;--text-light:#999;--border:rgba(0,0,0,0.08)}
+:root{--bg:#f5f3f0;--bg-card:#fff;--text:#1a1a1a;--text-muted:#555;--text-light:#999;--border:rgba(0,0,0,0.08)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:14px;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:15px;line-height:1.7;overflow-x:hidden}
 .grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9000;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .back-link{display:inline-block;font-family:'DM Mono',monospace;font-size:13px;color:var(--text-light);text-decoration:none;letter-spacing:.03em;padding:24px 40px;transition:color .2s ease}
 .back-link:hover{color:var(--text)}
 .project-hero{padding:60px 24px 80px;text-align:center;max-width:800px;margin:0 auto}
-.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}
-.project-title{font-family:'Instrument Serif',serif;font-size:clamp(36px,6vw,64px);font-weight:400;color:var(--text);letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-.project-subtitle{font-size:15px;color:var(--text-muted);max-width:520px;margin:0 auto 28px;line-height:1.7}
+.project-tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}
+.project-title{font-family:'Instrument Serif',serif;font-size:clamp(40px,7vw,72px);font-weight:400;color:var(--text);letter-spacing:-.03em;line-height:1.1;margin-bottom:18px}
+.project-subtitle{font-size:16px;color:var(--text-muted);max-width:540px;margin:0 auto 28px;line-height:1.75}
 .project-meta{font-size:12px;color:var(--text-light);letter-spacing:.04em}
 .project-meta span{margin:0 8px}
 .content{max-width:640px;margin:0 auto;padding:0 24px}
-.content-section{margin-bottom:72px}
-.content-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}
-.content-heading{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:16px;letter-spacing:-.01em}
-.content p{color:var(--text-muted);font-size:14px;line-height:1.75;margin-bottom:16px}
-.content ul{list-style:none;margin-bottom:16px}
-.content ul li{color:var(--text-muted);font-size:14px;line-height:1.75;padding-left:16px;position:relative;margin-bottom:8px}
+.content-section{margin-bottom:80px}
+.content-label{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:.12em;margin-bottom:22px}
+.content-heading{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:18px;letter-spacing:-.01em}
+.content p{color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:18px}
+.content ul{list-style:none;margin-bottom:18px}
+.content ul li{color:var(--text-muted);font-size:15px;line-height:1.8;padding-left:16px;position:relative;margin-bottom:10px}
 .content ul li::before{content:'\2014';position:absolute;left:0;color:var(--text-light)}
 .stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.s-tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--border);padding:6px 14px;border-radius:4px}
+.s-tag{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-muted);border:1px solid var(--border);padding:8px 16px;border-radius:4px}
 .footer{text-align:center;padding:60px 24px 40px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);opacity:.4}
 @media(max-width:768px){.back-link{padding:16px 20px}.project-hero{padding:40px 20px 60px}.content{padding:0 20px}}
 @media(max-width:480px){.content{padding:0 16px}.project-hero{padding:32px 16px 48px}}
