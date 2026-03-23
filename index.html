@@ -15,9 +15,10 @@
     --bg: #fff;
     --text: #111;
     --text-dim: #444;
-    --text-faint: #888;
+    --text-faint: #999;
     --border: #111;
-    --border-light: #ccc;
+    --border-light: #e0e0e0;
+    --accent-bg: #f6f6f6;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -30,32 +31,27 @@ body {
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 12px; }
-::-webkit-scrollbar-track { background: var(--bg); border-left: 2px solid var(--border); }
-::-webkit-scrollbar-thumb { background: var(--text); border: 2px solid var(--bg); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
 
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.wide { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
 
 .reveal {
-    opacity: 0; transform: translateY(12px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-.pixel-line {
-    height: 3px;
-    background: repeating-linear-gradient(90deg, var(--border) 0px, var(--border) 6px, transparent 6px, transparent 12px);
-}
-
-/* === FUSED IMAGES — completely merged with background === */
+/* === FUSED IMAGES === */
 .fused-img {
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
     -webkit-user-drag: none;
-    -khtml-user-drag: none;
     -moz-user-drag: none;
-    -o-user-drag: none;
     user-drag: none;
     mix-blend-mode: multiply;
     -webkit-touch-callout: none;
@@ -64,181 +60,305 @@ body {
 /* === NAV === */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: var(--bg);
-    border-bottom: 3px solid var(--border);
-    padding: 12px 24px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    padding: 14px 32px;
     display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { font-size: 20px; font-weight: bold; color: var(--text); text-decoration: none; letter-spacing: 0.05em; }
-.nav-links { display: flex; gap: 24px; }
-.nav-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.15s; }
+.nav-logo { font-size: 18px; font-weight: bold; color: var(--text); text-decoration: none; letter-spacing: 0.06em; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+    font-size: 12px; color: var(--text-faint); text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
+}
 .nav-links a:hover { color: var(--text); }
 
 /* === HERO === */
-.hero { padding: 100px 24px 32px; }
+.hero {
+    padding: 120px 32px 48px;
+    text-align: center;
+}
 .hero-logo {
     display: block;
-    margin: 0 auto 40px;
-    max-width: 620px;
+    margin: 0 auto 48px;
+    max-width: 680px;
     width: 100%;
     height: auto;
 }
-.hero-sub {
-    font-size: 16px; color: var(--text-dim);
-    max-width: 620px; margin: 0 auto 32px;
-    text-align: center; line-height: 1.7;
+.hero-tagline {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
 }
-.hero-stats {
-    display: flex; gap: 32px; justify-content: center;
-    flex-wrap: wrap; margin-bottom: 36px;
+.hero-metrics {
+    display: flex; gap: 48px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 48px;
 }
-.hero-stat { text-align: center; }
-.hero-stat-value { font-size: 28px; font-weight: bold; line-height: 1; }
-.hero-stat-label { font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+.hero-metric { text-align: center; }
+.hero-metric-val {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+.hero-metric-label {
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+}
 .hero-cta {
-    display: inline-block; padding: 12px 32px;
-    border: 3px solid var(--border); background: var(--text); color: var(--bg);
-    font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold;
-    text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;
-    transition: all 0.15s; box-shadow: 4px 4px 0 0 var(--border);
+    display: inline-block; padding: 14px 40px;
+    background: var(--text); color: var(--bg);
+    font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.12em;
+    transition: all 0.2s; border: none;
 }
-.hero-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--border); }
-.hero-center { text-align: center; }
+.hero-cta:hover { background: #333; transform: translateY(-1px); }
+
+/* === DIVIDER === */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-light);
+}
 
 /* === SECTIONS === */
-.section { padding: 64px 24px; }
-.section--bordered { border-top: 3px solid var(--border); border-bottom: 3px solid var(--border); background: #fafafa; }
-.section-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-faint); margin-bottom: 16px; }
-.section-title { font-size: clamp(22px, 3.5vw, 32px); font-weight: bold; line-height: 1.3; margin-bottom: 20px; }
+.section { padding: 80px 32px; }
+.section--alt { background: var(--accent-bg); }
+.section-num {
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    display: block;
+}
+.section-title {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+}
 
 /* === MANIFESTO TEXT === */
-.manifesto p { font-size: 15px; line-height: 1.8; color: var(--text-dim); margin-bottom: 20px; }
-.manifesto p.big { font-size: 19px; color: var(--text); font-weight: bold; line-height: 1.5; }
-.manifesto p.highlight { font-size: 17px; color: var(--text); border-left: 4px solid var(--border); padding-left: 20px; margin: 28px 0; }
+.manifesto p { font-size: 16px; line-height: 1.85; color: var(--text-dim); margin-bottom: 20px; }
+.manifesto p:last-child { margin-bottom: 0; }
+.manifesto p.lead {
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: var(--text);
+    font-weight: bold;
+    line-height: 1.5;
+}
+.manifesto p.quote {
+    font-size: 18px;
+    color: var(--text);
+    border-left: 3px solid var(--text);
+    padding-left: 24px;
+    margin: 32px 0;
+    line-height: 1.7;
+}
 
-/* === SIDE BY SIDE LAYOUT === */
+/* === SPREAD: IMAGE + TEXT SIDE BY SIDE (FULL WIDTH) === */
 .spread {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 64px;
     align-items: center;
-    padding: 48px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
 }
-.spread--img-left {
-    grid-template-columns: auto 1fr;
-}
-.spread--img-right {
-    grid-template-columns: 1fr auto;
-}
-.spread-text {}
 .spread-visual {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .spread-visual img {
     width: 100%;
-    max-width: 380px;
+    max-width: 520px;
     height: auto;
 }
-
-/* === GIF CONTAINER — fused into page === */
-.gif-fused {
-    max-width: 200px;
+.spread-visual .gif-fused {
+    max-width: 280px;
     width: 100%;
     height: auto;
-    opacity: 0.88;
-    filter: grayscale(100%) contrast(1.3);
+    opacity: 0.9;
+    filter: grayscale(100%) contrast(1.2);
 }
 
-/* === BRAIN ARCHITECTURE GRID === */
+/* === BRAIN GRID === */
 .brain-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    border: 3px solid var(--border); box-shadow: 6px 6px 0 0 var(--border);
-    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+    margin: 32px 0;
 }
-.brain-layer { padding: 20px; border-bottom: 2px solid var(--border); }
-.brain-layer:nth-child(odd) { border-right: 2px solid var(--border); }
-.brain-layer:nth-last-child(-n+2) { border-bottom: none; }
-.brain-layer-name { font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-.brain-layer-role { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
-.brain-layer-bio { font-size: 11px; color: var(--text-faint); margin-top: 4px; }
+.brain-layer {
+    padding: 24px;
+    background: var(--bg);
+}
+.brain-layer-name {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+.brain-layer-role { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.brain-layer-bio { font-size: 11px; color: var(--text-faint); margin-top: 6px; line-height: 1.5; }
 
 /* === COMPARE GRID === */
 .compare-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    border: 3px solid var(--border); box-shadow: 6px 6px 0 0 var(--border); margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border-light);
+    margin: 24px 0;
 }
-.compare-col { padding: 24px; }
-.compare-col:first-child { border-right: 3px solid var(--border); background: rgba(0,0,0,0.03); }
-.compare-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
-.compare-col ul { list-style: none; font-size: 13px; line-height: 1.8; color: var(--text-dim); }
-.compare-col ul li::before { content: '\00d7\00a0'; font-weight: bold; color: var(--text); }
-.compare-col:last-child ul li::before { content: '\2192\00a0'; }
+.compare-col { padding: 28px; }
+.compare-col:first-child { border-right: 1px solid var(--border-light); }
+.compare-col h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-faint);
+}
+.compare-col ul { list-style: none; font-size: 14px; line-height: 2; color: var(--text-dim); }
+.compare-col:first-child ul li::before { content: '\00d7\00a0'; color: var(--text-faint); }
+.compare-col:last-child ul li::before { content: '\2192\00a0'; color: var(--text); font-weight: bold; }
 
 /* === RESULTS TABLE === */
 .results-table {
-    width: 100%; border-collapse: collapse;
-    border: 3px solid var(--border); box-shadow: 6px 6px 0 0 var(--border);
-    font-size: 14px; margin: 24px 0;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 32px 0;
+    border: 1px solid var(--border-light);
 }
-.results-table th { background: var(--text); color: var(--bg); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; padding: 12px 16px; text-align: left; }
-.results-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); }
+.results-table th {
+    background: var(--text);
+    color: var(--bg);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 14px 20px;
+    text-align: left;
+}
+.results-table td { padding: 14px 20px; border-bottom: 1px solid var(--border-light); }
 .results-table tr:last-child td { border-bottom: none; }
-.results-table .val-best { font-weight: bold; background: var(--text); color: var(--bg); padding: 2px 8px; }
+.results-table .val-best { font-weight: bold; background: var(--text); color: var(--bg); padding: 3px 10px; display: inline-block; }
 .results-table .val-good { font-weight: bold; }
 
 /* === ROADMAP === */
-.roadmap { margin: 24px 0; }
-.roadmap-item { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px dashed var(--border-light); align-items: start; }
+.roadmap { margin: 32px 0; }
+.roadmap-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: start;
+}
 .roadmap-item:last-child { border-bottom: none; }
-.roadmap-phase { font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 0; }
+.roadmap-phase {
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 0;
+}
 .roadmap-phase.done { color: var(--text); }
-.roadmap-phase.current { background: var(--text); color: var(--bg); padding: 4px 8px; text-align: center; }
+.roadmap-phase.current {
+    background: var(--text);
+    color: var(--bg);
+    padding: 6px 12px;
+    text-align: center;
+}
 .roadmap-phase.future { color: var(--text-faint); }
-.roadmap-title { font-weight: bold; margin-bottom: 2px; }
-.roadmap-desc { font-size: 13px; color: var(--text-dim); }
+.roadmap-title { font-weight: bold; margin-bottom: 4px; font-size: 16px; }
+.roadmap-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
 
 /* === CTA === */
-.cta-bottom { padding: 80px 24px; text-align: center; background: var(--text); color: var(--bg); border-top: 3px solid var(--border); }
-.cta-bottom h2 { font-size: clamp(24px, 4vw, 36px); font-weight: bold; margin-bottom: 16px; line-height: 1.3; }
-.cta-bottom p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
-.cta-email {
-    display: inline-block; padding: 12px 32px; border: 3px solid var(--bg); color: var(--bg);
-    font-family: 'Courier New', monospace; font-size: 15px; font-weight: bold;
-    text-decoration: none; letter-spacing: 0.04em; transition: all 0.15s;
-    box-shadow: 4px 4px 0 0 rgba(255,255,255,0.3);
+.cta-bottom {
+    padding: 100px 32px;
+    text-align: center;
+    background: var(--text);
+    color: var(--bg);
 }
-.cta-email:hover { background: var(--bg); color: var(--text); transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 rgba(255,255,255,0.3); }
-.cta-links { margin-top: 32px; font-size: 13px; }
-.cta-links a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 16px; transition: color 0.15s; }
+.cta-bottom h2 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+.cta-bottom p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-email {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: var(--bg);
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+}
+.cta-email:hover { background: var(--bg); color: var(--text); border-color: var(--bg); }
+.cta-links { margin-top: 40px; font-size: 13px; }
+.cta-links a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 20px; transition: color 0.2s; }
 .cta-links a:hover { color: var(--bg); }
 
-footer { padding: 20px 24px; text-align: center; font-size: 12px; color: var(--text-faint); border-top: 2px solid var(--border-light); }
+footer {
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border-light);
+}
 
 /* === RESPONSIVE === */
-@media (max-width: 700px) {
-    nav { padding: 10px 16px; }
-    .nav-links { gap: 14px; }
+@media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { gap: 16px; }
     .nav-links a { font-size: 11px; }
-    .hero { padding: 80px 16px 24px; }
-    .hero-logo { max-width: 320px; margin-bottom: 28px; }
-    .spread { grid-template-columns: 1fr; gap: 28px; }
-    .spread--img-left, .spread--img-right { grid-template-columns: 1fr; }
+    .hero { padding: 90px 20px 32px; }
+    .hero-logo { max-width: 340px; margin-bottom: 32px; }
+    .hero-metrics { gap: 28px; }
+    .hero-metric-val { font-size: 28px; }
+    .spread { grid-template-columns: 1fr; gap: 32px; padding: 0 20px; }
     .spread-visual { order: -1; }
-    .spread-visual img { max-width: 260px; }
-    .gif-fused { max-width: 160px; }
-    .section { padding: 48px 16px; }
+    .spread-visual img { max-width: 360px; }
+    .spread-visual .gif-fused { max-width: 200px; }
+    .section { padding: 56px 20px; }
     .brain-grid { grid-template-columns: 1fr; }
-    .brain-layer { border-right: none !important; border-bottom: 2px solid var(--border) !important; }
-    .brain-layer:last-child { border-bottom: none !important; }
     .compare-grid { grid-template-columns: 1fr; }
-    .compare-col:first-child { border-right: none; border-bottom: 3px solid var(--border); }
-    .roadmap-item { grid-template-columns: 1fr; gap: 4px; }
-    .cta-bottom { padding: 60px 16px; }
+    .compare-col:first-child { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .roadmap-item { grid-template-columns: 1fr; gap: 6px; }
+    .cta-bottom { padding: 64px 20px; }
+    .wide, .container { padding: 0 20px; }
 }
-a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     </style>
 </head>
 <body>
@@ -254,164 +374,157 @@ a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
     </div>
 </nav>
 
-<!-- HERO — full pixel logo fused at top -->
+<!-- HERO -->
 <section class="hero">
-    <div class="container">
-        <div class="reveal">
-            <img src="logo-full-pixel.png" alt="20n" class="hero-logo fused-img" draggable="false" oncontextmenu="return false">
-        </div>
-        <p class="hero-sub reveal">Not another neural network trained on data. A self-organizing cognitive architecture that learns from scratch, in real time, on 20 watts. One brain. Any body. Any task.</p>
-        <div class="hero-stats reveal">
-            <div class="hero-stat"><div class="hero-stat-value">20W</div><div class="hero-stat-label">Power</div></div>
-            <div class="hero-stat"><div class="hero-stat-value">0</div><div class="hero-stat-label">Training steps</div></div>
-            <div class="hero-stat"><div class="hero-stat-value">3</div><div class="hero-stat-label">Bodies, one brain</div></div>
-            <div class="hero-stat"><div class="hero-stat-value">1000Hz</div><div class="hero-stat-label">CPU inference</div></div>
-        </div>
-        <div class="hero-center reveal"><a href="#contact" class="hero-cta">Build with us →</a></div>
+    <div class="reveal">
+        <img src="logo-full-pixel.png" alt="20n" class="hero-logo fused-img" draggable="false" oncontextmenu="return false">
     </div>
+    <p class="hero-tagline reveal">A self-organizing cognitive architecture that learns from scratch, in real time, on 20 watts. One brain. Any body. Any task.</p>
+    <div class="hero-metrics reveal">
+        <div class="hero-metric"><div class="hero-metric-val">20W</div><div class="hero-metric-label">Power</div></div>
+        <div class="hero-metric"><div class="hero-metric-val">0</div><div class="hero-metric-label">Training steps</div></div>
+        <div class="hero-metric"><div class="hero-metric-val">3</div><div class="hero-metric-label">Bodies</div></div>
+        <div class="hero-metric"><div class="hero-metric-val">1kHz</div><div class="hero-metric-label">Inference</div></div>
+    </div>
+    <div class="reveal"><a href="#contact" class="hero-cta">Build with us</a></div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
-<!-- THE PROBLEM — brain-computer window image on the right -->
+<!-- THE PROBLEM -->
 <section class="section" id="problem">
-    <div class="container">
-        <div class="spread spread--img-right reveal">
-            <div class="spread-text">
-                <div class="section-tag">// THE PROBLEM</div>
-                <h2 class="section-title">No robot on Earth can walk into an unknown room and figure it out.</h2>
-                <div class="manifesto">
-                    <p>Not because the hardware isn't ready. Because the software paradigm is fundamentally wrong.</p>
-                    <p>Every major lab follows the same playbook. One model per task. Months of training. Millions in compute. Hundreds of watts. Each skill frozen the moment training ends.</p>
-                    <p class="big">$20 billion poured into this approach. Zero general-purpose robots shipping at scale.</p>
-                </div>
-            </div>
-            <div class="spread-visual">
-                <img src="brain-computer.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
+    <div class="spread reveal">
+        <div class="spread-text">
+            <span class="section-num">01 — The Problem</span>
+            <h2 class="section-title">No robot on Earth can walk into an unknown room and figure it out.</h2>
+            <div class="manifesto">
+                <p>Not because the hardware isn't ready. Because the software paradigm is fundamentally wrong.</p>
+                <p>Every major lab follows the same playbook: one model per task, months of training, millions in compute, hundreds of watts. Each skill frozen the moment training ends.</p>
+                <p class="lead">$20 billion poured into this approach. Zero general-purpose robots shipping at scale.</p>
             </div>
         </div>
-
-        <div class="manifesto reveal">
-            <p class="highlight">This is not a scaling problem. It is an architecture problem. You cannot brute-force infinity.</p>
-            <p class="big">The industry is trying to solve infinity with spreadsheets. We need a brain.</p>
+        <div class="spread-visual">
+            <img src="brain-computer.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
+        </div>
+    </div>
+    <div class="container">
+        <div class="manifesto reveal" style="margin-top: 40px;">
+            <p class="quote">This is not a scaling problem. It is an architecture problem. You cannot brute-force infinity.</p>
         </div>
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
-<!-- THE PROOF — hands image on the left -->
-<section class="section section--bordered">
-    <div class="container">
-        <div class="spread spread--img-left reveal">
-            <div class="spread-visual">
-                <img src="hands.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
-            </div>
-            <div class="spread-text">
-                <div class="section-tag">// THE PROOF</div>
-                <h2 class="section-title">The proof has been walking among us for 300,000 years.</h2>
-                <div class="manifesto">
-                    <p>The human brain runs on 20 watts. It controls 600+ muscles with sub-millimeter precision. Processes vision, touch, balance, and sound in parallel. Learns continuously for 80 years without forgetting how to walk.</p>
-                    <p>A two-year-old who has never seen a broom can grab it and push it across the floor. Not because she was trained on 10,000 videos of sweeping, but because she has an internal model of the world rich enough to improvise.</p>
-                </div>
+<!-- THE PROOF -->
+<section class="section" id="proof">
+    <div class="spread reveal">
+        <div class="spread-visual">
+            <img src="hands.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
+        </div>
+        <div class="spread-text">
+            <span class="section-num">02 — The Proof</span>
+            <h2 class="section-title">The proof has been walking among us for 300,000 years.</h2>
+            <div class="manifesto">
+                <p>The human brain runs on 20 watts. It controls 600+ muscles with sub-millimeter precision. Processes vision, touch, balance, and sound in parallel. Learns continuously for 80 years without forgetting how to walk.</p>
+                <p>A two-year-old who has never seen a broom can grab it and push it across the floor. Not because she was trained on 10,000 videos of sweeping, but because she has an internal model of the world rich enough to improvise.</p>
             </div>
         </div>
-
-        <div class="manifesto reveal">
-            <p class="big">This is the intelligence the world needs in its robots. And the entire industry is looking the other way.</p>
+    </div>
+    <div class="container">
+        <div class="manifesto reveal" style="margin-top: 40px;">
+            <p class="lead">This is the intelligence the world needs in its robots. And the entire industry is looking the other way.</p>
         </div>
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
-<!-- TWO PARADIGMS — GIF on the right -->
+<!-- TWO PARADIGMS -->
 <section class="section" id="brain">
-    <div class="container">
-        <div class="spread spread--img-right reveal">
-            <div class="spread-text">
-                <div class="section-tag">// TWO PARADIGMS</div>
-                <h2 class="section-title">Traditional AI vs. 20n</h2>
-                <div class="compare-grid">
-                    <div class="compare-col">
-                        <h4>Traditional AI</h4>
-                        <ul>
-                            <li>Millions of GPU hours</li>
-                            <li>Datacenters, TPU clusters</li>
-                            <li>Brittle outside training</li>
-                            <li>One model per skill</li>
-                            <li>Confidently wrong</li>
-                        </ul>
-                    </div>
-                    <div class="compare-col">
-                        <h4>20n / HAI</h4>
-                        <ul>
-                            <li>Real-time, no pre-training</li>
-                            <li>Single CPU at 1000 Hz</li>
-                            <li>Adapts on the fly</li>
-                            <li>One brain, all skills</li>
-                            <li>Detects surprise, adjusts</li>
-                        </ul>
-                    </div>
+    <div class="spread reveal">
+        <div class="spread-text">
+            <span class="section-num">03 — Two Paradigms</span>
+            <h2 class="section-title">Traditional AI vs. 20n</h2>
+            <div class="compare-grid">
+                <div class="compare-col">
+                    <h4>Traditional AI</h4>
+                    <ul>
+                        <li>Millions of GPU hours</li>
+                        <li>Datacenters, TPU clusters</li>
+                        <li>Brittle outside training data</li>
+                        <li>One model per skill</li>
+                        <li>Confidently wrong</li>
+                    </ul>
+                </div>
+                <div class="compare-col">
+                    <h4>20n / HAI</h4>
+                    <ul>
+                        <li>Real-time, no pre-training</li>
+                        <li>Single CPU at 1000 Hz</li>
+                        <li>Adapts on the fly</li>
+                        <li>One brain, all skills</li>
+                        <li>Detects surprise, adjusts</li>
+                    </ul>
                 </div>
             </div>
-            <div class="spread-visual">
-                <img src="ascii-figure.gif" alt="" class="fused-img gif-fused" draggable="false" oncontextmenu="return false">
-            </div>
+        </div>
+        <div class="spread-visual">
+            <img src="ascii-figure.gif" alt="" class="fused-img gif-fused" draggable="false" oncontextmenu="return false">
         </div>
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
 <!-- THE ARCHITECTURE -->
-<section class="section section--bordered">
+<section class="section section--alt">
     <div class="container">
-        <div class="section-tag reveal">// THE ARCHITECTURE</div>
+        <span class="section-num reveal">04 — The Architecture</span>
         <h2 class="section-title reveal">We don't train models. We build brains.</h2>
         <div class="manifesto reveal">
             <p>Our system is biomimetic and hierarchical. Modeled after the only structure that actually solves general-purpose physical intelligence: the biological brain.</p>
         </div>
         <div class="brain-grid reveal">
-            <div class="brain-layer"><div class="brain-layer-name">Spinal Cord</div><div class="brain-layer-role">Reflexes &amp; postural correction</div><div class="brain-layer-bio">Fast, hardwired. No learning needed.</div></div>
+            <div class="brain-layer"><div class="brain-layer-name">Spinal Cord</div><div class="brain-layer-role">Reflexes &amp; posture</div><div class="brain-layer-bio">Fast, hardwired. No learning needed.</div></div>
             <div class="brain-layer"><div class="brain-layer-name">Cerebellum</div><div class="brain-layer-role">Internal body model</div><div class="brain-layer-bio">Predicts physical consequences via forward simulation.</div></div>
-            <div class="brain-layer"><div class="brain-layer-name">Cortex</div><div class="brain-layer-role">Predictive coding &amp; world model</div><div class="brain-layer-bio">Learns online, minimizes prediction error (Free Energy).</div></div>
-            <div class="brain-layer"><div class="brain-layer-name">Hippocampus</div><div class="brain-layer-role">Episodic memory</div><div class="brain-layer-bio">Stores past, retrieves by similarity.</div></div>
-            <div class="brain-layer"><div class="brain-layer-name">Basal Ganglia</div><div class="brain-layer-role">Action selection &amp; planning</div><div class="brain-layer-bio">Evaluates sequences. Chooses safest trajectory.</div></div>
+            <div class="brain-layer"><div class="brain-layer-name">Cortex</div><div class="brain-layer-role">World model</div><div class="brain-layer-bio">Learns online, minimizes prediction error (Free Energy).</div></div>
+            <div class="brain-layer"><div class="brain-layer-name">Hippocampus</div><div class="brain-layer-role">Episodic memory</div><div class="brain-layer-bio">Stores past experiences, retrieves by similarity.</div></div>
+            <div class="brain-layer"><div class="brain-layer-name">Basal Ganglia</div><div class="brain-layer-role">Action selection</div><div class="brain-layer-bio">Evaluates sequences. Chooses safest trajectory.</div></div>
             <div class="brain-layer"><div class="brain-layer-name">Active Inference</div><div class="brain-layer-role">Unifying principle</div><div class="brain-layer-bio">Predict, act, correct. Continuously. (Friston, 2010)</div></div>
         </div>
-        <div class="manifesto reveal">
-            <p class="highlight">No backpropagation. No training phase. No task-specific architecture. No GPU required. The entire brain runs at 1000 Hz on a laptop CPU.</p>
+        <div class="manifesto reveal" style="margin-top: 32px;">
+            <p class="quote">No backpropagation. No training phase. No task-specific architecture. No GPU required. The entire brain runs at 1000 Hz on a laptop CPU.</p>
             <p>Drop it into a humanoid and it discovers how to balance. A quadruped and it learns to move. A body with 17 joints that has never existed in nature — and it figures it out. No retraining. The same brain.</p>
         </div>
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
 <!-- RESULTS -->
 <section class="section" id="results">
     <div class="container">
-        <div class="section-tag reveal">// RESULTS</div>
+        <span class="section-num reveal">05 — Results</span>
         <h2 class="section-title reveal">Same brain. Different bodies. Zero tuning.</h2>
-        <div class="manifesto reveal"><p>The architecture is validated on multiple robot bodies with zero retraining. One set of parameters. Three morphologies.</p></div>
+        <div class="manifesto reveal"><p>Validated on multiple robot morphologies with zero retraining. One set of parameters. Three bodies.</p></div>
         <table class="results-table reveal">
             <thead><tr><th>Robot</th><th>Joints</th><th>Max</th><th>Mean</th><th>Notes</th></tr></thead>
             <tbody>
-                <tr><td><strong>Walker2d</strong></td><td>6 (2D)</td><td class="val-best">1000</td><td class="val-good">952</td><td>Near-perfect.</td></tr>
-                <tr><td><strong>Ant</strong></td><td>8 (3D)</td><td class="val-best">1000</td><td class="val-good">667</td><td>Solved.</td></tr>
+                <tr><td><strong>Walker2d</strong></td><td>6 (2D)</td><td><span class="val-best">1000</span></td><td class="val-good">952</td><td>Near-perfect.</td></tr>
+                <tr><td><strong>Ant</strong></td><td>8 (3D)</td><td><span class="val-best">1000</span></td><td class="val-good">667</td><td>Solved.</td></tr>
                 <tr><td><strong>Humanoid</strong></td><td>17 (3D)</td><td>474</td><td>163</td><td>Hardest. Improving.</td></tr>
             </tbody>
         </table>
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
 <!-- ROADMAP -->
-<section class="section section--bordered">
+<section class="section section--alt">
     <div class="container">
-        <div class="section-tag reveal">// ROADMAP</div>
+        <span class="section-num reveal">06 — Roadmap</span>
         <h2 class="section-title reveal">From standing to general intelligence.</h2>
         <div class="roadmap reveal">
             <div class="roadmap-item"><div class="roadmap-phase done">Phase 1 ✓</div><div><div class="roadmap-title">Standing</div><div class="roadmap-desc">Stand upright on multiple morphologies. Done: Humanoid, Ant, Walker2d.</div></div></div>
@@ -423,27 +536,25 @@ a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
     </div>
 </section>
 
-<div class="pixel-line"></div>
+<div class="divider"></div>
 
 <!-- VISION -->
 <section class="section">
     <div class="container">
-        <div class="section-tag reveal">// THE VISION</div>
+        <span class="section-num reveal">07 — The Vision</span>
         <h2 class="section-title reveal">We are not building another robot.</h2>
         <div class="manifesto">
-            <p class="big reveal">We are building the mind that makes every robot intelligent.</p>
+            <p class="lead reveal">We are building the mind that makes every robot intelligent.</p>
             <p class="reveal">The universal operating system for physical bodies. Humanoid robots that walk into any environment and adapt. Machines that learn by existing, not by being trained. Intelligence that runs on watts, not datacenters.</p>
-            <p class="highlight reveal">A brain that solves standing has the computational primitives to solve anything. Once motor control works, everything else follows.</p>
-            <p class="big reveal">The next intelligence will not be trained. It will be born.</p>
+            <p class="quote reveal">A brain that solves standing has the computational primitives to solve anything. Once motor control works, everything else follows.</p>
+            <p class="lead reveal">The next intelligence will not be trained. It will be born.</p>
         </div>
     </div>
 </section>
 
-<div class="pixel-line"></div>
-
 <!-- CTA -->
 <section class="cta-bottom" id="contact">
-    <h2 class="reveal">Paris. Small team.<br>We move fast. We write code.</h2>
+    <h2 class="reveal">Paris. Small team.<br>We ship code.</h2>
     <p class="reveal">If you want to build the universal brain for robots, we want to talk to you.</p>
     <a href="mailto:contact@20n.dev" class="cta-email reveal">contact@20n.dev</a>
     <div class="cta-links reveal">
@@ -452,14 +563,14 @@ a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
     </div>
 </section>
 
-<footer>&copy; 2026 20n — Paris</footer>
+<footer>&copy; 2026 20n Research Laboratory — Paris</footer>
 
 <script>
 const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
