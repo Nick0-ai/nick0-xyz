@@ -64,10 +64,19 @@ nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-light);
-    padding: 14px 32px;
+    padding: 10px 32px;
     display: flex; align-items: center; justify-content: space-between;
 }
-.nav-logo { font-size: 18px; font-weight: bold; color: var(--text); text-decoration: none; letter-spacing: 0.06em; }
+.nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: var(--text);
+}
+.nav-logo-icon {
+    width: 28px; height: 28px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+.nav-logo-text { font-size: 16px; font-weight: bold; letter-spacing: 0.06em; }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a {
     font-size: 12px; color: var(--text-faint); text-decoration: none;
@@ -121,6 +130,23 @@ nav {
 }
 .hero-cta:hover { background: #333; transform: translateY(-1px); }
 
+/* === FINGERPRINT SEPARATOR === */
+.fp-sep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 28px 0;
+}
+.fp-sep img {
+    width: 18px; height: 18px;
+    opacity: 0.18;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    mix-blend-mode: multiply;
+}
+
 /* === DIVIDER === */
 .divider {
     width: 100%;
@@ -165,7 +191,7 @@ nav {
     line-height: 1.7;
 }
 
-/* === SPREAD: IMAGE + TEXT SIDE BY SIDE (FULL WIDTH) === */
+/* === SPREAD: IMAGE + TEXT SIDE BY SIDE === */
 .spread {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -179,15 +205,25 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 .spread-visual img {
     width: 100%;
-    max-width: 520px;
     height: auto;
 }
-.spread-visual .gif-fused {
-    max-width: 280px;
+/* Cropped tighter: images fill their column, clipped to show the important part */
+.spread-visual--crop {
+    max-height: 360px;
+    border-radius: 2px;
+}
+.spread-visual--crop img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.spread-visual .gif-fused {
+    width: 100%;
+    max-width: 300px;
     height: auto;
     opacity: 0.9;
     filter: grayscale(100%) contrast(1.2);
@@ -206,6 +242,7 @@ nav {
     padding: 24px;
     background: var(--bg);
 }
+.section--alt .brain-layer { background: var(--accent-bg); }
 .brain-layer-name {
     font-size: 12px;
     font-weight: bold;
@@ -339,7 +376,9 @@ footer {
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-    nav { padding: 12px 20px; }
+    nav { padding: 10px 20px; }
+    .nav-logo-icon { width: 22px; height: 22px; }
+    .nav-logo-text { font-size: 14px; }
     .nav-links { gap: 16px; }
     .nav-links a { font-size: 11px; }
     .hero { padding: 90px 20px 32px; }
@@ -348,7 +387,7 @@ footer {
     .hero-metric-val { font-size: 28px; }
     .spread { grid-template-columns: 1fr; gap: 32px; padding: 0 20px; }
     .spread-visual { order: -1; }
-    .spread-visual img { max-width: 360px; }
+    .spread-visual--crop { max-height: 260px; }
     .spread-visual .gif-fused { max-width: 200px; }
     .section { padding: 56px 20px; }
     .brain-grid { grid-template-columns: 1fr; }
@@ -357,6 +396,8 @@ footer {
     .roadmap-item { grid-template-columns: 1fr; gap: 6px; }
     .cta-bottom { padding: 64px 20px; }
     .wide, .container { padding: 0 20px; }
+    .fp-sep img { width: 14px; height: 14px; }
+    .fp-sep { gap: 12px; padding: 20px 0; }
 }
 a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     </style>
@@ -365,7 +406,10 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
 
 <!-- NAV -->
 <nav>
-    <a href="/" class="nav-logo">20n</a>
+    <a href="/" class="nav-logo">
+        <img src="logo-fingerprint.png" alt="" class="nav-logo-icon fused-img" draggable="false">
+        <span class="nav-logo-text">20n</span>
+    </a>
     <div class="nav-links">
         <a href="#problem">Problem</a>
         <a href="#brain">Brain</a>
@@ -389,103 +433,92 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     <div class="reveal"><a href="#contact" class="hero-cta">Build with us</a></div>
 </section>
 
-<div class="divider"></div>
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
 
-<!-- THE PROBLEM -->
+<!-- 01 — THE PROBLEM (no image — text only, strong statement) -->
 <section class="section" id="problem">
-    <div class="spread reveal">
-        <div class="spread-text">
-            <span class="section-num">01 — The Problem</span>
-            <h2 class="section-title">No robot on Earth can walk into an unknown room and figure it out.</h2>
-            <div class="manifesto">
-                <p>Not because the hardware isn't ready. Because the software paradigm is fundamentally wrong.</p>
-                <p>Every major lab follows the same playbook: one model per task, months of training, millions in compute, hundreds of watts. Each skill frozen the moment training ends.</p>
-                <p class="lead">$20 billion poured into this approach. Zero general-purpose robots shipping at scale.</p>
+    <div class="container">
+        <span class="section-num reveal">01 — The Problem</span>
+        <h2 class="section-title reveal">No robot on Earth can walk into an unknown room and figure it out.</h2>
+        <div class="manifesto">
+            <p class="reveal">Not because the hardware isn't ready. Because the software paradigm is fundamentally wrong.</p>
+            <p class="reveal">Every major lab follows the same playbook: one model per task, months of training, millions in compute, hundreds of watts. Each skill frozen the moment training ends.</p>
+            <p class="lead reveal">$20 billion poured into this approach. Zero general-purpose robots shipping at scale.</p>
+            <p class="quote reveal">This is not a scaling problem. It is an architecture problem. You cannot brute-force infinity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
+
+<!-- 02 — THE PROOF (text only) -->
+<section class="section" id="proof">
+    <div class="container">
+        <span class="section-num reveal">02 — The Proof</span>
+        <h2 class="section-title reveal">The proof has been walking among us for 300,000 years.</h2>
+        <div class="manifesto">
+            <p class="reveal">The human brain runs on 20 watts. It controls 600+ muscles with sub-millimeter precision. Processes vision, touch, balance, and sound in parallel. Learns continuously for 80 years without forgetting how to walk.</p>
+            <p class="reveal">A two-year-old who has never seen a broom can grab it and push it across the floor. Not because she was trained on 10,000 videos of sweeping, but because she has an internal model of the world rich enough to improvise.</p>
+            <p class="lead reveal">This is the intelligence the world needs in its robots. And the entire industry is looking the other way.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
+
+<!-- 03 — TWO PARADIGMS (comparison only, clean) -->
+<section class="section section--alt" id="brain">
+    <div class="container">
+        <span class="section-num reveal">03 — Two Paradigms</span>
+        <h2 class="section-title reveal">Traditional AI vs. 20n</h2>
+        <div class="compare-grid reveal">
+            <div class="compare-col">
+                <h4>Traditional AI</h4>
+                <ul>
+                    <li>Millions of GPU hours</li>
+                    <li>Datacenters, TPU clusters</li>
+                    <li>Brittle outside training data</li>
+                    <li>One model per skill</li>
+                    <li>Confidently wrong</li>
+                </ul>
+            </div>
+            <div class="compare-col">
+                <h4>20n / HAI</h4>
+                <ul>
+                    <li>Real-time, no pre-training</li>
+                    <li>Single CPU at 1000 Hz</li>
+                    <li>Adapts on the fly</li>
+                    <li>One brain, all skills</li>
+                    <li>Detects surprise, adjusts</li>
+                </ul>
             </div>
         </div>
-        <div class="spread-visual">
+    </div>
+</section>
+
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
+
+<!-- 04 — THE ARCHITECTURE + brain-computer image -->
+<section class="section">
+    <div class="spread reveal">
+        <div class="spread-text">
+            <span class="section-num">04 — The Architecture</span>
+            <h2 class="section-title">We don't train models. We build brains.</h2>
+            <div class="manifesto">
+                <p>Our system is biomimetic and hierarchical. Modeled after the only structure that actually solves general-purpose physical intelligence: the biological brain.</p>
+                <p class="quote">No backpropagation. No training phase. No GPU required. The entire brain runs at 1000 Hz on a laptop CPU.</p>
+            </div>
+        </div>
+        <div class="spread-visual spread-visual--crop">
             <img src="brain-computer.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
         </div>
     </div>
     <div class="container">
-        <div class="manifesto reveal" style="margin-top: 40px;">
-            <p class="quote">This is not a scaling problem. It is an architecture problem. You cannot brute-force infinity.</p>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- THE PROOF -->
-<section class="section" id="proof">
-    <div class="spread reveal">
-        <div class="spread-visual">
-            <img src="hands.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
-        </div>
-        <div class="spread-text">
-            <span class="section-num">02 — The Proof</span>
-            <h2 class="section-title">The proof has been walking among us for 300,000 years.</h2>
-            <div class="manifesto">
-                <p>The human brain runs on 20 watts. It controls 600+ muscles with sub-millimeter precision. Processes vision, touch, balance, and sound in parallel. Learns continuously for 80 years without forgetting how to walk.</p>
-                <p>A two-year-old who has never seen a broom can grab it and push it across the floor. Not because she was trained on 10,000 videos of sweeping, but because she has an internal model of the world rich enough to improvise.</p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="manifesto reveal" style="margin-top: 40px;">
-            <p class="lead">This is the intelligence the world needs in its robots. And the entire industry is looking the other way.</p>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- TWO PARADIGMS -->
-<section class="section" id="brain">
-    <div class="spread reveal">
-        <div class="spread-text">
-            <span class="section-num">03 — Two Paradigms</span>
-            <h2 class="section-title">Traditional AI vs. 20n</h2>
-            <div class="compare-grid">
-                <div class="compare-col">
-                    <h4>Traditional AI</h4>
-                    <ul>
-                        <li>Millions of GPU hours</li>
-                        <li>Datacenters, TPU clusters</li>
-                        <li>Brittle outside training data</li>
-                        <li>One model per skill</li>
-                        <li>Confidently wrong</li>
-                    </ul>
-                </div>
-                <div class="compare-col">
-                    <h4>20n / HAI</h4>
-                    <ul>
-                        <li>Real-time, no pre-training</li>
-                        <li>Single CPU at 1000 Hz</li>
-                        <li>Adapts on the fly</li>
-                        <li>One brain, all skills</li>
-                        <li>Detects surprise, adjusts</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="spread-visual">
-            <img src="ascii-figure.gif" alt="" class="fused-img gif-fused" draggable="false" oncontextmenu="return false">
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- THE ARCHITECTURE -->
-<section class="section section--alt">
-    <div class="container">
-        <span class="section-num reveal">04 — The Architecture</span>
-        <h2 class="section-title reveal">We don't train models. We build brains.</h2>
-        <div class="manifesto reveal">
-            <p>Our system is biomimetic and hierarchical. Modeled after the only structure that actually solves general-purpose physical intelligence: the biological brain.</p>
-        </div>
-        <div class="brain-grid reveal">
+        <div class="brain-grid reveal" style="margin-top: 48px;">
             <div class="brain-layer"><div class="brain-layer-name">Spinal Cord</div><div class="brain-layer-role">Reflexes &amp; posture</div><div class="brain-layer-bio">Fast, hardwired. No learning needed.</div></div>
             <div class="brain-layer"><div class="brain-layer-name">Cerebellum</div><div class="brain-layer-role">Internal body model</div><div class="brain-layer-bio">Predicts physical consequences via forward simulation.</div></div>
             <div class="brain-layer"><div class="brain-layer-name">Cortex</div><div class="brain-layer-role">World model</div><div class="brain-layer-bio">Learns online, minimizes prediction error (Free Energy).</div></div>
@@ -494,21 +527,30 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
             <div class="brain-layer"><div class="brain-layer-name">Active Inference</div><div class="brain-layer-role">Unifying principle</div><div class="brain-layer-bio">Predict, act, correct. Continuously. (Friston, 2010)</div></div>
         </div>
         <div class="manifesto reveal" style="margin-top: 32px;">
-            <p class="quote">No backpropagation. No training phase. No task-specific architecture. No GPU required. The entire brain runs at 1000 Hz on a laptop CPU.</p>
             <p>Drop it into a humanoid and it discovers how to balance. A quadruped and it learns to move. A body with 17 joints that has never existed in nature — and it figures it out. No retraining. The same brain.</p>
         </div>
     </div>
 </section>
 
-<div class="divider"></div>
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
 
-<!-- RESULTS -->
-<section class="section" id="results">
+<!-- 05 — RESULTS + GIF humanoid -->
+<section class="section section--alt" id="results">
+    <div class="spread reveal">
+        <div class="spread-text">
+            <span class="section-num">05 — Results</span>
+            <h2 class="section-title">Same brain. Different bodies. Zero tuning.</h2>
+            <div class="manifesto">
+                <p>Validated on multiple robot morphologies with zero retraining. One set of parameters. Three bodies.</p>
+            </div>
+        </div>
+        <div class="spread-visual">
+            <img src="ascii-figure.gif" alt="" class="fused-img gif-fused" draggable="false" oncontextmenu="return false">
+        </div>
+    </div>
     <div class="container">
-        <span class="section-num reveal">05 — Results</span>
-        <h2 class="section-title reveal">Same brain. Different bodies. Zero tuning.</h2>
-        <div class="manifesto reveal"><p>Validated on multiple robot morphologies with zero retraining. One set of parameters. Three bodies.</p></div>
-        <table class="results-table reveal">
+        <table class="results-table reveal" style="margin-top: 40px;">
             <thead><tr><th>Robot</th><th>Joints</th><th>Max</th><th>Mean</th><th>Notes</th></tr></thead>
             <tbody>
                 <tr><td><strong>Walker2d</strong></td><td>6 (2D)</td><td><span class="val-best">1000</span></td><td class="val-good">952</td><td>Near-perfect.</td></tr>
@@ -519,10 +561,11 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     </div>
 </section>
 
-<div class="divider"></div>
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
 
-<!-- ROADMAP -->
-<section class="section section--alt">
+<!-- 06 — ROADMAP -->
+<section class="section">
     <div class="container">
         <span class="section-num reveal">06 — Roadmap</span>
         <h2 class="section-title reveal">From standing to general intelligence.</h2>
@@ -536,18 +579,24 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
     </div>
 </section>
 
-<div class="divider"></div>
+<!-- ··· -->
+<div class="fp-sep"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"><img src="logo-fingerprint.png" alt="" draggable="false"></div>
 
-<!-- VISION -->
+<!-- 07 — THE VISION + hands (Creation of Adam) -->
 <section class="section">
-    <div class="container">
-        <span class="section-num reveal">07 — The Vision</span>
-        <h2 class="section-title reveal">We are not building another robot.</h2>
-        <div class="manifesto">
-            <p class="lead reveal">We are building the mind that makes every robot intelligent.</p>
-            <p class="reveal">The universal operating system for physical bodies. Humanoid robots that walk into any environment and adapt. Machines that learn by existing, not by being trained. Intelligence that runs on watts, not datacenters.</p>
-            <p class="quote reveal">A brain that solves standing has the computational primitives to solve anything. Once motor control works, everything else follows.</p>
-            <p class="lead reveal">The next intelligence will not be trained. It will be born.</p>
+    <div class="spread reveal">
+        <div class="spread-text">
+            <span class="section-num">07 — The Vision</span>
+            <h2 class="section-title">We are not building another robot.</h2>
+            <div class="manifesto">
+                <p class="lead">We are building the mind that makes every robot intelligent.</p>
+                <p>The universal operating system for physical bodies. Humanoid robots that walk into any environment and adapt. Machines that learn by existing, not by being trained.</p>
+                <p class="quote">A brain that solves standing has the computational primitives to solve anything. Once motor control works, everything else follows.</p>
+                <p class="lead">The next intelligence will not be trained. It will be born.</p>
+            </div>
+        </div>
+        <div class="spread-visual spread-visual--crop">
+            <img src="hands.png" alt="" class="fused-img" draggable="false" oncontextmenu="return false">
         </div>
     </div>
 </section>
