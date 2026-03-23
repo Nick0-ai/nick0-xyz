@@ -3,809 +3,787 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick0 — Builder, 19, Paris</title>
-    <meta name="description" content="19, Paris. Self-taught. Founder of 20n Research Laboratory. Morphology-agnostic robot control through Active Inference.">
-    <meta property="og:title" content="Nick0">
-    <meta property="og:description" content="19, Paris. Morphology-agnostic robot control through Active Inference.">
+    <title>20n — The Universal Brain for Robots</title>
+    <meta name="description" content="20n builds a universal artificial brain for humanoid robots. One brain. Any body. Any task. No cloud. 20 watts. Biomimetic AI from Paris.">
+    <meta property="og:title" content="20n — The Universal Brain for Robots">
+    <meta property="og:description" content="One brain. Any body. Any task. No cloud. 20 watts.">
     <meta property="og:image" content="https://nick0.xyz/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://nick0.xyz/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-:root {
-    --bg: #ffffff;
-    --bg-alt: #f7f7f7;
-    --text: #111111;
-    --text-secondary: #555555;
-    --text-tertiary: #888888;
-    --accent: #ff6600;
-    --accent-hover: #e55c00;
-    --border: #e5e5e5;
-    --radius: 8px;
-    --radius-lg: 12px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+@font-face {
+    font-family: 'Pixel';
+    src: url('data:font/woff2;charset=utf-8;base64,') format('woff2');
 }
+
+:root {
+    --bg: #f0efe8;
+    --text: #111;
+    --text-dim: #444;
+    --text-faint: #888;
+    --border: #111;
+    --border-light: #ccc;
+    --pixel: 4px;
+}
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { scroll-behavior: smooth; }
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
 }
-img { display: block; max-width: 100%; }
 
-/* Reveal */
+/* === PIXELATED SCROLLBAR === */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); border-left: 2px solid var(--border); }
+::-webkit-scrollbar-thumb { background: var(--text); border: 2px solid var(--bg); }
+
+/* === CONTAINER === */
+.container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+
+/* === PIXEL BORDERS === */
+.pixel-border {
+    border: 3px solid var(--border);
+    box-shadow:
+        3px 3px 0 0 var(--border),
+        -1px -1px 0 0 var(--border);
+}
+.pixel-border-thin {
+    border: 2px solid var(--border);
+}
+
+/* === DITHER PATTERN === */
+.dither {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAEElEQVQIW2NkYPj/n4EBAACbAQH/gbbSQAAAAABJRU5ErkJggg==");
+    background-size: 2px 2px;
+    image-rendering: pixelated;
+}
+
+/* === REVEAL === */
 .reveal {
-    opacity: 0; transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Container */
-.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
 /* === NAV === */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-}
-.nav-inner {
-    max-width: 1120px; margin: 0 auto; padding: 0 24px;
+    background: var(--bg);
+    border-bottom: 3px solid var(--border);
+    padding: 12px 24px;
     display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
 }
 .nav-logo {
-    font-weight: 800; font-size: 18px; color: var(--text);
-    text-decoration: none; letter-spacing: -0.02em;
+    font-size: 20px; font-weight: bold;
+    color: var(--text); text-decoration: none;
+    letter-spacing: 0.05em;
 }
-.nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links { display: flex; gap: 24px; }
 .nav-links a {
-    font-size: 14px; font-weight: 500; color: var(--text-secondary);
-    text-decoration: none; transition: color 0.15s;
+    font-size: 13px; color: var(--text-dim);
+    text-decoration: none; text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--text); }
-.nav-cta {
-    background: var(--accent) !important; color: #fff !important;
-    padding: 8px 16px; border-radius: 6px;
-    font-size: 14px !important; font-weight: 600 !important;
-    transition: background 0.15s !important;
-}
-.nav-cta:hover { background: var(--accent-hover) !important; }
 
 /* === HERO === */
 .hero {
     padding: 140px 24px 80px;
     text-align: center;
+    position: relative;
 }
-.hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #fff4ec; color: var(--accent);
-    font-size: 13px; font-weight: 600;
-    padding: 6px 14px; border-radius: 20px;
-    margin-bottom: 24px;
+.hero-window {
+    max-width: 600px; margin: 0 auto 48px;
 }
-.hero-badge .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent);
-    animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+.hero-window img {
+    width: 100%;
+    image-rendering: pixelated;
 }
 .hero h1 {
-    font-size: clamp(40px, 6vw, 64px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
     margin-bottom: 20px;
-    color: var(--text);
 }
-.hero h1 .accent { color: var(--accent); }
 .hero-sub {
-    font-size: clamp(17px, 2.5vw, 20px);
-    color: var(--text-secondary);
-    max-width: 620px;
-    margin: 0 auto 36px;
-    line-height: 1.6;
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
 }
-.hero-actions {
-    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+.hero-stats {
+    display: flex; gap: 32px; justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
 }
-.btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 12px 24px; border-radius: 8px;
-    font-size: 15px; font-weight: 600;
-    text-decoration: none; transition: all 0.15s;
-    cursor: pointer; border: none;
-}
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
-.btn-secondary:hover { border-color: #ccc; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-
-/* === STATS BAR === */
-.stats-bar {
-    padding: 48px 24px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-alt);
-}
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+.hero-stat {
     text-align: center;
 }
-.stat-number {
-    font-size: 36px; font-weight: 800;
-    color: var(--text); letter-spacing: -0.02em;
+.hero-stat-value {
+    font-size: 28px; font-weight: bold;
     line-height: 1;
 }
-.stat-number .accent { color: var(--accent); }
-.stat-label {
-    font-size: 13px; color: var(--text-tertiary);
-    margin-top: 8px; font-weight: 500;
+.hero-stat-label {
+    font-size: 11px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+}
+.hero-cta {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 3px solid var(--border);
+    background: var(--text);
+    color: var(--bg);
+    font-family: 'Courier New', monospace;
+    font-size: 14px; font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.15s;
+    box-shadow: 4px 4px 0 0 var(--border);
+}
+.hero-cta:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--border);
+}
+
+/* === SEPARATOR === */
+.sep {
+    text-align: center;
+    padding: 48px 0;
+    font-size: 24px;
+    color: var(--text-faint);
+    letter-spacing: 0.5em;
+}
+.sep-img {
+    display: flex; justify-content: center;
+    padding: 32px 0;
+}
+.sep-img img {
+    height: 120px;
+    image-rendering: pixelated;
 }
 
 /* === SECTIONS === */
-.section { padding: 80px 24px; }
-.section--alt { background: var(--bg-alt); }
-.section-header {
-    text-align: center;
-    margin-bottom: 48px;
+.section { padding: 64px 24px; }
+.section--bordered {
+    border-top: 3px solid var(--border);
+    border-bottom: 3px solid var(--border);
+    background: #fff;
 }
+
 .section-tag {
-    font-size: 13px; font-weight: 600;
-    color: var(--accent);
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 12px;
-}
-.section-title {
-    font-size: clamp(28px, 4vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 12px;
-}
-.section-subtitle {
-    font-size: 16px;
-    color: var(--text-secondary);
-    max-width: 560px;
-    margin: 0 auto;
-}
-
-/* === FEATURED PROJECT (20n) === */
-.featured-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-    text-decoration: none; color: inherit;
-    display: block;
-}
-.featured-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-.featured-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.featured-img {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    min-height: 400px;
-    display: flex; align-items: center; justify-content: center;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-}
-.featured-img::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 30% 40%, rgba(255,102,0,0.15) 0%, transparent 60%);
-}
-.featured-img svg { position: relative; z-index: 1; width: 100%; max-width: 320px; height: auto; }
-
-.featured-content {
-    padding: 44px;
-    display: flex; flex-direction: column; justify-content: center;
-}
-.featured-label {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
     margin-bottom: 16px;
 }
-.featured-label .live-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent);
-}
-.featured-h2 {
-    font-size: 32px; font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-}
-.featured-tagline {
-    font-size: 16px; color: var(--text-secondary);
-    margin-bottom: 20px; line-height: 1.6;
-}
-.featured-desc {
-    font-size: 14px; color: var(--text-secondary);
-    line-height: 1.7; margin-bottom: 24px;
-}
-.featured-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-.tag {
-    font-size: 12px; font-weight: 500;
-    padding: 4px 10px; border-radius: 4px;
-    background: var(--bg-alt); color: var(--text-secondary);
-}
-.featured-link {
-    font-size: 14px; font-weight: 600;
-    color: var(--accent);
-    display: inline-flex; align-items: center; gap: 4px;
+.section-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 24px;
 }
 
-/* === PROJECT CARDS === */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-.project-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    text-decoration: none; color: inherit;
-    transition: box-shadow 0.2s, transform 0.2s;
-    display: flex; flex-direction: column;
-}
-.project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-
-.card-img {
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-.card-img--friday {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
-}
-.card-img--paact {
-    background: linear-gradient(135deg, #fef3e2 0%, #fde8cd 100%);
-}
-.card-img--glowgum {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-}
-.card-img--freelance {
-    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
-}
-
-.card-img-placeholder {
-    font-size: 48px;
-    opacity: 0.6;
-}
-.card-img--friday .card-img-placeholder { color: #6366f1; }
-.card-img--paact .card-img-placeholder { color: #f59e0b; }
-.card-img--glowgum .card-img-placeholder { color: #22c55e; }
-.card-img--freelance .card-img-placeholder { color: #a855f7; }
-
-.card-body {
-    padding: 20px;
-    flex: 1;
-    display: flex; flex-direction: column;
-}
-.card-meta {
-    font-size: 12px; font-weight: 500;
-    color: var(--text-tertiary);
-    margin-bottom: 8px;
-}
-.card-title {
-    font-size: 18px; font-weight: 700;
-    margin-bottom: 8px; letter-spacing: -0.01em;
-}
-.card-desc {
-    font-size: 14px; color: var(--text-secondary);
-    line-height: 1.6; flex: 1;
-}
-.card-footer {
-    padding: 16px 20px;
-    border-top: 1px solid var(--border);
-    font-size: 13px; font-weight: 600;
-    color: var(--accent);
-    display: flex; align-items: center; gap: 4px;
-}
-
-/* === TIMELINE === */
-.timeline {
+/* === PROBLEM SECTION === */
+.manifesto p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 24px;
     max-width: 680px;
-    margin: 0 auto;
-    position: relative;
 }
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 18px; top: 0; bottom: 0;
-    width: 2px;
-    background: var(--border);
+.manifesto p.big {
+    font-size: 20px;
+    color: var(--text);
+    font-weight: bold;
+    line-height: 1.5;
 }
-.tl-item {
-    position: relative;
-    padding-left: 52px;
-    padding-bottom: 36px;
+.manifesto p.highlight {
+    font-size: 18px;
+    color: var(--text);
+    border-left: 4px solid var(--border);
+    padding-left: 20px;
+    margin: 32px 0;
 }
-.tl-item:last-child { padding-bottom: 0; }
-.tl-dot {
-    position: absolute;
-    left: 11px; top: 4px;
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--border);
+
+/* === HANDS IMAGE === */
+.hands-section {
+    padding: 40px 24px;
+    text-align: center;
 }
-.tl-item:first-child .tl-dot {
-    border-color: var(--accent);
-    background: var(--accent);
+.hands-section img {
+    max-width: 700px;
+    width: 100%;
+    image-rendering: pixelated;
 }
-.tl-date {
-    font-size: 12px; font-weight: 600;
-    color: var(--text-tertiary);
+
+/* === BRAIN SECTION === */
+.brain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 3px solid var(--border);
+    box-shadow: 6px 6px 0 0 var(--border);
+    margin: 32px 0;
+}
+.brain-layer {
+    padding: 20px;
+    border-bottom: 2px solid var(--border);
+}
+.brain-layer:nth-child(odd) {
+    border-right: 2px solid var(--border);
+}
+.brain-layer:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+.brain-layer-name {
+    font-size: 13px; font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     margin-bottom: 4px;
 }
-.tl-title {
-    font-size: 16px; font-weight: 700;
-    color: var(--text); margin-bottom: 4px;
+.brain-layer-role {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
 }
-.tl-desc {
-    font-size: 14px; color: var(--text-secondary);
-    line-height: 1.6;
+.brain-layer-bio {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-top: 4px;
 }
 
-/* === STACK === */
-.stack-flex {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    justify-content: center;
-    max-width: 700px; margin: 0 auto;
+/* === RESULTS TABLE === */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid var(--border);
+    box-shadow: 6px 6px 0 0 var(--border);
+    font-size: 14px;
+    margin: 24px 0;
 }
-.stack-chip {
-    font-size: 14px; font-weight: 500;
-    padding: 8px 18px; border-radius: 6px;
-    background: var(--bg);
-    border: 1px solid var(--border);
+.results-table th {
+    background: var(--text);
+    color: var(--bg);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 3px solid var(--border);
+}
+.results-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+}
+.results-table tr:last-child td { border-bottom: none; }
+.results-table tr:hover { background: rgba(0,0,0,0.03); }
+.results-table .val-good { font-weight: bold; }
+.results-table .val-best {
+    font-weight: bold;
+    background: var(--text);
+    color: var(--bg);
+    padding: 2px 8px;
+}
+
+/* === COMPARE === */
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 3px solid var(--border);
+    box-shadow: 6px 6px 0 0 var(--border);
+    margin: 24px 0;
+}
+.compare-col { padding: 24px; }
+.compare-col:first-child {
+    border-right: 3px solid var(--border);
+    background: rgba(0,0,0,0.03);
+}
+.compare-col h4 {
+    font-size: 14px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+}
+.compare-col ul {
+    list-style: none;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+.compare-col ul li::before {
+    content: '× ';
+    font-weight: bold;
     color: var(--text);
-    transition: all 0.15s;
 }
-.stack-chip:hover { border-color: var(--accent); color: var(--accent); }
+.compare-col:last-child ul li::before {
+    content: '→ ';
+}
 
-/* === ABOUT === */
-.about-grid {
+/* === ROADMAP === */
+.roadmap { margin: 24px 0; }
+.roadmap-item {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 48px;
-    align-items: center;
-    max-width: 800px;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px dashed var(--border-light);
+    align-items: start;
+}
+.roadmap-item:last-child { border-bottom: none; }
+.roadmap-phase {
+    font-size: 12px; font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 0;
+}
+.roadmap-phase.done { color: var(--text); }
+.roadmap-phase.current {
+    background: var(--text);
+    color: var(--bg);
+    padding: 4px 8px;
+    text-align: center;
+}
+.roadmap-phase.future { color: var(--text-faint); }
+.roadmap-title { font-weight: bold; margin-bottom: 2px; }
+.roadmap-desc { font-size: 13px; color: var(--text-dim); }
+
+/* === ASCII FIGURE === */
+.ascii-section {
+    text-align: center;
+    padding: 48px 24px;
+}
+.ascii-section img {
+    height: 280px;
+    image-rendering: pixelated;
     margin: 0 auto;
 }
-.about-photo {
-    width: 300px; height: 360px;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 80px; color: var(--text-tertiary); opacity: 0.3;
-}
-.about-text h3 {
-    font-size: 24px; font-weight: 800;
-    margin-bottom: 16px; letter-spacing: -0.02em;
-}
-.about-text p {
-    font-size: 15px; color: var(--text-secondary);
-    line-height: 1.7; margin-bottom: 16px;
-}
-.about-text p:last-child { margin-bottom: 0; }
 
-/* === READING === */
-.reading-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.reading-card {
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    text-decoration: none; color: inherit;
-    transition: all 0.15s;
-}
-.reading-card:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); }
-.reading-card-title {
-    font-size: 14px; font-weight: 600;
-    color: var(--text); margin-bottom: 6px;
-    line-height: 1.4;
-}
-.reading-card-author {
-    font-size: 12px; color: var(--text-tertiary);
-}
-
-/* === CTA === */
-.cta-section {
+/* === CTA BOTTOM === */
+.cta-bottom {
     padding: 80px 24px;
     text-align: center;
     background: var(--text);
-    color: #fff;
+    color: var(--bg);
+    border-top: 3px solid var(--border);
 }
-.cta-section h2 {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
+.cta-bottom h2 {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: bold;
     margin-bottom: 16px;
+    line-height: 1.3;
 }
-.cta-section p {
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
+.cta-bottom p {
+    font-size: 15px;
+    color: rgba(240,239,232,0.6);
     margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto; margin-right: auto;
 }
-.cta-section .btn-primary { font-size: 16px; padding: 14px 28px; }
+.cta-email {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 3px solid var(--bg);
+    color: var(--bg);
+    font-family: 'Courier New', monospace;
+    font-size: 15px; font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+    box-shadow: 4px 4px 0 0 rgba(240,239,232,0.3);
+}
+.cta-email:hover {
+    background: var(--bg);
+    color: var(--text);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 rgba(240,239,232,0.3);
+}
 .cta-links {
-    margin-top: 24px;
-    display: flex; gap: 24px; justify-content: center;
+    margin-top: 32px;
+    font-size: 13px;
 }
 .cta-links a {
-    font-size: 14px; color: rgba(255,255,255,0.5);
-    text-decoration: none; transition: color 0.15s;
+    color: rgba(240,239,232,0.5);
+    text-decoration: none;
+    margin: 0 16px;
+    transition: color 0.15s;
 }
-.cta-links a:hover { color: #fff; }
+.cta-links a:hover { color: var(--bg); }
 
 /* === FOOTER === */
 footer {
-    padding: 32px 24px;
-    border-top: 1px solid var(--border);
+    padding: 20px 24px;
     text-align: center;
-    font-size: 13px; color: var(--text-tertiary);
+    font-size: 12px;
+    color: var(--text-faint);
+    border-top: 2px solid var(--border-light);
+}
+
+/* === DECORATIVE PIXEL LINES === */
+.pixel-line {
+    height: 3px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--border) 0px, var(--border) 6px,
+        transparent 6px, transparent 12px
+    );
+    margin: 0;
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 900px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .featured-grid { grid-template-columns: 1fr; }
-    .featured-img { min-height: 260px; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-    .about-grid { grid-template-columns: 1fr; text-align: center; }
-    .about-photo { margin: 0 auto; width: 200px; height: 240px; }
-    .reading-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-    .nav-links a:not(.nav-cta) { display: none; }
-    .hero { padding: 110px 20px 60px; }
-    .hero h1 { font-size: 32px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-    .stat-number { font-size: 28px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .section { padding: 60px 20px; }
-    .featured-content { padding: 28px; }
+@media (max-width: 700px) {
+    nav { padding: 10px 16px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 11px; }
+    .hero { padding: 110px 16px 60px; }
+    .section { padding: 48px 16px; }
+    .brain-grid { grid-template-columns: 1fr; }
+    .brain-layer { border-right: none !important; }
+    .brain-layer { border-bottom: 2px solid var(--border) !important; }
+    .brain-layer:last-child { border-bottom: none !important; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-col:first-child { border-right: none; border-bottom: 3px solid var(--border); }
+    .roadmap-item { grid-template-columns: 1fr; gap: 4px; }
+    .hero-stats { gap: 20px; }
+    .cta-bottom { padding: 60px 16px; }
 }
 
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
     </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-    <div class="nav-inner">
-        <a href="/" class="nav-logo">Nick<span>0</span></a>
-        <div class="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#timeline">Timeline</a>
-            <a href="#about">About</a>
-            <a href="#contact" class="nav-cta">Contact</a>
-        </div>
+    <a href="/" class="nav-logo">20n</a>
+    <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#brain">Brain</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="hero-badge reveal"><span class="dot"></span> Currently building 20n Research Lab</div>
-        <h1 class="reveal">I build things that<br><span class="accent">move the world forward.</span></h1>
-        <p class="hero-sub reveal">19 years old, Paris. Self-taught since 16. From e-commerce brands to autonomous agents to robot control architectures. Everything I know, I learned by shipping.</p>
-        <div class="hero-actions reveal">
-            <a href="#projects" class="btn btn-primary">See my work &darr;</a>
-            <a href="mailto:contact@nick0.xyz" class="btn btn-secondary">Get in touch</a>
+        <div class="hero-window reveal">
+            <img src="brain-computer.png" alt="20n — brain to computer, pixel art">
+        </div>
+        <h1 class="reveal">The Universal Brain<br>for Robots.</h1>
+        <p class="hero-sub reveal">Not another neural network trained on data. A self-organizing cognitive architecture that learns from scratch, in real time, on 20 watts. One brain. Any body. Any task.</p>
+        <div class="hero-stats reveal">
+            <div class="hero-stat">
+                <div class="hero-stat-value">20W</div>
+                <div class="hero-stat-label">Power</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">0</div>
+                <div class="hero-stat-label">Training steps</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">3</div>
+                <div class="hero-stat-label">Bodies, one brain</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">1000Hz</div>
+                <div class="hero-stat-label">CPU inference</div>
+            </div>
+        </div>
+        <a href="#contact" class="hero-cta reveal">Build with us →</a>
+    </div>
+</section>
+
+<div class="pixel-line"></div>
+
+<!-- THE PROBLEM -->
+<section class="section" id="problem">
+    <div class="container">
+        <div class="section-tag reveal">// THE PROBLEM</div>
+        <h2 class="section-title reveal">No robot on Earth can walk into an unknown room and figure it out.</h2>
+
+        <div class="manifesto">
+            <p class="reveal">Not because the hardware isn't ready. Because the software paradigm is fundamentally wrong.</p>
+
+            <p class="reveal">Every major lab follows the same playbook. One model per task. Months of training. Millions in compute. Hundreds of watts. Each skill frozen the moment training ends. $20 billion poured into this approach. Zero general-purpose robots shipping at scale.</p>
+
+            <p class="highlight reveal">This is not a scaling problem. It is an architecture problem. You cannot brute-force infinity.</p>
+
+            <p class="big reveal">The industry is trying to solve infinity with spreadsheets. We need a brain.</p>
         </div>
     </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-    <div class="container">
-        <div class="stats-grid reveal">
-            <div>
-                <div class="stat-number">4<span class="accent">+</span></div>
-                <div class="stat-label">Projects shipped</div>
-            </div>
-            <div>
-                <div class="stat-number">1<span class="accent">st</span></div>
-                <div class="stat-label">Innov Hack Paris (150 teams)</div>
-            </div>
-            <div>
-                <div class="stat-number">12<span class="accent">k</span></div>
-                <div class="stat-label">TikTok followers in 15 days</div>
-            </div>
-            <div>
-                <div class="stat-number">3<span class="accent">+</span></div>
-                <div class="stat-label">Years building</div>
-            </div>
-        </div>
-    </div>
+<!-- HANDS -->
+<div class="hands-section reveal">
+    <img src="hands.png" alt="Robot hand reaching to human hand — pixel art Sistine Chapel">
 </div>
 
-<!-- FEATURED: 20n -->
-<section class="section" id="projects">
+<div class="pixel-line"></div>
+
+<!-- THE PROOF -->
+<section class="section section--bordered">
     <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">Featured Project</div>
-            <h2 class="section-title reveal">20n Research Laboratory</h2>
-            <p class="section-subtitle reveal">One generative model. Any robot body. Zero training steps.</p>
-        </div>
+        <div class="section-tag reveal">// THE PROOF</div>
+        <h2 class="section-title reveal">The proof that another way exists has been walking among us for 300,000 years.</h2>
 
-        <a href="20n.html" class="featured-card reveal">
-            <div class="featured-grid">
-                <div class="featured-img">
-                    <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Perception-Action Loop diagram -->
-                        <defs>
-                            <marker id="ah" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                                <polygon points="0 0, 6 2, 0 4" fill="#ff6600" opacity="0.8"/>
-                            </marker>
-                        </defs>
-                        <!-- Nodes -->
-                        <rect x="110" y="180" width="100" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                        <text x="160" y="203" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Environment</text>
+        <div class="manifesto">
+            <p class="reveal">The human brain runs on 20 watts. It controls 600+ muscles with sub-millimeter precision. It processes vision, touch, balance, and sound in parallel. It learns continuously for 80 years without forgetting how to walk. It picks up any new tool in minutes. No dataset. No GPU cluster. No reward function.</p>
 
-                        <rect x="10" y="100" width="90" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                        <text x="55" y="123" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Sensors</text>
+            <p class="reveal">A two-year-old who has never seen a broom can grab it and push it across the floor. Not because she was trained on 10,000 videos of sweeping, but because she has an internal model of the world rich enough to improvise. She needs 30 seconds of exploration.</p>
 
-                        <rect x="100" y="40" width="120" height="44" rx="8" fill="rgba(255,102,0,0.15)" stroke="#ff6600" stroke-width="1.5"/>
-                        <text x="160" y="58" text-anchor="middle" fill="#ff6600" font-family="Inter,sans-serif" font-size="10px" font-weight="600">Generative Model</text>
-                        <text x="160" y="74" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="Inter,sans-serif" font-size="9px">p(o,s) — q(s)</text>
-
-                        <rect x="220" y="100" width="90" height="36" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                        <text x="265" y="123" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Inter,sans-serif" font-size="11px" font-weight="500">Actions</text>
-
-                        <!-- Arrows -->
-                        <line x1="160" y1="180" x2="70" y2="138" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
-                        <line x1="70" y1="100" x2="125" y2="84" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
-                        <line x1="195" y1="84" x2="250" y2="100" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
-                        <line x1="250" y1="136" x2="185" y2="180" stroke="#ff6600" stroke-width="1.5" opacity="0.5" marker-end="url(#ah)"/>
-
-                        <text x="160" y="20" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter,sans-serif" font-size="9px">minimize F = complexity − accuracy</text>
-                    </svg>
-                </div>
-                <div class="featured-content">
-                    <div class="featured-label"><span class="live-dot"></span> Active Research</div>
-                    <h2 class="featured-h2">20n Research Lab</h2>
-                    <div class="featured-tagline">Morphology-agnostic robot control via Active Inference</div>
-                    <div class="featured-desc">A single generative model that controls Walker2d, Ant, and Humanoid in MuJoCo — without per-environment training. CPU-only inference. Grounded in Predictive Coding and Expected Free Energy for action selection.</div>
-                    <div class="featured-tags">
-                        <span class="tag">Active Inference</span>
-                        <span class="tag">MuJoCo</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Robotics</span>
-                    </div>
-                    <div class="featured-link">Read technical details &rarr;</div>
-                </div>
-            </div>
-        </a>
-    </div>
-</section>
-
-<!-- OTHER PROJECTS -->
-<section class="section section--alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">Portfolio</div>
-            <h2 class="section-title reveal">What I've built</h2>
-            <p class="section-subtitle reveal">From iOS apps to consumer brands — all shipped, all solo.</p>
-        </div>
-
-        <div class="projects-grid">
-            <a href="friday.html" class="project-card reveal">
-                <div class="card-img card-img--friday">
-                    <div class="card-img-placeholder">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">Computer Vision &middot; LLM Agents &middot; 2025</div>
-                    <div class="card-title">Friday</div>
-                    <div class="card-desc">Autonomous macOS agent. Screen capture + OCR + Accessibility API + multi-LLM planning. Full desktop control.</div>
-                </div>
-                <div class="card-footer">Explore project &rarr;</div>
-            </a>
-
-            <a href="paact.html" class="project-card reveal">
-                <div class="card-img card-img--paact">
-                    <div class="card-img-placeholder">
-                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="13" y2="10"/></svg>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">iOS &middot; Swift &middot; January 2026</div>
-                    <div class="card-title">PAACT</div>
-                    <div class="card-desc">Anti-procrastination app. Shipped to the App Store in 7 days. Won 1st place at Innov Hack Paris.</div>
-                </div>
-                <div class="card-footer">Explore project &rarr;</div>
-            </a>
-
-            <a href="glowgum.html" class="project-card reveal">
-                <div class="card-img card-img--glowgum">
-                    <div class="card-img-placeholder">
-                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-meta">E-Commerce &middot; Brand &middot; 2025</div>
-                    <div class="card-title">GlowGum</div>
-                    <div class="card-desc">Consumer skincare brand built solo. 12k TikTok followers in 15 days. Full ops: product to distribution.</div>
-                </div>
-                <div class="card-footer">Explore project &rarr;</div>
-            </a>
+            <p class="big reveal">This is the intelligence the world needs in its robots. And the entire industry is looking the other way.</p>
         </div>
     </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="section" id="timeline">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">Journey</div>
-            <h2 class="section-title reveal">How I got here</h2>
-        </div>
+<!-- ASCII FIGURE SEPARATOR -->
+<div class="ascii-section reveal">
+    <img src="ascii-figure.gif" alt="ASCII figure animation">
+</div>
 
-        <div class="timeline">
-            <div class="tl-item reveal">
-                <div class="tl-dot"></div>
-                <div class="tl-date">March 2026</div>
-                <div class="tl-title">One architecture, three MuJoCo bodies</div>
-                <div class="tl-desc">Single generative model controls Walker2d, Ant, and Humanoid. CPU-only inference. No per-environment training.</div>
+<div class="pixel-line"></div>
+
+<!-- COMPARE -->
+<section class="section" id="brain">
+    <div class="container">
+        <div class="section-tag reveal">// TWO PARADIGMS</div>
+        <h2 class="section-title reveal">Traditional AI vs. 20n</h2>
+
+        <div class="compare-grid reveal">
+            <div class="compare-col">
+                <h4>Traditional AI / RL</h4>
+                <ul>
+                    <li>Millions of GPU hours, terabytes of data</li>
+                    <li>Datacenters, TPU clusters</li>
+                    <li>Brittle outside training distribution</li>
+                    <li>Task-specific models (one per skill)</li>
+                    <li>Confidently wrong on unseen inputs</li>
+                    <li>Training and deployment are separate</li>
+                </ul>
             </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot"></div>
-                <div class="tl-date">January 2026</div>
-                <div class="tl-title">1st place at Innov Hack Paris</div>
-                <div class="tl-desc">Won 1st out of 150 participants with PAACT. Shipped the app to the App Store in 7 days.</div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot"></div>
-                <div class="tl-date">January 2026</div>
-                <div class="tl-title">Founded 20n Research Laboratory</div>
-                <div class="tl-desc">Started implementing Active Inference for robot locomotion. Predictive Coding architectures on Gymnasium environments.</div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot"></div>
-                <div class="tl-date">2025</div>
-                <div class="tl-title">Built Friday &amp; launched GlowGum</div>
-                <div class="tl-desc">Autonomous macOS agent + solo consumer brand. The year of shipping fast.</div>
-            </div>
-            <div class="tl-item reveal">
-                <div class="tl-dot"></div>
-                <div class="tl-date">2022</div>
-                <div class="tl-title">Started building at 16</div>
-                <div class="tl-desc">First freelance websites, automation scripts, learning Python and Swift by building for real clients.</div>
+            <div class="compare-col">
+                <h4>20n / HAI</h4>
+                <ul>
+                    <li>Real-time learning, from experience, no pre-training</li>
+                    <li>Runs on a single CPU at 1000 Hz</li>
+                    <li>Adapts to novel situations on the fly</li>
+                    <li>One brain, all skills</li>
+                    <li>Detects surprise, adjusts behavior</li>
+                    <li>Always learning. Always deployed.</li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- STACK -->
-<section class="section section--alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">Tech Stack</div>
-            <h2 class="section-title reveal">Tools I work with</h2>
-        </div>
-        <div class="stack-flex reveal">
-            <span class="stack-chip">Python</span>
-            <span class="stack-chip">PyTorch</span>
-            <span class="stack-chip">MuJoCo</span>
-            <span class="stack-chip">Gymnasium</span>
-            <span class="stack-chip">NumPy</span>
-            <span class="stack-chip">SciPy</span>
-            <span class="stack-chip">Swift</span>
-            <span class="stack-chip">SwiftUI</span>
-            <span class="stack-chip">Core Data</span>
-            <span class="stack-chip">Computer Vision</span>
-            <span class="stack-chip">HTML / CSS / JS</span>
-            <span class="stack-chip">Shopify</span>
-        </div>
-    </div>
-</section>
+<div class="pixel-line"></div>
 
-<!-- ABOUT -->
-<section class="section" id="about">
+<!-- THE BRAIN -->
+<section class="section section--bordered">
     <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">About</div>
-            <h2 class="section-title reveal">Who I am</h2>
+        <div class="section-tag reveal">// THE ARCHITECTURE</div>
+        <h2 class="section-title reveal">We don't train models. We build brains.</h2>
+
+        <div class="manifesto">
+            <p class="reveal">Our system is biomimetic and hierarchical. Modeled after the only structure that actually solves general-purpose physical intelligence: the biological brain.</p>
         </div>
 
-        <div class="about-grid reveal">
-            <div class="about-photo">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="brain-grid reveal">
+            <div class="brain-layer">
+                <div class="brain-layer-name">Spinal Cord</div>
+                <div class="brain-layer-role">Reflexes &amp; postural correction</div>
+                <div class="brain-layer-bio">Fast, hardwired. No learning needed.</div>
             </div>
-            <div class="about-text">
-                <h3>Nick0, 19, Paris</h3>
-                <p>Self-taught since 16. No formal CS education. I've been building websites, iOS apps, e-commerce brands, AI agents, and now robot control architectures — all by shipping first, learning second.</p>
-                <p>I founded 20n Research Laboratory to work on what I believe is the most important problem in robotics: one architecture that adapts to any body. The work is grounded in Active Inference and Predictive Coding.</p>
-                <p>Each project taught me something different. Freelance taught me to code. GlowGum taught me distribution. Friday taught me about perception-action loops. 20n is where it all converges.</p>
+            <div class="brain-layer">
+                <div class="brain-layer-name">Cerebellum</div>
+                <div class="brain-layer-role">Internal body model</div>
+                <div class="brain-layer-bio">Predicts physical consequences of actions via forward simulation.</div>
+            </div>
+            <div class="brain-layer">
+                <div class="brain-layer-name">Cortex</div>
+                <div class="brain-layer-role">Predictive coding &amp; world model</div>
+                <div class="brain-layer-bio">Learns online, minimizes prediction error (Free Energy).</div>
+            </div>
+            <div class="brain-layer">
+                <div class="brain-layer-name">Hippocampus</div>
+                <div class="brain-layer-role">Episodic memory</div>
+                <div class="brain-layer-bio">Stores past, retrieves by similarity. "This saved me last time."</div>
+            </div>
+            <div class="brain-layer">
+                <div class="brain-layer-name">Basal Ganglia</div>
+                <div class="brain-layer-role">Action selection &amp; planning</div>
+                <div class="brain-layer-bio">Evaluates candidate sequences. Chooses the safest trajectory.</div>
+            </div>
+            <div class="brain-layer">
+                <div class="brain-layer-name">Active Inference</div>
+                <div class="brain-layer-role">Unifying principle</div>
+                <div class="brain-layer-bio">Predict, act, correct. Continuously. (Friston, 2010)</div>
+            </div>
+        </div>
+
+        <div class="manifesto">
+            <p class="highlight reveal">No backpropagation. No training phase. No task-specific architecture. No GPU required. The entire brain runs at 1000 Hz on a laptop CPU.</p>
+
+            <p class="reveal">Drop it into a humanoid and it discovers how to balance. A quadruped and it learns to move. A body with 17 joints that has never existed in nature — and it figures it out. No retraining. No fine-tuning. The same brain.</p>
+        </div>
+    </div>
+</section>
+
+<div class="pixel-line"></div>
+
+<!-- RESULTS -->
+<section class="section" id="results">
+    <div class="container">
+        <div class="section-tag reveal">// RESULTS</div>
+        <h2 class="section-title reveal">Same brain. Different bodies. Zero tuning.</h2>
+
+        <div class="manifesto">
+            <p class="reveal">The brain architecture is validated and running on multiple robot bodies with zero retraining. One set of parameters. Three morphologies.</p>
+        </div>
+
+        <table class="results-table reveal">
+            <thead>
+                <tr>
+                    <th>Robot</th>
+                    <th>Joints</th>
+                    <th>Max Survival</th>
+                    <th>Mean</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Walker2d</strong></td>
+                    <td>6 (2D)</td>
+                    <td class="val-best">1000</td>
+                    <td class="val-good">952</td>
+                    <td>Near-perfect. Most episodes hit cap.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ant</strong></td>
+                    <td>8 (3D)</td>
+                    <td class="val-best">1000</td>
+                    <td class="val-good">667</td>
+                    <td>Solved. Naturally stable body.</td>
+                </tr>
+                <tr>
+                    <td><strong>Humanoid</strong></td>
+                    <td>17 (3D)</td>
+                    <td>474</td>
+                    <td>163</td>
+                    <td>Hardest body. Bipedal, 3D balance. Improving.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- HANDS DIVIDER -->
+<div class="sep reveal">· · ·</div>
+
+<!-- ROADMAP -->
+<section class="section section--bordered">
+    <div class="container">
+        <div class="section-tag reveal">// ROADMAP</div>
+        <h2 class="section-title reveal">From standing to general intelligence.</h2>
+
+        <div class="roadmap reveal">
+            <div class="roadmap-item">
+                <div class="roadmap-phase done">Phase 1 ✓</div>
+                <div>
+                    <div class="roadmap-title">Standing</div>
+                    <div class="roadmap-desc">Stand upright on multiple body morphologies. Real-time prediction, safety constraints, online learning. Done: Humanoid, Ant, Walker2d.</div>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase current">Phase 2 ▸</div>
+                <div>
+                    <div class="roadmap-title">Walking</div>
+                    <div class="roadmap-desc">Humanoid forward locomotion via CPG optimized by the brain's planning system. Learning gait dynamics through prediction error.</div>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase future">Phase 3</div>
+                <div>
+                    <div class="roadmap-title">Sensorimotor Skills</div>
+                    <div class="roadmap-desc">Reaching, grasping, manipulation. The cortex learns object affordances the same way it learned body dynamics.</div>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase future">Phase 4</div>
+                <div>
+                    <div class="roadmap-title">Social &amp; Cognitive</div>
+                    <div class="roadmap-desc">Language grounding. Imitation learning. Planning complex action sequences.</div>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase future">Phase 5</div>
+                <div>
+                    <div class="roadmap-title">General Intelligence</div>
+                    <div class="roadmap-desc">A robot that learns to drive by sitting in a car. Learns to dance by watching. Learns to cook by being shown once. Not trained — it understands.</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- READING -->
-<section class="section section--alt">
+<div class="pixel-line"></div>
+
+<!-- VISION -->
+<section class="section">
     <div class="container">
-        <div class="section-header">
-            <div class="section-tag reveal">Foundations</div>
-            <h2 class="section-title reveal">What I build on</h2>
-        </div>
-        <div class="reading-grid reveal">
-            <a href="https://doi.org/10.1038/nrn2787" target="_blank" rel="noopener" class="reading-card">
-                <div class="reading-card-title">The free-energy principle: a unified brain theory?</div>
-                <div class="reading-card-author">Friston (2010) — Nature Reviews Neuroscience</div>
-            </a>
-            <a href="https://doi.org/10.1162/NECO_a_00912" target="_blank" rel="noopener" class="reading-card">
-                <div class="reading-card-title">Active Inference: A Process Theory</div>
-                <div class="reading-card-author">Friston et al. (2017) — Neural Computation</div>
-            </a>
-            <a href="https://mitpress.mit.edu/9780262045353/" target="_blank" rel="noopener" class="reading-card">
-                <div class="reading-card-title">Active Inference: The Free Energy Principle in Mind, Brain, and Behavior</div>
-                <div class="reading-card-author">Parr, Pezzulo & Friston (2022) — MIT Press</div>
-            </a>
-            <a href="https://doi.org/10.1016/j.jmp.2020.102447" target="_blank" rel="noopener" class="reading-card">
-                <div class="reading-card-title">Active inference on discrete state-spaces: a synthesis</div>
-                <div class="reading-card-author">Da Costa et al. (2020) — Journal of Mathematical Psychology</div>
-            </a>
+        <div class="section-tag reveal">// THE VISION</div>
+        <h2 class="section-title reveal">We are not building another robot.</h2>
+
+        <div class="manifesto">
+            <p class="big reveal">We are building the mind that makes every robot intelligent.</p>
+
+            <p class="reveal">The universal operating system for physical bodies. Humanoid robots that walk into any environment and adapt. Machines that learn by existing, not by being trained. Intelligence that runs on watts, not datacenters.</p>
+
+            <p class="reveal">A single architecture that gives any physical body — bipedal, quadrupedal, or something that has never existed — the ability to perceive, learn, plan, and act. In real time. Continuously. Forever.</p>
+
+            <p class="highlight reveal">Once the foundational brain architecture works for motor control, everything else follows. Standing is hard because it requires real-time prediction, multi-timescale planning, safety constraints, and continuous learning — all at once. A brain that solves standing has the computational primitives to solve anything.</p>
+
+            <p class="big reveal">The next intelligence will not be trained. It will be born.</p>
         </div>
     </div>
 </section>
 
-<!-- CTA / CONTACT -->
-<section class="cta-section" id="contact">
-    <div class="container">
-        <h2 class="reveal">Let's build something.</h2>
-        <p class="reveal">Open to research collaborations, startup conversations, and interesting problems.</p>
-        <a href="mailto:contact@nick0.xyz" class="btn btn-primary reveal">contact@nick0.xyz</a>
-        <div class="cta-links reveal">
-            <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://linkedin.com/in/nick0-" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
-        </div>
+<div class="pixel-line"></div>
+
+<!-- CTA -->
+<section class="cta-bottom" id="contact">
+    <h2 class="reveal">Paris. Small team.<br>We move fast. We write code.</h2>
+    <p class="reveal">If you want to build the universal brain for robots, we want to talk to you.</p>
+    <a href="mailto:contact@20n.dev" class="cta-email reveal">contact@20n.dev</a>
+    <div class="cta-links reveal">
+        <a href="https://github.com/Nick0-ai/20n" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    &copy; 2026 Nick0 — Paris
+    &copy; 2026 20n — Paris
 </footer>
 
 <script>
