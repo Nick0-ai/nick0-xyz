@@ -112,9 +112,11 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .sg-t{display:flex;flex-wrap:wrap;gap:5px}
 .st{font-family:var(--mono);font-size:11px;padding:5px 12px;border:1px solid var(--line);color:var(--dim);transition:border-color .15s,color .15s}
 .st:hover{border-color:var(--text);color:var(--text)}
-.rf{padding:12px 0;border-bottom:1px solid var(--line2)}
+.rf{display:block;padding:12px 0;border-bottom:1px solid var(--line2);transition:padding-left .3s cubic-bezier(.19,1,.22,1)}
 .rf:first-child{border-top:1px solid var(--line2)}
-.rf h4{font-size:14px;font-weight:500;margin-bottom:1px}
+.rf:hover{padding-left:8px}
+.rf h4{font-size:14px;font-weight:500;margin-bottom:1px;transition:color .2s}
+.rf:hover h4{color:var(--text)}
 .rf span{font-family:var(--mono);font-size:11px;color:var(--muted)}
 
 /* ===================== STATEMENT ===================== */
@@ -343,10 +345,10 @@ nav.s{border-bottom-color:var(--line)}
     </div>
     <div class="sc rv">
       <h3>Foundations</h3>
-      <div class="rf"><h4>Karl Friston</h4><span>Active Inference &middot; Free Energy Principle</span></div>
-      <div class="rf"><h4>Radu Hasani (MIT)</h4><span>Liquid Neural Networks &middot; CfC &middot; LTC</span></div>
-      <div class="rf"><h4>Computational Neuroscience</h4><span>Predictive coding &middot; Motor control &middot; Bayesian brain</span></div>
-      <div class="rf"><h4>Control Theory</h4><span>Hierarchical control &middot; Feedback systems</span></div>
+      <a href="https://en.wikipedia.org/wiki/Karl_J._Friston" target="_blank" rel="noopener" class="rf"><h4>Karl Friston</h4><span>Active Inference &middot; Free Energy Principle</span></a>
+      <a href="https://raminhasani.com" target="_blank" rel="noopener" class="rf"><h4>Ramin Hasani (MIT)</h4><span>Liquid Neural Networks &middot; CfC &middot; LTC</span></a>
+      <a href="https://en.wikipedia.org/wiki/Computational_neuroscience" target="_blank" rel="noopener" class="rf"><h4>Computational Neuroscience</h4><span>Predictive coding &middot; Motor control &middot; Bayesian brain</span></a>
+      <a href="https://en.wikipedia.org/wiki/Control_theory" target="_blank" rel="noopener" class="rf"><h4>Control Theory</h4><span>Hierarchical control &middot; Feedback systems</span></a>
     </div>
   </div>
 </section>
