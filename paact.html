@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAACT — Nick0</title>
+<meta name="description" content="PAACT: an iOS app where you bet real money on your goals. Built in seven days after winning Innov Hack Paris. Commitment contracts powered by behavioral economics.">
+<meta property="og:title" content="PAACT — Nick0">
+<meta property="og:description" content="Bet real money on your goals.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+::selection{background:#0a0a0a;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
+.nav-back{font-size:13px;color:#666;transition:color 0.15s}
+.nav-back:hover{color:#0a0a0a}
+
+/* HERO */
+.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
+.project-hero h1{font-size:clamp(42px,5.5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-bottom:16px}
+.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
+.project-hero .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+
+/* SECTIONS */
+.content{max-width:1080px;margin:0 auto;padding:0 48px}
+.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
+.content-section:first-child{border-top:none}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
+.content-section h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:24px}
+.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
+.content-section p:last-child{margin-bottom:0}
+.content-section strong{color:#0a0a0a;font-weight:600}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
+.highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
+.highlight-box p:last-child{margin-bottom:0}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:32px 0}
+.stat-card{border:1px solid #eee;padding:24px;text-align:center}
+.stat-card .stat-v{font-family:'JetBrains Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
+.stat-card .stat-l{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
+
+/* FEATURES LIST */
+.features-list{list-style:none;margin:24px 0;padding:0}
+.features-list li{font-size:14px;color:#444;line-height:1.9;padding:12px 0;border-bottom:1px solid #f0f0f0;font-family:'Inter',sans-serif}
+.features-list li:last-child{border-bottom:none}
+.features-list li strong{color:#0a0a0a;font-weight:600;margin-right:8px}
+
+/* STACK GRID */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px}
+.stack-item{border:1px solid #eee;padding:20px}
+.stack-item .stack-name{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
+.stack-item .stack-desc{font-size:12px;color:#888;line-height:1.6}
+
+/* STATUS BADGE */
+.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #0a0a0a;color:#0a0a0a;margin-top:8px;font-weight:500}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer p{font-size:12px;color:#bbb;font-family:'JetBrains Mono',monospace}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav{padding:0 20px}
+.project-hero{padding:120px 20px 60px}
+.content{padding:0 20px}
+.content-section{padding:60px 0}
+.stats-row{grid-template-columns:1fr 1fr}
+.stack-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+.project-hero h1{font-size:36px}
+.stats-row{grid-template-columns:1fr}
+.stack-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html" class="nav-logo">Nick0</a>
+<a href="index.html" class="nav-back">&larr; Back to portfolio</a>
+</nav>
+
+<div class="project-hero">
+<div>
+<div class="meta">January 2026 &middot; present</div>
+<h1>PAACT</h1>
+<p class="subtitle">Bet real money on your goals.</p>
+</div>
+</div>
+
+<div class="content">
+
+<!-- ORIGIN STORY -->
+<div class="content-section reveal">
+<div class="section-label">01 &mdash; Origin</div>
+<h2>How PAACT was born</h2>
+<p>PAACT was born at Innov Hack Paris in January 2026, where Nicolas Philippe and his team of four won first place among 150 participants in a 10 hour non stop hackathon. The energy in that room was electric, and the concept that emerged from it was too good to leave as a prototype. After the win, Nicolas went home and built the full iOS app in just seven days. Seven days from hackathon demo to a complete, polished product ready for the App Store.</p>
+<p>The concept came from a simple observation that anyone who has ever set a New Year's resolution will recognize immediately. People set goals all the time and fail because there are no real consequences. Motivation fades, accountability is vague, and the only thing you lose when you quit a goal is a bit of self respect, which most people have learned to live without. The question that sparked PAACT was straightforward: what if failing your goals actually cost you money?</p>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-v">1st</div><div class="stat-l">Place, Innov Hack</div></div>
+<div class="stat-card"><div class="stat-v">150</div><div class="stat-l">Participants</div></div>
+<div class="stat-card"><div class="stat-v">7</div><div class="stat-l">Days to build</div></div>
+<div class="stat-card"><div class="stat-v">10h</div><div class="stat-l">Hackathon duration</div></div>
+</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="content-section reveal">
+<div class="section-label">02 &mdash; Mechanism</div>
+<h2>How it works</h2>
+<p>PAACT is built on the principle of commitment contracts, a concept grounded in decades of behavioral economics research. The mechanism is elegant in its simplicity. When you set a goal, you commit real money to it. If you achieve the goal by the deadline, you keep your money. If you fail, you pay. There is no wiggle room, no extensions, no excuses. The contract is binary: you either did it or you did not.</p>
+<p>The psychological principle at work is <strong>loss aversion</strong>, one of the most robust findings in behavioral science. Humans are roughly twice as motivated to avoid losing something as they are to gain something of equivalent value. A twenty dollar loss feels about as painful as a forty dollar gain feels good. PAACT turns that deeply wired psychological bias into a practical productivity tool. Instead of fighting human nature, it leverages it.</p>
+<p>The closest comparable product is Beeminder, which has been running commitment contracts for years with a devoted user base. PAACT takes the same core idea but wraps it in a much cleaner, more modern user experience designed specifically for mobile. Where Beeminder can feel complex and data heavy, PAACT aims to be something you set up in thirty seconds and forget about until your deadline approaches.</p>
+</div>
+
+<!-- FEATURES -->
+<div class="content-section reveal">
+<div class="section-label">03 &mdash; Features</div>
+<h2>What you can do</h2>
+<p>PAACT ships with a focused feature set. Every screen serves the core loop: set a goal, commit money, track progress, hit the deadline or pay. Nothing extraneous, nothing that distracts from the commitment.</p>
+<ul class="features-list">
+<li><strong>Goal creation</strong> Set clear, measurable goals with specific deadlines. No vague intentions, only concrete targets.</li>
+<li><strong>Financial stakes</strong> Commit real money to each goal. You choose the amount, and the stakes are real.</li>
+<li><strong>Progress tracking</strong> Visual progress indicators so you always know where you stand relative to your deadline.</li>
+<li><strong>Deadline management</strong> Automated deadline tracking with notifications as your commitment date approaches.</li>
+<li><strong>Clean minimal interface</strong> Every screen is stripped to its essentials. No clutter, no gamification gimmicks, just your goals and your money on the line.</li>
+</ul>
+</div>
+
+<!-- TECHNICAL DETAILS -->
+<div class="content-section reveal">
+<div class="section-label">04 &mdash; Technical</div>
+<h2>How it was built</h2>
+<p>PAACT was built entirely in <strong>Swift</strong> and <strong>SwiftUI</strong> for iOS. Nicolas Philippe had never written a line of Swift before this project. He picked up the language, learned SwiftUI's declarative paradigm, and shipped a complete app in seven days. The entire design, from the information architecture down to individual screen layouts, was done by Nicolas as well. No templates, no design kits, no outsourced assets.</p>
+<p>Data persistence uses <strong>Core Data</strong> for local storage, keeping everything on device. The app is currently in App Store submission, going through Apple's review process. There is no Android version planned yet; the focus is on getting the iOS experience exactly right before considering other platforms.</p>
+<p>PAACT is a solo project through and through. One person designed it, coded it, tested it, and submitted it.</p>
+<div class="stack-grid">
+<div class="stack-item">
+<div class="stack-name">Swift</div>
+<div class="stack-desc">Primary language</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">SwiftUI</div>
+<div class="stack-desc">Declarative UI framework</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">Core Data</div>
+<div class="stack-desc">Local persistence layer</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">Xcode</div>
+<div class="stack-desc">Development environment</div>
+</div>
+</div>
+</div>
+
+<!-- WHAT IT PROVED -->
+<div class="content-section reveal">
+<div class="section-label">05 &mdash; Takeaway</div>
+<h2>What it proved</h2>
+<p>PAACT is proof that Nick0 can pick up a completely new technology and ship a polished, functional product in an absurdly short timeframe. Seven days from zero Swift knowledge to a complete iOS app in the App Store pipeline. That speed of execution is not about cutting corners or shipping something half baked. The app is clean, well designed, and does exactly what it promises. It is about raw building ability: the capacity to learn fast, make decisions under pressure, and ship.</p>
+<p>Beyond the technical achievement, PAACT also demonstrates product thinking. The concept is grounded in real behavioral science, the feature set is deliberately constrained, and the user experience is designed for a specific use case rather than trying to be everything to everyone. That combination of speed, taste, and discipline is what separates builders who ship from builders who tinker.</p>
+<div class="highlight-box">
+<p><strong>From hackathon to App Store in seven days.</strong> New language, new framework, new platform. Solo. That is the kind of execution speed that compounds over a career.</p>
+</div>
+<span class="status-badge">Active &middot; App Store Review</span>
+</div>
+
+</div>
+
+<footer>
+<p>Nick0 &copy; 2026</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

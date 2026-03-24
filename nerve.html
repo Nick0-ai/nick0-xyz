@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NERVE + Eve — Nick0</title>
+<meta name="description" content="NERVE: a full stack Cloud FinOps and GreenOps orchestrator. Eve: an autonomous AI agent that creates, deploys, and trains AI models from a single conversation.">
+<meta property="og:title" content="NERVE + Eve — Nick0">
+<meta property="og:description" content="The platform that manages AI infrastructure.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+::selection{background:#0a0a0a;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
+.nav-back{font-size:13px;color:#666;transition:color 0.15s}
+.nav-back:hover{color:#0a0a0a}
+
+/* HERO */
+.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
+.project-hero h1{font-size:clamp(42px,5.5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-bottom:16px}
+.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
+.project-hero .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+
+/* SECTIONS */
+.content{max-width:1080px;margin:0 auto;padding:0 48px}
+.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
+.content-section:first-child{border-top:none}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
+.content-section h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:24px}
+.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
+.content-section p:last-child{margin-bottom:0}
+.content-section strong{color:#0a0a0a;font-weight:600}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
+.highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
+.highlight-box p:last-child{margin-bottom:0}
+
+/* STACK GRID */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px}
+.stack-item{border:1px solid #eee;padding:20px}
+.stack-item .stack-name{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
+.stack-item .stack-desc{font-size:12px;color:#888;line-height:1.6}
+
+/* LINK */
+.ext-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;background:#0a0a0a;color:#fff;padding:12px 28px;margin-top:24px;transition:opacity 0.15s;letter-spacing:0.01em}
+.ext-link:hover{opacity:0.8}
+
+/* STATUS BADGE */
+.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #eee;color:#999;margin-top:8px}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer p{font-size:12px;color:#bbb;font-family:'JetBrains Mono',monospace}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav{padding:0 20px}
+.project-hero{padding:120px 20px 60px}
+.content{padding:0 20px}
+.content-section{padding:60px 0}
+.stack-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+.project-hero h1{font-size:36px}
+.stack-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html" class="nav-logo">Nick0</a>
+<a href="index.html" class="nav-back">&larr; Back to portfolio</a>
+</nav>
+
+<div class="project-hero">
+<div>
+<div class="meta">2025</div>
+<h1>NERVE + Eve</h1>
+<p class="subtitle">The platform that manages AI infrastructure.</p>
+</div>
+</div>
+
+<div class="content">
+
+<!-- WHAT IS NERVE -->
+<div class="content-section reveal">
+<div class="section-label">01 &mdash; Overview</div>
+<h2>What is NERVE</h2>
+<p>NERVE is a full stack Cloud FinOps and GreenOps orchestrator that Nicolas Philippe designed and built from the ground up. FinOps, short for financial operations for cloud, is the discipline of optimizing GPU and compute spending across cloud providers. GreenOps extends that same philosophy to environmental impact, tracking and actively reducing the carbon footprint generated by AI workloads.</p>
+<p>In practical terms, NERVE monitored GPU usage across multiple cloud providers, identified waste in real time, and recommended concrete optimizations to reduce both cost and emissions. The system ingested telemetry data from running workloads, processed it through a series of analytical pipelines, and surfaced actionable insights to the user.</p>
+<p>The frontend was a dashboard called <strong>Wattless</strong>, built in React and TypeScript. Wattless visualized spending breakdowns, carbon metrics, and workload performance data in real time, giving engineers a single pane of glass into the true cost of their AI infrastructure. The backend ran on Node.js and handled everything from cloud provider integrations to the data aggregation layer that powered the dashboard.</p>
+</div>
+
+<!-- WHAT IS EVE -->
+<div class="content-section reveal">
+<div class="section-label">02 &mdash; The agent</div>
+<h2>What is Eve</h2>
+<p>Eve is an autonomous AI agent that Nicolas built on top of the NERVE platform. The idea behind Eve was deceptively simple: describe the AI model you want in a natural conversation, and Eve handles the rest. No manual configuration, no infrastructure management, no guesswork about which GPU to rent.</p>
+<p>Once a user described their requirements, Eve would generate the training code automatically, select the optimal GPU based on a cost and performance analysis, deploy the workload to the appropriate cloud provider, and monitor the entire training run from start to finish. If something went wrong, Eve could diagnose the issue and adjust parameters without human intervention.</p>
+<p>The best analogy is AutoML, but fully conversational and fully autonomous. Where AutoML typically requires structured inputs and predefined search spaces, Eve worked from natural language alone. You could say "I need a sentiment classifier for French restaurant reviews, keep costs under fifty dollars" and Eve would figure out the architecture, the dataset pipeline, the training schedule, and the deployment target. She could handle the entire pipeline from natural language prompt to deployed, monitored model.</p>
+</div>
+
+<!-- WHY IT MATTERS -->
+<div class="content-section reveal">
+<div class="section-label">03 &mdash; Significance</div>
+<h2>Why it matters</h2>
+<p>NERVE proved that Nicolas Philippe could architect and build a complete production stack from scratch, end to end, with no team. That stack included a polished frontend dashboard, a robust backend API, integrations with multiple cloud provider APIs, and an autonomous AI agent sitting on top of everything. Very few engineers, especially self taught ones, can point to a single project that exercises all of those muscles simultaneously.</p>
+<p>Eve specifically demonstrated something even more unusual: the ability to build AI systems that create other AI systems. Writing an agent that can autonomously generate training code, select infrastructure, deploy workloads, and monitor results is a non trivial engineering challenge. It requires deep understanding of both the AI/ML pipeline and the infrastructure layer that supports it. The fact that Eve worked through natural language made it even more technically demanding, because the agent had to bridge the gap between ambiguous human intent and precise technical execution.</p>
+<div class="highlight-box">
+<p><strong>The core insight:</strong> NERVE was about making AI infrastructure legible. Eve was about making it invisible. Together, they showed that Nick0 could build tools that abstract away enormous complexity without sacrificing control.</p>
+</div>
+</div>
+
+<!-- TECHNICAL STACK -->
+<div class="content-section reveal">
+<div class="section-label">04 &mdash; Stack</div>
+<h2>Technical details</h2>
+<p>The system was split into two main codebases. The NERVE platform, which included Wattless and the backend, was a JavaScript/TypeScript project. Eve, the autonomous agent, was written in Python to take advantage of the ML ecosystem.</p>
+<div class="stack-grid">
+<div class="stack-item">
+<div class="stack-name">React</div>
+<div class="stack-desc">Wattless dashboard frontend</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">TypeScript</div>
+<div class="stack-desc">Type safe frontend codebase</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">Node.js</div>
+<div class="stack-desc">Backend API and data pipelines</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">Cloud APIs</div>
+<div class="stack-desc">Multi provider integrations</div>
+</div>
+<div class="stack-item">
+<div class="stack-name">Python</div>
+<div class="stack-desc">Eve autonomous agent</div>
+</div>
+</div>
+</div>
+
+<!-- CURRENT STATUS -->
+<div class="content-section reveal">
+<div class="section-label">05 &mdash; Status</div>
+<h2>Current status</h2>
+<p>NERVE and Eve are not actively maintained. After completing the project, Nicolas Philippe shifted his focus to Friday, the autonomous Mac agent, and then to 20n Research Laboratory, where he now builds a universal brain for robots. The progression was natural: NERVE proved he could build complex cloud infrastructure, Eve proved he could build autonomous agents, and that combination of skills fed directly into the more ambitious work that followed.</p>
+<p>The backend source code is publicly available on GitHub for anyone who wants to study the architecture or build on top of it.</p>
+<a href="https://github.com/Nick0-ai/nerve-backend" target="_blank" class="ext-link">View on GitHub &rarr;</a>
+<br>
+<span class="status-badge">Archived</span>
+</div>
+
+</div>
+
+<footer>
+<p>Nick0 &copy; 2026</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

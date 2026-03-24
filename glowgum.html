@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GlowGum — Nick0</title>
+<meta name="description" content="GlowGum: the first gum that takes care of your skin. A beauty chewing gum brand built from scratch by Nicolas Philippe, reaching 12,000 TikTok followers in fifteen days.">
+<meta property="og:title" content="GlowGum — Nick0">
+<meta property="og:description" content="The first gum that takes care of your skin.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+::selection{background:#0a0a0a;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
+.nav-back{font-size:13px;color:#666;transition:color 0.15s}
+.nav-back:hover{color:#0a0a0a}
+
+/* HERO */
+.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
+.project-hero h1{font-size:clamp(42px,5.5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-bottom:16px}
+.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
+.project-hero .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+
+/* SECTIONS */
+.content{max-width:1080px;margin:0 auto;padding:0 48px}
+.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
+.content-section:first-child{border-top:none}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
+.content-section h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:24px}
+.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
+.content-section p:last-child{margin-bottom:0}
+.content-section strong{color:#0a0a0a;font-weight:600}
+
+/* HIGHLIGHT BOX */
+.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
+.highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
+.highlight-box p:last-child{margin-bottom:0}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:32px 0}
+.stat-card{border:1px solid #eee;padding:24px;text-align:center}
+.stat-card .stat-v{font-family:'JetBrains Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
+.stat-card .stat-l{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
+
+/* SKILLS LEARNED */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:24px 0}
+.skill-card{border:1px solid #eee;padding:24px}
+.skill-card h4{font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
+.skill-card p{font-size:13px;color:#666;line-height:1.8;margin-bottom:0;max-width:none}
+
+/* STATUS BADGE */
+.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #eee;color:#999;margin-top:8px}
+
+/* SOCIAL LINK */
+.social-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;color:#666;border:1px solid #eee;padding:10px 20px;margin-top:16px;transition:all 0.15s}
+.social-link:hover{border-color:#0a0a0a;color:#0a0a0a}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer p{font-size:12px;color:#bbb;font-family:'JetBrains Mono',monospace}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+nav{padding:0 20px}
+.project-hero{padding:120px 20px 60px}
+.content{padding:0 20px}
+.content-section{padding:60px 0}
+.stats-row{grid-template-columns:1fr 1fr}
+.skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.project-hero h1{font-size:36px}
+.stats-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html" class="nav-logo">Nick0</a>
+<a href="index.html" class="nav-back">&larr; Back to portfolio</a>
+</nav>
+
+<div class="project-hero">
+<div>
+<div class="meta">March &middot; June 2025</div>
+<h1>GlowGum</h1>
+<p class="subtitle">The first gum that takes care of your skin.</p>
+</div>
+</div>
+
+<div class="content">
+
+<!-- WHAT WAS GLOWGUM -->
+<div class="content-section reveal">
+<div class="section-label">01 &mdash; Concept</div>
+<h2>What was GlowGum</h2>
+<p>GlowGum was a beauty chewing gum brand created entirely from scratch. The concept was simple and memorable: a chewing gum with ingredients that actively benefit skin health. Not a supplement, not a cream, not a serum. A gum. Something you chew every day without thinking about it, except this one also happens to make your skin look better.</p>
+<p>This was not a tech project at all. There was no codebase, no API, no algorithm. But it remains one of the most formative business experiences in Nicolas Philippe's journey, precisely because it forced him to operate in a world where none of his technical skills applied. Everything had to be learned from zero, and every lesson had to be earned through action rather than documentation.</p>
+<p>The target audience was young people interested in beauty and wellness, a demographic that spends significant time on TikTok and Instagram, responds to novel product concepts, and values brands that feel authentic rather than corporate. GlowGum was designed to slot into that world perfectly.</p>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-v">12k</div><div class="stat-l">TikTok followers</div></div>
+<div class="stat-card"><div class="stat-v">15</div><div class="stat-l">Days to reach 12k</div></div>
+<div class="stat-card"><div class="stat-v">4</div><div class="stat-l">Months active</div></div>
+<div class="stat-card"><div class="stat-v">1</div><div class="stat-l">Person, everything</div></div>
+</div>
+</div>
+
+<!-- BUILDING THE BRAND -->
+<div class="content-section reveal">
+<div class="section-label">02 &mdash; Building</div>
+<h2>Building the brand from zero</h2>
+<p>Everything about GlowGum was done from nothing. Nicolas Philippe started with a blank page and built every layer of the business himself. The brand name, the visual identity, the product formulation, supplier sourcing and negotiation, packaging design, e commerce store setup, and the entire marketing strategy. Each of these would typically be handled by a different specialist or agency. Nicolas did all of it solo, learning each skill as he needed it.</p>
+<p>The supplier work was particularly educational. Finding manufacturers who could produce a cosmetic chewing gum involved researching ingredient suppliers, understanding food safety regulations, negotiating pricing and minimum order quantities, and managing quality expectations across multiple rounds of samples. This is the kind of operational detail that never shows up in a portfolio but teaches you more about how businesses actually work than any course ever could.</p>
+<p>The packaging design had to communicate the product's unique value proposition at a glance. In a market crowded with supplement brands fighting for attention, GlowGum needed to look different enough to stop someone scrolling, but credible enough that they would actually put it in their cart. Nicolas iterated on the design himself, learning packaging principles and print production requirements along the way.</p>
+</div>
+
+<!-- TIKTOK GROWTH -->
+<div class="content-section reveal">
+<div class="section-label">03 &mdash; Growth</div>
+<h2>The TikTok growth</h2>
+<p>The marketing strategy for GlowGum was entirely organic, focused exclusively on TikTok. No paid ads, no influencer deals, no growth hacking tricks. Just content that resonated with the right audience. Within fifteen days of launching the account, GlowGum reached 12,000 followers. That kind of organic growth on TikTok requires more than luck; it requires understanding what makes content shareable and structuring every video around that understanding.</p>
+<p>The content strategy focused relentlessly on the unique selling proposition: this is a gum that improves your skin. That single idea was the engine behind every piece of content. It was novel enough to make people stop scrolling, specific enough to be memorable, and polarizing enough to generate comments and shares. The target audience, young people already invested in skincare routines, immediately understood the value proposition and wanted to know more.</p>
+<p>What made the growth impressive was not just the numbers but the speed. Fifteen days from account creation to 12,000 followers, with zero budget, is the kind of result that most brands spend months and significant ad budgets trying to achieve. It demonstrated a natural understanding of content, audience, and platform dynamics that has informed everything Nicolas has built since.</p>
+</div>
+
+<!-- WHAT HE LEARNED -->
+<div class="content-section reveal">
+<div class="section-label">04 &mdash; Lessons</div>
+<h2>What he learned</h2>
+<p>GlowGum was a crash course in every dimension of business that code cannot solve. The skills Nicolas Philippe built during those four months are the kind that compound silently in the background of everything else he does.</p>
+<div class="skills-grid">
+<div class="skill-card">
+<h4>Digital marketing and content creation</h4>
+<p>Understanding what makes content work on TikTok. How to hook attention in the first second, how to structure a narrative in fifteen seconds, how to create content that people share without being asked.</p>
+</div>
+<div class="skill-card">
+<h4>E commerce operations and logistics</h4>
+<p>Setting up an online store, managing inventory, handling orders, understanding shipping logistics, and dealing with the unglamorous operational details that keep a product business running.</p>
+</div>
+<div class="skill-card">
+<h4>Supplier negotiation</h4>
+<p>Finding manufacturers, requesting samples, negotiating prices and minimum order quantities, managing quality across production runs. This is where you learn that business is fundamentally about relationships and trust.</p>
+</div>
+<div class="skill-card">
+<h4>Brand strategy and positioning</h4>
+<p>Defining what a brand stands for, who it serves, and how it communicates. Positioning GlowGum in the crowded beauty space required clarity about what made it different and discipline to stay focused on that difference.</p>
+</div>
+<div class="skill-card">
+<h4>How to sell a physical product</h4>
+<p>Selling a physical product is fundamentally different from selling code or services. There are margins to manage, packaging to design, shipping to coordinate, and returns to handle. Every unit sold teaches you something new about the economics of physical goods.</p>
+</div>
+</div>
+<div class="highlight-box">
+<p><strong>The real takeaway:</strong> GlowGum proved that Nick0 could build and sell anything, not just technology. The business versatility it demonstrated is something investors find genuinely compelling, because it signals that the founder can operate outside their comfort zone and still produce results.</p>
+</div>
+</div>
+
+<!-- WHY IT STOPPED -->
+<div class="content-section reveal">
+<div class="section-label">05 &mdash; Transition</div>
+<h2>Why it stopped</h2>
+<p>After four months of building and running GlowGum, Nicolas shifted his focus back to technology and AI. The brand was working. The audience was growing. The product had traction. But the pull toward building intelligent systems was stronger than the pull toward scaling a consumer goods brand. This was not a failure; it was a deliberate choice about where to invest time and energy.</p>
+<p>GlowGum was always, in some sense, a successful experiment in non tech entrepreneurship. It answered a question Nicolas had been asking himself: could he build and sell something that had nothing to do with code? The answer was an unambiguous yes. Having answered that question, the natural next step was to take everything he had learned about sales, marketing, content, operations, and customer psychology, and bring those skills back into the world of technology.</p>
+<p>The skills learned during the GlowGum period, especially in sales, marketing, and operations, continue to inform everything Nicolas builds. When he pitches 20n to investors, the clarity in his communication comes partly from learning to sell gum on TikTok. When he designs a product interface, the instinct for what feels right to a user comes partly from watching how people responded to GlowGum's packaging. Nothing is wasted.</p>
+</div>
+
+<!-- STATUS -->
+<div class="content-section reveal">
+<div class="section-label">06 &mdash; Status</div>
+<h2>Current status</h2>
+<p>GlowGum is no longer active. The brand and the TikTok account still exist but are not maintained. Nicolas has no plans to revive the project, though he occasionally references it when discussing his entrepreneurial range with investors and collaborators.</p>
+<a href="https://tiktok.com/@glowgum_" target="_blank" class="social-link">@glowgum_ on TikTok</a>
+<br>
+<span class="status-badge">Inactive</span>
+</div>
+
+</div>
+
+<footer>
+<p>Nick0 &copy; 2026</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

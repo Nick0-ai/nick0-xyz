@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Friday — Nick0</title>
+<meta name="description" content="Friday: an autonomous AI agent that controlled your Mac using computer vision and chain of thought reasoning. No APIs, no cloud. Built by Nicolas Philippe.">
+<meta property="og:title" content="Friday — Nick0">
+<meta property="og:description" content="The AI that controlled your Mac. Autonomous agent using computer vision and reasoning.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+::selection{background:#0a0a0a;color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* BACK NAV */
+.back-nav{padding:28px 48px;border-bottom:1px solid #f0f0f0}
+.back-link{font-family:'JetBrains Mono',monospace;font-size:13px;color:#999;transition:color 0.15s;letter-spacing:0.01em}
+.back-link:hover{color:#0a0a0a}
+
+/* HERO */
+.project-hero{padding:80px 48px 72px;max-width:720px;margin:0 auto;text-align:center}
+.project-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px}
+.project-title{font-size:clamp(48px,7vw,72px);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:16px}
+.project-subtitle{font-size:18px;color:#555;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.project-meta{font-family:'JetBrains Mono',monospace;font-size:12px;color:#bbb;letter-spacing:0.04em}
+.project-meta span{margin:0 6px}
+
+/* CONTENT */
+.content{max-width:680px;margin:0 auto;padding:0 48px}
+.content-section{margin-bottom:72px}
+.content-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
+.content-heading{font-size:24px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px}
+.content p{font-size:15px;color:#444;line-height:1.9;margin-bottom:16px}
+.content p:last-child{margin-bottom:0}
+.content strong{color:#0a0a0a;font-weight:600}
+
+/* METRICS ROW */
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0}
+.metric-card{border:1px solid #eee;padding:24px;text-align:center}
+.metric-val{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;line-height:1}
+.metric-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
+
+/* CAPABILITY LIST */
+.capability-list{list-style:none;margin:20px 0}
+.capability-list li{font-size:15px;color:#444;line-height:1.9;padding:8px 0;border-bottom:1px solid #f5f5f5;padding-left:20px;position:relative}
+.capability-list li:last-child{border-bottom:none}
+.capability-list li::before{content:'';position:absolute;left:0;top:17px;width:6px;height:6px;background:#0a0a0a;border-radius:50%}
+
+/* PIPELINE BLOCK */
+.pipeline{background:#fafafa;border:1px solid #eee;padding:28px 32px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2.2}
+.pipeline .step{color:#0a0a0a;font-weight:600}
+.pipeline .desc{color:#888;font-weight:400}
+.pipeline .arrow{color:#ccc;display:block;padding-left:16px;line-height:1.6;font-size:11px}
+
+/* VERSIONS */
+.versions-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+.version-card{border:1px solid #eee;padding:28px}
+.version-card h4{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;margin-bottom:10px}
+.version-card p{font-size:14px;color:#555;line-height:1.8}
+
+/* STACK */
+.stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stack-tag{font-family:'JetBrains Mono',monospace;font-size:12px;padding:8px 16px;border:1px solid #eee;color:#555;transition:all 0.15s}
+.stack-tag:hover{border-color:#0a0a0a;color:#0a0a0a}
+
+/* LINKS */
+.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.project-link{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0a0a0a;padding:12px 24px;border:1px solid #ddd;transition:all 0.15s;letter-spacing:0.01em}
+.project-link:hover{border-color:#0a0a0a}
+
+/* QUOTE BLOCK */
+.insight{border-left:3px solid #0a0a0a;padding:20px 24px;margin:28px 0;background:#fafafa}
+.insight p{font-size:15px;color:#333;line-height:1.8;font-weight:500;margin-bottom:0}
+
+/* DIVIDER */
+.divider{width:48px;height:2px;background:#eee;margin:72px auto}
+
+/* FOOTER */
+footer{text-align:center;padding:48px;border-top:1px solid #f0f0f0;margin-top:40px}
+footer p{font-size:12px;color:#bbb;font-family:'JetBrains Mono',monospace}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.back-nav{padding:20px}
+.project-hero{padding:48px 20px 56px}
+.content{padding:0 20px}
+.metrics-row{grid-template-columns:1fr}
+.versions-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.project-title{font-size:40px}
+.content{padding:0 16px}
+.project-links{flex-direction:column}
+}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="back-nav">
+<a href="index.html" class="back-link">&larr; Back to portfolio</a>
+</div>
+
+<header class="project-hero">
+<div class="project-tag reveal">Autonomous Agent &middot; Computer Vision &middot; macOS</div>
+<h1 class="project-title reveal">Friday</h1>
+<p class="project-subtitle reveal">The AI that controlled your Mac.</p>
+<div class="project-meta reveal">
+<span>September 2025</span> &middot; <span>January 2026</span> &middot; <span>Solo project</span>
+</div>
+</header>
+
+<div class="content">
+
+<!-- WHAT WAS FRIDAY -->
+<div class="content-section reveal">
+<div class="content-label">What was Friday</div>
+<h2 class="content-heading">An autonomous AI agent for macOS</h2>
+<p>Friday was not a chatbot. It was not an assistant that waited for voice commands. It was an autonomous agent that could see the screen, move the mouse, type on the keyboard, and accomplish complex tasks on its own. It operated exactly like a human sitting at a computer, perceiving what was on the display and deciding what to do next.</p>
+<p>There were no API integrations, no cloud dependency, no shortcuts or workarounds. Everything happened directly on the device using computer vision and chain of thought reasoning. Friday looked at the screen the same way you would, read the text the same way you would, and clicked the buttons the same way you would. The only difference is that it could do it faster, and it never got tired.</p>
+
+<div class="metrics-row">
+<div class="metric-card">
+<div class="metric-val">100%</div>
+<div class="metric-label">On device</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">0</div>
+<div class="metric-label">APIs used</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">V2</div>
+<div class="metric-label">Final version</div>
+</div>
+</div>
+</div>
+
+<!-- HOW IT WORKED -->
+<div class="content-section reveal">
+<div class="content-label">How it worked</div>
+<h2 class="content-heading">See the screen, understand it, act on it</h2>
+<p>Friday took screenshots of the screen continuously, analyzed them using OCR and vision models, and built a mental model of everything that was visible. It identified buttons, text fields, menus, application windows, and anything else on the display. From that understanding, it decided what actions to take next.</p>
+<p>It could click buttons, type text, navigate between applications, scroll through pages, and complete multi step workflows that spanned several different programs. When it encountered a complex task, it used chain of thought reasoning to decompose the problem into smaller, manageable steps, then executed each one in sequence.</p>
+<p>One of Friday's most interesting behaviors was tool delegation. It understood that different applications were better suited for different tasks. If it needed to write something, it would open ChatGPT. If it needed to build a presentation, it would open Gamma. For design work, it went to Canva. For research, Perplexity. It chose the best available tool for the job, just like a human would.</p>
+
+<div class="pipeline">
+<span class="step">1. Screenshot</span> <span class="desc">capture the full screen at regular intervals</span>
+<span class="arrow">&darr;</span>
+<span class="step">2. OCR + Vision</span> <span class="desc">extract all text, identify UI elements</span>
+<span class="arrow">&darr;</span>
+<span class="step">3. State Model</span> <span class="desc">build a structured representation of what is on screen</span>
+<span class="arrow">&darr;</span>
+<span class="step">4. Reasoning</span> <span class="desc">chain of thought to decide the next action</span>
+<span class="arrow">&darr;</span>
+<span class="step">5. Execution</span> <span class="desc">mouse click, keyboard input, scroll, or app switch</span>
+<span class="arrow">&darr;</span>
+<span class="step">6. Verification</span> <span class="desc">re-capture, confirm the action succeeded, continue</span>
+<span class="arrow">&circlearrowleft; loop</span>
+</div>
+</div>
+
+<!-- WHAT FRIDAY COULD DO -->
+<div class="content-section reveal">
+<div class="content-label">Capabilities</div>
+<h2 class="content-heading">What Friday could actually do</h2>
+<p>These were not theoretical features. Nick0 built and demonstrated all of them. Friday could perform complete workflows end to end, without the user needing to touch the mouse or keyboard at any point.</p>
+<ul class="capability-list">
+<li>Automate presentations from start to finish, including opening the application, writing the content, adding slides, and formatting the layout</li>
+<li>Draft and send emails by navigating to the mail client, composing the message, reviewing it, and hitting send</li>
+<li>Research topics across multiple sources, compile findings, and summarize them into a structured document</li>
+<li>Process PDFs by opening them, extracting key information, and reorganizing the content</li>
+<li>Navigate complex interfaces with nested menus, dropdown selections, and multi page forms</li>
+<li>Switch between applications seamlessly, carrying context from one tool to the next</li>
+<li>Handle errors and unexpected states by recognizing when something went wrong and adapting its approach</li>
+</ul>
+</div>
+
+<!-- TWO VERSIONS -->
+<div class="content-section reveal">
+<div class="content-label">Evolution</div>
+<h2 class="content-heading">Two versions, each one sharper than the last</h2>
+<p>Friday went through two major iterations over the course of the project. Both versions ran entirely on the Mac, with no external servers or cloud processing involved.</p>
+
+<div class="versions-grid">
+<div class="version-card">
+<h4>V1</h4>
+<p>The initial proof of concept. Basic screen reading, simple action execution, and straightforward task completion. V1 demonstrated that the core idea worked: an AI could perceive a graphical interface and interact with it through synthetic input. The reasoning was linear and the error handling was minimal, but it was enough to prove the concept was viable.</p>
+</div>
+<div class="version-card">
+<h4>V2</h4>
+<p>A significant leap forward. V2 introduced deeper reasoning chains that could plan several steps ahead, more robust error handling that recovered gracefully from unexpected interface states, and improved action planning that chose better strategies for complex tasks. The perception pipeline was also refined, producing more accurate screen understanding.</p>
+</div>
+</div>
+</div>
+
+<!-- WHY IT MATTERED -->
+<div class="content-section reveal">
+<div class="content-label">Why it mattered</div>
+<h2 class="content-heading">The insight that changed everything</h2>
+<p>Friday proved something fundamental. It showed that an AI brain could perceive and act on a complex digital environment in real time. Not through shortcuts, not through APIs, not through pre programmed scripts. It was literally seeing the interface and interacting with it the same way a human being would.</p>
+<p>Most AI tools at the time worked by plugging into existing software through programmatic interfaces. They sent HTTP requests, parsed JSON responses, and manipulated data behind the scenes. Friday did none of that. It worked purely at the visual and motor level, the same level at which humans operate. That distinction matters enormously.</p>
+
+<div class="insight">
+<p>If a brain can control a screen by seeing and acting on it, what happens when the environment is not a screen but a physical robot body? That question became the foundation of 20n.</p>
+</div>
+
+<p>The perception action loop that powered Friday is, at its core, the same loop that powers biological organisms. You perceive the world through your senses, you build a model of what is happening, you decide what to do, and you act. Friday did exactly this in a digital environment. The natural extension was to ask whether the same architecture could work in the physical world. That question led Nicolas Philippe to leave Friday behind and dedicate everything to robotics.</p>
+</div>
+
+<!-- WHY IT STOPPED -->
+<div class="content-section reveal">
+<div class="content-label">Why it stopped</div>
+<h2 class="content-heading">The concept was proven. The real challenge was elsewhere.</h2>
+<p>Controlling a digital screen was phase one. It was the proof of concept, the demonstration that a brain could perceive and act on an environment in real time. But once that was established, the question became obvious: why stop at screens?</p>
+<p>The bigger challenge, the one worth dedicating everything to, was physical embodiment. A screen is a controlled, predictable, two dimensional environment. A physical robot body exists in three dimensions, deals with gravity, friction, inertia, and a world that does not pause when you stop to think. That is where the real difficulty lies, and that is where the real impact would come from.</p>
+<p>Nicolas Philippe made the decision to go all in on robotics. Friday's architecture principles, the perception action loop, the chain of thought reasoning, the continuous state monitoring, all of it became the conceptual foundation of <strong>20n Research Laboratory</strong>. Friday was not abandoned. It graduated.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- TECHNICAL STACK -->
+<div class="content-section reveal">
+<div class="content-label">Technical stack</div>
+<h2 class="content-heading">Built with</h2>
+<p>The stack was intentionally minimal. No heavyweight frameworks, no complex dependencies. Just the tools needed to capture the screen, understand it, reason about it, and act on it.</p>
+<div class="stack-row">
+<span class="stack-tag">Python</span>
+<span class="stack-tag">Computer Vision</span>
+<span class="stack-tag">OCR (Tesseract)</span>
+<span class="stack-tag">pyautogui</span>
+<span class="stack-tag">LLM Reasoning</span>
+<span class="stack-tag">Screenshots</span>
+<span class="stack-tag">macOS</span>
+</div>
+</div>
+
+<!-- LINKS -->
+<div class="content-section reveal">
+<div class="content-label">Links</div>
+<p>Friday is no longer active. The website now serves as a transition page pointing to 20n, the project that grew directly out of Friday's core ideas.</p>
+<div class="project-links">
+<a href="https://usefriday.app" target="_blank" rel="noopener" class="project-link">usefriday.app &rarr;</a>
+<a href="index.html" class="project-link">&larr; Back to portfolio</a>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>Nick0 &copy; 2026</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
