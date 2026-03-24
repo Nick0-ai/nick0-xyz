@@ -183,7 +183,7 @@ section{padding:60px 0 0}
 <span class="hero-meta-value">Research / Prototype</span>
 </div>
 </div>
-<p class="hero-intro">20n is a biomimetic AI research laboratory building a single artificial brain that can control any robot body, with zero training, no cloud dependency, and a power consumption of just 20 watts on a laptop CPU. The architecture is grounded in Karl Friston's Active Inference and Liquid Neural Networks developed at MIT.</p>
+<p class="hero-intro">20n builds one artificial brain that controls any robot body. Zero training, no cloud, 20 watts on a laptop CPU. Built on Active Inference and Liquid Neural Networks.</p>
 </div>
 </section>
 
@@ -194,9 +194,8 @@ section{padding:60px 0 0}
 <div class="reveal">
 <div class="section-label">01 — The problem</div>
 <div class="prose">
-<p>The robotics industry has spent over $20 billion trying to build general purpose robots. The result, after decades of work and some of the most well funded labs on the planet, is that not a single general purpose robot ships at scale. Every robot today uses one model per task. Each skill requires millions of GPU hours to train. The resulting controllers are brittle the moment they encounter anything outside their training distribution. And the hardware draws hundreds of watts just to run inference.</p>
-<p>This is not a compute problem. Throwing more GPUs at it will not fix it. Scaling the data will not fix it either. The problem is architectural. The entire industry is building one narrow specialist at a time, then trying to stitch them together into something that looks general. That approach has a ceiling, and the industry has already hit it.</p>
-<p>Nobody has built a brain that works across different robot bodies. A brain you can drop into a bipedal walker, a quadruped, or a 17 joint humanoid, and have it figure things out on its own. The reason nobody has done it is because the dominant paradigm, deep reinforcement learning, was never designed to do it. It was designed to maximize a reward signal inside a fixed environment. That is a fundamentally different goal than building a system that can understand and adapt to any body in any situation.</p>
+<p>The robotics industry has spent over $20 billion trying to build general purpose robots. The result: zero ship at scale. Every robot today uses one model per task. Each skill requires millions of GPU hours. The controllers break the moment they see anything outside their training data. This is not a compute problem. It is an architecture problem. The industry builds narrow specialists and tries to stitch them into something general. That approach has a ceiling, and they have hit it.</p>
+<p>Nobody has built a brain that works across different robot bodies. One you can drop into a biped, a quadruped, or a 17 joint humanoid and have it figure things out on its own. Deep reinforcement learning was never designed for this. It maximizes a reward signal inside a fixed environment. That is a fundamentally different goal than building a system that adapts to any body in any situation.</p>
 </div>
 </div>
 </section>
@@ -208,8 +207,8 @@ section{padding:60px 0 0}
 <div class="reveal">
 <div class="section-label">02 — The solution</div>
 <div class="prose">
-<p>20n builds a universal artificial brain based on two foundational ideas from theoretical neuroscience and machine learning: <strong>Active Inference</strong>, the framework proposed by Karl Friston in 2010 that describes how biological brains work, and <strong>Liquid Neural Networks</strong>, the family of continuous time neural networks developed at MIT by Radu Hasani, Mathias Lechner, and their collaborators.</p>
-<p>The core claim is simple. One brain. One set of parameters. Any robot body. You do not retrain it. You do not fine tune it. You drop it in, and it figures out how to move. It learns the physics of its own body in real time, builds a world model on the fly, and selects actions by predicting the future and choosing the path that minimizes uncertainty.</p>
+<p>The core claim is simple. One brain, one set of parameters, any robot body. You drop it in and it figures out how to move. It learns the physics of its own body in real time, builds a world model on the fly, and picks actions by predicting the future and choosing the path that minimizes uncertainty.</p>
+<p>The architecture combines two ideas: <strong>Active Inference</strong> (Karl Friston's framework for how biological brains work) and <strong>Liquid Neural Networks</strong> (continuous time neural networks from MIT). No retraining. No fine tuning. Just drop and go.</p>
 </div>
 
 <div class="metrics">
@@ -220,7 +219,7 @@ section{padding:60px 0 0}
 </div>
 
 <div class="prose">
-<p>There is no cloud dependency. There is no GPU cluster. The brain runs entirely on a laptop CPU at 1000 Hz. It consumes roughly 20 watts. For context, a single NVIDIA A100 GPU draws 400 watts. The entire 20n system uses less power than a light bulb.</p>
+<p>No cloud. No GPU cluster. The brain runs on a laptop CPU at 1000 Hz, drawing roughly 20 watts. An A100 draws 400. The entire 20n system uses less power than a light bulb.</p>
 </div>
 </div>
 </section>
@@ -232,7 +231,7 @@ section{padding:60px 0 0}
 <div class="reveal">
 <div class="section-label">03 — Architecture</div>
 <div class="prose">
-<p>The architecture is hierarchical and biomimetic, modeled directly after the structure of the biological brain. Five layers operate at different frequencies, each responsible for a distinct level of abstraction. They communicate vertically through prediction errors, just like the neocortical hierarchy in mammals.</p>
+<p>Five layers, modeled on the biological brain, operating at different frequencies. Each handles a distinct level of abstraction. They communicate vertically through prediction errors, just like the neocortical hierarchy.</p>
 </div>
 
 <div class="arch-layers">
@@ -241,40 +240,40 @@ section{padding:60px 0 0}
 Spinal Cord
 <span class="arch-layer-freq">1,000 Hz</span>
 </div>
-<div class="arch-layer-desc">Hardwired PD (proportional derivative) reflexes and posture control. This is the fastest loop in the system. It reacts before the brain "thinks." When the body is falling, the spinal cord corrects joint positions within a single millisecond. No learning, no inference, just physics. This layer keeps the robot upright while higher layers plan.</div>
+<div class="arch-layer-desc">Hardwired PD reflexes and posture control. The fastest loop in the system. It reacts before the brain "thinks." Body falling? Joint positions corrected within one millisecond. No learning, no inference, just physics. Keeps the robot upright while higher layers plan.</div>
 </div>
 <div class="arch-layer">
 <div class="arch-layer-name">
 Cerebellum
 <span class="arch-layer-freq">100 Hz</span>
 </div>
-<div class="arch-layer-desc">Internal body model built through forward simulation. Uses <strong>CfC (Closed form Continuous depth)</strong> Liquid Neural Networks. The cerebellum predicts where every joint will be 10 milliseconds into the future. If the prediction does not match reality, it corrects instantly. This is how the brain learns the physics of a new body in seconds, not hours.</div>
+<div class="arch-layer-desc">Internal body model via forward simulation using <strong>CfC (Closed form Continuous depth)</strong> Liquid Neural Networks. Predicts where every joint will be 10ms into the future. Prediction wrong? Corrects instantly. This is how the brain learns a new body's physics in seconds, not hours.</div>
 </div>
 <div class="arch-layer">
 <div class="arch-layer-name">
 Cortex
 <span class="arch-layer-freq">10 Hz</span>
 </div>
-<div class="arch-layer-desc">The world model. Learns online by minimizing variational free energy, which is a mathematical proxy for prediction error. Uses <strong>LTC (Liquid Time Constant)</strong> networks. The cortex does not require a training phase. It updates its model of the world continuously as new sensory data arrives. When something unexpected happens, the prediction error propagates down, and every layer adjusts.</div>
+<div class="arch-layer-desc">World model. Learns online by minimizing variational free energy (a mathematical proxy for prediction error) using <strong>LTC (Liquid Time Constant)</strong> networks. No training phase. Updates continuously as sensory data arrives. Something unexpected happens, prediction error propagates down, every layer adjusts.</div>
 </div>
 <div class="arch-layer">
 <div class="arch-layer-name">
 Hippocampus
 <span class="arch-layer-freq">Episodic</span>
 </div>
-<div class="arch-layer-desc">Episodic memory. Stores full sensorimotor experiences as they happen. When the brain encounters a new situation, the hippocampus retrieves the most relevant past experience by cosine similarity. This gives the system a form of experience based reasoning without requiring a training loop. It remembers what worked before.</div>
+<div class="arch-layer-desc">Episodic memory. Stores full sensorimotor experiences as they happen. New situation? The hippocampus retrieves the closest past experience by cosine similarity. Experience based reasoning without a training loop. It remembers what worked.</div>
 </div>
 <div class="arch-layer">
 <div class="arch-layer-name">
 Basal Ganglia
 <span class="arch-layer-freq">Action selection</span>
 </div>
-<div class="arch-layer-desc">The decision maker. Evaluates candidate motor trajectories by computing expected free energy, a quantity that balances two objectives: information gain (exploring unknown states) and goal achievement (reaching desired states). The basal ganglia picks the trajectory that is both safe and informative. This is how the brain explores intelligently without needing a hand crafted reward function.</div>
+<div class="arch-layer-desc">The decision maker. Evaluates candidate trajectories by computing expected free energy, balancing information gain (exploring unknowns) and goal achievement (reaching desired states). Picks the trajectory that is both safe and informative. Intelligent exploration without a hand crafted reward function.</div>
 </div>
 </div>
 
 <div class="callout">
-All five layers are unified by the <strong>Free Energy Principle</strong>. There is no backpropagation anywhere in the system. No gradient descent. No loss function in the traditional sense. The brain adapts continuously through prediction and correction, the same mechanism that biological nervous systems have used for hundreds of millions of years.
+All five layers are unified by the <strong>Free Energy Principle</strong>. No backpropagation. No gradient descent. No loss function. The brain adapts through prediction and correction, the same mechanism biological nervous systems have used for hundreds of millions of years.
 </div>
 </div>
 </section>
@@ -284,13 +283,11 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 <!-- ACTIVE INFERENCE -->
 <section>
 <div class="reveal">
-<div class="section-label">04 — Active Inference explained</div>
+<div class="section-label">04 — Active Inference</div>
 <div class="prose">
-<p>Active Inference is a theory of brain function proposed by Karl Friston, a neuroscientist at University College London. The central idea is that all living systems, from single cells to human brains, do one thing: they minimize surprise. In mathematical terms, they minimize variational free energy, which is an upper bound on the surprise of their sensory observations.</p>
-<p>Here is how it works in practice. The brain maintains a generative model of the world. It constantly predicts what it should see, hear, and feel at every moment. When sensory data arrives and matches the prediction, nothing happens. When there is a mismatch, the brain has two options: update its model (perception) or act on the world to make the prediction come true (action). This loop, predict then act then correct, runs continuously.</p>
-<p>This is fundamentally different from reinforcement learning. RL agents maximize a reward signal. They need someone to define what "good" looks like, and they need millions of trials to figure out how to get there. Active Inference agents do not need a reward function. They are driven by a single imperative: reduce uncertainty. Exploration emerges naturally from the mathematics, because uncertain states have high expected free energy, and the agent is drawn to resolve that uncertainty.</p>
-<p>The biological plausibility is what makes this approach powerful for robotics. RL requires massive offline training. Active Inference works in real time. RL is brittle outside its training distribution. Active Inference adapts on the fly because it is always updating its model. RL needs a reward signal. Active Inference only needs a prior belief about what the world should look like.</p>
-<p>Every layer of the 20n architecture implements some form of free energy minimization. The spinal cord minimizes proprioceptive prediction error. The cerebellum minimizes forward model error. The cortex minimizes world model error. The basal ganglia minimizes expected free energy over future trajectories. It is one principle, applied at every scale.</p>
+<p>Active Inference is Karl Friston's theory of brain function. The central idea: all living systems minimize surprise. The brain maintains a generative model of the world and constantly predicts what it should sense. When prediction matches reality, nothing happens. When there is a mismatch, two options: update the model (perception) or act on the world to make the prediction come true (action). Predict, act, correct. Continuously.</p>
+<p>This is fundamentally different from RL. Reinforcement learning agents maximize a reward signal and need millions of trials to get there. Active Inference agents need no reward function. They reduce uncertainty. Exploration emerges naturally from the math. RL requires massive offline training and breaks outside its distribution. Active Inference works in real time and adapts on the fly because it never stops updating its model.</p>
+<p>Every layer of the 20n architecture implements free energy minimization. The spinal cord minimizes proprioceptive error. The cerebellum minimizes forward model error. The cortex minimizes world model error. The basal ganglia minimizes expected free energy over future trajectories. One principle, applied at every scale.</p>
 </div>
 </div>
 </section>
@@ -302,7 +299,7 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 <div class="reveal">
 <div class="section-label">05 — Results and benchmarks</div>
 <div class="prose">
-<p>The 20n brain has been validated on three standard robot morphologies in <strong>MuJoCo</strong>, the industry standard physics simulator developed by DeepMind (now part of Google). MuJoCo is the benchmark environment used by virtually every major robotics lab in the world. A score of 1000 represents the maximum achievable performance on a given task.</p>
+<p>Validated on three standard morphologies in <strong>MuJoCo</strong>. Score of 1000 = maximum achievable performance.</p>
 </div>
 
 <table class="bench-table">
@@ -341,51 +338,10 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 </table>
 
 <div class="prose">
-<p><strong>Walker2d</strong> is a planar biped with 6 actuated joints. The brain achieves a mean score of 952 out of 1000, which represents near perfect forward locomotion. The gait is smooth and stable.</p>
-<p><strong>Ant</strong> is a quadruped with 8 joints operating in full 3D. The brain reaches a maximum score of 1000 and averages 667. It learns to coordinate all four legs within seconds of being dropped into the body.</p>
-<p><strong>Humanoid</strong> is the most challenging benchmark in the MuJoCo suite. Seventeen joints, full 3D, inherently unstable. The brain currently scores a maximum of 474 and is improving steadily. This is the frontier. Every major lab in the world struggles with Humanoid, and 20n is tackling it with zero training and a fraction of the compute.</p>
-<p>The same brain, the same set of parameters, controls all three bodies. There is no retraining between morphologies. No fine tuning. The architecture adapts in real time.</p>
-</div>
-</div>
-</section>
-
-<hr class="section-divider">
-
-<!-- COMPARISON -->
-<section>
-<div class="reveal">
-<div class="section-label">06 — Comparison vs. industry</div>
-
-<div class="compare-grid">
-<div class="compare-col industry">
-<h4>Industry standard</h4>
-<div class="compare-item"><span class="icon">&times;</span> Millions of GPU hours per skill</div>
-<div class="compare-item"><span class="icon">&times;</span> One model per task</div>
-<div class="compare-item"><span class="icon">&times;</span> Brittle outside training data</div>
-<div class="compare-item"><span class="icon">&times;</span> Hundreds of watts at inference</div>
-<div class="compare-item"><span class="icon">&times;</span> $20B spent, zero general robots</div>
-</div>
-<div class="compare-col twentyn">
-<h4>20n / Active Inference</h4>
-<div class="compare-item"><span class="icon">&rarr;</span> Real time, no pre training</div>
-<div class="compare-item"><span class="icon">&rarr;</span> One brain, all bodies</div>
-<div class="compare-item"><span class="icon">&rarr;</span> Adapts on the fly</div>
-<div class="compare-item"><span class="icon">&rarr;</span> 20 watts on a laptop CPU</div>
-<div class="compare-item"><span class="icon">&rarr;</span> 3 bodies, 1 architecture</div>
-</div>
-</div>
-
-<div class="vs-block">
-<h5>vs. Boston Dynamics</h5>
-<p>Boston Dynamics uses hand crafted controllers that are manually tuned by teams of engineers for each robot and each behavior. Atlas does impressive backflips, but every motion is the result of years of bespoke engineering. There is no learning, no generalization. Move to a new body and you start from scratch. 20n uses one universal brain. Drop it in any body and it figures things out.</p>
-</div>
-<div class="vs-block">
-<h5>vs. Tesla Optimus</h5>
-<p>Tesla's approach to Optimus relies on imitation learning. The robot watches massive amounts of human demonstration data and learns to replicate the movements. This requires enormous data collection infrastructure and still produces a system that only does what it has seen. 20n requires zero demonstration data. The brain learns by doing, not by watching.</p>
-</div>
-<div class="vs-block">
-<h5>vs. Figure AI</h5>
-<p>Figure uses large language models for high level command interpretation, paired with separate low level motor controllers. This creates a two layer system where the LLM understands language but does not understand physics, and the low level controller understands physics but not context. 20n is end to end. One architecture handles perception, world modeling, decision making, and motor control. There is no seam between "thinking" and "doing."</p>
+<p><strong>Walker2d.</strong> Planar biped, 6 joints. Mean score 952/1000. Near perfect locomotion, smooth and stable gait.</p>
+<p><strong>Ant.</strong> Quadruped, 8 joints, full 3D. Max 1000, mean 667. Learns to coordinate all four legs within seconds of deployment.</p>
+<p><strong>Humanoid.</strong> The hardest benchmark in MuJoCo. 17 joints, full 3D, inherently unstable. Currently at 474 max and improving. Zero training, a fraction of the compute.</p>
+<p>Same brain, same parameters, all three bodies. No retraining between morphologies.</p>
 </div>
 </div>
 </section>
@@ -395,11 +351,10 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 <!-- STATUS AND ROADMAP -->
 <section>
 <div class="reveal">
-<div class="section-label">07 — Status and roadmap</div>
+<div class="section-label">06 — Status and roadmap</div>
 <div class="prose">
-<p>20n is currently in research and prototype phase. It is a solo operation, founded and built entirely by Nick0 (Nicolas Philippe). Based in Paris. One hundred percent bootstrapped. No external funding has been raised yet.</p>
-<p>The project is already attracting serious attention. Nick0 is in active conversations with <strong>J12 Ventures</strong>, <strong>Plug and Play</strong>, and <strong>professors at MIT</strong> who have expressed interest in the architecture and its theoretical foundations. The 20n concept won <strong>first place at Innov Hack Paris 2026</strong> among 150 participants.</p>
-<p>The codebase is not yet open source. This is a deliberate choice during the early research phase, but open sourcing parts of the system is planned for the future.</p>
+<p>Solo operation, founded and built by Nick0 (Nicolas Philippe). Paris. 100% bootstrapped, no external funding yet.</p>
+<p>Already in active conversations with <strong>J12 Ventures</strong>, <strong>Plug and Play</strong>, and <strong>MIT professors</strong>. Won <strong>first place at Innov Hack Paris 2026</strong> (150 participants). Codebase is private for now, with partial open sourcing planned.</p>
 </div>
 
 <div class="roadmap">
@@ -407,65 +362,37 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 <div class="roadmap-phase current">Now</div>
 <div class="roadmap-content">
 <h4>Core architecture validation</h4>
-<p>Proving the brain works across multiple morphologies in simulation. Three bodies validated so far. Improving Humanoid performance.</p>
+<p>Three bodies validated in simulation. Improving Humanoid performance.</p>
 </div>
 </div>
 <div class="roadmap-item">
 <div class="roadmap-phase">Next</div>
 <div class="roadmap-content">
 <h4>More body types</h4>
-<p>Expanding to additional morphologies. Swimming bodies, snake like bodies, manipulators, anything with joints and actuators.</p>
+<p>Swimming bodies, snake morphologies, manipulators. Anything with joints and actuators.</p>
 </div>
 </div>
 <div class="roadmap-item">
 <div class="roadmap-phase">Q3 2026</div>
 <div class="roadmap-content">
 <h4>Sim to real transfer</h4>
-<p>Bridging the gap between simulated physics and real world physics. The Active Inference framework is inherently robust to model mismatch, which makes this transition more natural than with RL based approaches.</p>
+<p>Active Inference is inherently robust to model mismatch, which makes sim to real more natural than RL based approaches.</p>
 </div>
 </div>
 <div class="roadmap-item">
 <div class="roadmap-phase">Q4 2026</div>
 <div class="roadmap-content">
 <h4>Real hardware demo</h4>
-<p>Running the 20n brain on a physical robot body. The first proof that the architecture works outside of simulation.</p>
+<p>First proof the architecture works outside simulation.</p>
 </div>
 </div>
 <div class="roadmap-item">
 <div class="roadmap-phase">2027</div>
 <div class="roadmap-content">
 <h4>Fundraise and commercialize</h4>
-<p>Raising a seed round to scale the team. Licensing the brain to robot manufacturers. Building partnerships with hardware companies.</p>
+<p>Seed round, team scaling, licensing the brain to robot manufacturers.</p>
 </div>
 </div>
-</div>
-</div>
-</section>
-
-<hr class="section-divider">
-
-<!-- TECHNICAL STACK -->
-<section>
-<div class="reveal">
-<div class="section-label">08 — Technical stack</div>
-<div class="prose">
-<p>The entire 20n system is built with a deliberately minimal stack. No unnecessary abstractions, no frameworks for the sake of frameworks. Every dependency earns its place.</p>
-</div>
-<div class="stack-tags">
-<span class="stack-tag">Python</span>
-<span class="stack-tag">PyTorch</span>
-<span class="stack-tag">MuJoCo</span>
-<span class="stack-tag">NumPy</span>
-<span class="stack-tag">Active Inference</span>
-<span class="stack-tag">CfC / Liquid Neural Networks</span>
-<span class="stack-tag">LTC Networks</span>
-<span class="stack-tag">Free Energy Principle</span>
-</div>
-<div class="prose" style="margin-top:24px">
-<p><strong>Python</strong> is the primary language. All core logic, the inference loops, the liquid network implementations, the memory system, everything runs in Python.</p>
-<p><strong>PyTorch</strong> handles the neural network components, specifically the CfC and LTC liquid networks used in the cerebellum and cortex layers. PyTorch is used for its dynamic computation graph, which is essential for continuous time models that change structure based on input.</p>
-<p><strong>MuJoCo</strong> (Multi Joint dynamics with Contact) is the physics simulator. Developed originally by Emo Todorov and now maintained by DeepMind, MuJoCo is the gold standard for simulating articulated bodies with contact physics. Every benchmark in this project runs inside MuJoCo.</p>
-<p><strong>NumPy</strong> handles the numerical backbone. The PD controllers in the spinal cord layer, the free energy computations, the cosine similarity in the hippocampus, all of this is NumPy.</p>
 </div>
 </div>
 </section>
@@ -475,7 +402,7 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. There
 <!-- LINKS -->
 <section>
 <div class="reveal">
-<div class="section-label">09 — Links</div>
+<div class="section-label">07 — Links</div>
 <div class="links-row">
 <a href="https://20n.dev" target="_blank" class="link-btn primary">20n.dev</a>
 <a href="https://github.com/Nick0-ai/20n" target="_blank" class="link-btn secondary">GitHub</a>
