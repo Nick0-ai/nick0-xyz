@@ -1,479 +1,817 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick0 — Builder, 19, Paris</title>
-    <meta name="description" content="19-year-old self-taught builder from Paris. Founded 20n Research Laboratory — building the universal brain for robots. Active Inference, biomimetic AI, zero training.">
-    <meta property="og:title" content="Nick0 — Builder, 19, Paris">
-    <meta property="og:description" content="Self-taught. Building the universal brain for robots.">
-    <meta name="twitter:card" content="summary">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nick0</title>
+<meta name="description" content="Ask me anything.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
     --bg: #fff;
-    --text: #111;
-    --text-dim: #444;
-    --text-faint: #999;
-    --border: #111;
-    --border-light: #e0e0e0;
-    --accent-bg: #f6f6f6;
+    --text: #0a0a0a;
+    --dim: #6b6b6b;
+    --faint: #a0a0a0;
+    --border: #e8e8e8;
+    --card: #fafafa;
+    --accent: #0a0a0a;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html, body { height: 100%; }
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Courier New', 'Courier', monospace;
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
 }
 
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #ccc; border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: #999; }
+/* === LAYOUT === */
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#feed {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 24px 24px;
+    scroll-behavior: smooth;
+}
+#feed::-webkit-scrollbar { width: 6px; }
+#feed::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
 
-.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
-
-.reveal {
-    opacity: 0; transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+/* === WELCOME === */
+#welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    text-align: center;
+    padding: 40px 24px 120px;
+    transition: opacity 0.4s ease;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* === NAV === */
-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-light);
-    padding: 12px 32px;
-    display: flex; align-items: center; justify-content: space-between;
-}
-.nav-name {
-    font-size: 15px; font-weight: bold;
-    text-decoration: none; color: var(--text);
-    letter-spacing: 0.04em;
-}
-.nav-links { display: flex; gap: 28px; }
-.nav-links a {
-    font-size: 12px; color: var(--text-faint); text-decoration: none;
-    text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--text); }
-
-/* === HERO === */
-.hero {
-    padding: 160px 32px 80px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-.hero-label {
+#welcome.hidden { opacity: 0; pointer-events: none; position: absolute; }
+.welcome-label {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--text-faint);
+    color: var(--faint);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     margin-bottom: 20px;
-    display: block;
 }
-.hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: bold;
-    line-height: 1.2;
+.welcome-title {
+    font-size: clamp(26px, 4.5vw, 42px);
+    font-weight: 300;
+    line-height: 1.3;
     letter-spacing: -0.02em;
-    margin-bottom: 24px;
+    color: var(--text);
+    max-width: 560px;
 }
-.hero-sub {
-    font-size: clamp(15px, 1.8vw, 17px);
-    color: var(--text-dim);
-    max-width: 600px;
-    line-height: 1.8;
+.welcome-title strong { font-weight: 600; }
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--text);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 1s steps(1) infinite;
 }
+@keyframes blink { 50% { opacity: 0; } }
 
-/* === SEPARATOR === */
-.sep {
-    width: 100%; max-width: 120px;
+/* === RESPONSES === */
+.response-block {
+    max-width: 720px;
     margin: 0 auto;
-    border: none; height: 1px;
-    background: var(--border-light);
+    padding: 48px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s ease forwards;
 }
+.response-block + .response-block { border-top: 1px solid var(--border); }
+@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
-/* === SECTIONS === */
-.section { padding: 80px 32px; }
-.section--alt { background: var(--accent-bg); }
-.section-num {
-    font-size: 11px;
-    color: var(--text-faint);
+/* user query echo */
+.user-query {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--faint);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 12px;
-    display: block;
-}
-.section-title {
-    font-size: clamp(24px, 3.5vw, 38px);
-    font-weight: bold;
-    line-height: 1.25;
-    margin-bottom: 24px;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
 }
 
-/* === STATS ROW === */
-.stats {
-    display: flex; gap: 48px; flex-wrap: wrap;
-    margin: 32px 0;
+/* typing dots */
+.typing {
+    display: flex; gap: 6px; padding: 24px 0;
+    max-width: 720px; margin: 0 auto;
+}
+.typing span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--faint);
+    animation: typingDot 1.2s ease infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.15s; }
+.typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingDot { 0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+
+/* === RICH UI COMPONENTS === */
+
+/* -- Bio card -- */
+.bio-hero { margin-bottom: 32px; }
+.bio-hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+}
+.bio-hero .tagline {
+    font-size: 17px;
+    color: var(--dim);
+    line-height: 1.7;
+    max-width: 520px;
+}
+.bio-stats {
+    display: flex; gap: 32px; flex-wrap: wrap;
     padding: 24px 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 24px 0;
 }
-.stat-val {
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: bold;
+.bio-stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: -0.02em;
 }
-.stat-label {
+.bio-stat-label {
     font-size: 11px;
-    color: var(--text-faint);
+    color: var(--faint);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 6px;
 }
+.bio-text { font-size: 15px; color: var(--dim); line-height: 1.8; }
+.bio-text strong { color: var(--text); font-weight: 600; }
 
-/* === BIO TEXT === */
-.bio p {
-    font-size: 16px; line-height: 1.85;
-    color: var(--text-dim); margin-bottom: 20px;
+/* -- Project card -- */
+.proj-card {
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
 }
-.bio p:last-child { margin-bottom: 0; }
-.bio strong { color: var(--text); }
-.bio .quote {
-    font-size: 18px;
-    color: var(--text);
-    border-left: 3px solid var(--text);
-    padding-left: 24px;
-    margin: 32px 0;
-    line-height: 1.7;
-}
-
-/* === PROJECT ROWS === */
-.projects { margin: 0; }
-.project {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border-light);
+.proj-card:hover { border-color: #ccc; }
+.proj-header {
+    padding: 28px;
+    display: flex;
     align-items: start;
+    justify-content: space-between;
+    gap: 20px;
 }
-.project:first-child { border-top: 1px solid var(--border-light); }
-.project-name {
-    font-size: clamp(20px, 3vw, 28px);
-    font-weight: bold;
+.proj-name {
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 1.2;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
 }
-.project-tag {
+.proj-tag {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--text-faint);
+    color: var(--faint);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding-top: 4px;
 }
-.project-desc {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.75;
+.proj-body {
+    padding: 0 28px 28px;
 }
-.project-link {
+.proj-desc { font-size: 14px; color: var(--dim); line-height: 1.75; }
+.proj-metrics {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+.proj-metric {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+}
+.proj-metric strong { font-size: 18px; display: block; margin-bottom: 2px; color: var(--text); }
+.proj-metric span { color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10px; }
+.proj-link {
     display: inline-block;
-    margin-top: 12px;
-    font-size: 13px;
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
     color: var(--text);
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
     letter-spacing: 0.04em;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
 }
-.project-link:hover { text-decoration: underline; }
+.proj-link:hover { background: var(--text); color: var(--bg); }
 
-/* === TIMELINE === */
-.timeline { margin: 32px 0; }
+/* -- Stack grid -- */
+.stack-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    color: var(--dim);
+    transition: all 0.15s;
+}
+.stack-tag:hover { border-color: var(--text); color: var(--text); }
+.stack-section { margin-bottom: 24px; }
+.stack-label {
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+}
+
+/* -- Timeline -- */
 .tl-item {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 24px;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
     padding: 20px 0;
-    border-bottom: 1px solid var(--border-light);
-    align-items: start;
+    border-bottom: 1px solid var(--border);
 }
-.tl-item:first-child { border-top: 1px solid var(--border-light); }
+.tl-item:first-child { border-top: 1px solid var(--border); }
 .tl-year {
-    font-size: 13px; font-weight: bold;
-    color: var(--text-faint);
-    letter-spacing: 0.04em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--faint);
+    padding-top: 2px;
 }
 .tl-year.now {
     background: var(--text); color: var(--bg);
-    padding: 2px 10px; text-align: center;
-    font-size: 11px; text-transform: uppercase;
-    letter-spacing: 0.08em;
+    padding: 3px 0; text-align: center;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
-.tl-text { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+.tl-text { font-size: 14px; color: var(--dim); line-height: 1.7; }
 .tl-text strong { color: var(--text); }
 
-/* === STACK === */
-.stack-grid {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin: 24px 0;
+/* -- Contact card -- */
+.contact-card { text-align: center; padding: 40px 0; }
+.contact-card h2 {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
 }
-.stack-tag {
-    font-size: 12px;
-    padding: 6px 14px;
-    border: 1px solid var(--border-light);
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
+.contact-card .email-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--text); color: var(--bg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+}
+.contact-card .email-btn:hover { opacity: 0.8; }
+.contact-links {
+    margin-top: 24px;
+    display: flex; gap: 24px; justify-content: center;
+}
+.contact-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--faint);
+    text-decoration: none; transition: color 0.15s;
+}
+.contact-links a:hover { color: var(--text); }
+
+/* -- Section heading in responses -- */
+.r-heading {
+    font-size: 13px;
+    color: var(--faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+}
+.r-title {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+.r-text { font-size: 15px; color: var(--dim); line-height: 1.8; margin-bottom: 16px; }
+.r-text:last-child { margin-bottom: 0; }
+.r-quote {
+    font-size: 17px; color: var(--text); line-height: 1.7;
+    border-left: 3px solid var(--text);
+    padding-left: 20px;
+    margin: 24px 0;
+    font-weight: 400;
 }
 
-/* === CTA === */
-.cta {
-    padding: 100px 32px;
-    text-align: center;
+/* === BOTTOM BAR === */
+#bar {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    padding: 12px 24px 24px;
+    flex-shrink: 0;
+}
+#suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+    min-height: 34px;
+}
+.chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--dim);
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+.chip:hover { border-color: var(--text); color: var(--text); }
+#input-row {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+#input {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+}
+#input:focus { border-color: #bbb; }
+#input::placeholder { color: var(--faint); }
+#send {
+    width: 44px; height: 44px;
+    border: none;
+    border-radius: 50%;
     background: var(--text);
     color: var(--bg);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
 }
-.cta h2 {
-    font-size: clamp(28px, 4.5vw, 44px);
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-}
-.cta p {
-    font-size: 16px;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 40px;
-    max-width: 480px;
-    margin-left: auto; margin-right: auto;
-}
-.cta-email {
-    display: inline-block; padding: 14px 40px;
-    border: 2px solid rgba(255,255,255,0.3);
-    color: var(--bg);
-    font-family: 'Courier New', monospace;
-    font-size: 15px; font-weight: bold;
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: all 0.2s;
-}
-.cta-email:hover { background: var(--bg); color: var(--text); border-color: var(--bg); }
-.cta-links { margin-top: 40px; font-size: 13px; }
-.cta-links a {
-    color: rgba(255,255,255,0.4); text-decoration: none;
-    margin: 0 16px; transition: color 0.2s;
-}
-.cta-links a:hover { color: var(--bg); }
-
-footer {
-    padding: 24px 32px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-faint);
-    border-top: 1px solid var(--border-light);
-}
+#send:hover { opacity: 0.8; }
+#send svg { width: 18px; height: 18px; }
 
 /* === RESPONSIVE === */
-@media (max-width: 768px) {
-    nav { padding: 10px 20px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 11px; }
-    .hero { padding: 120px 20px 56px; }
-    .section { padding: 56px 20px; }
-    .container { padding: 0 20px; }
-    .stats { gap: 28px; }
-    .stat-val { font-size: 28px; }
-    .project { grid-template-columns: 1fr; gap: 16px; }
-    .tl-item { grid-template-columns: 80px 1fr; gap: 16px; }
-    .cta { padding: 64px 20px; }
+@media (max-width: 640px) {
+    #feed { padding: 0 16px 16px; }
+    #bar { padding: 10px 16px 20px; }
+    #suggestions { gap: 6px; }
+    .chip { font-size: 12px; padding: 6px 12px; }
+    .bio-stats { gap: 20px; }
+    .proj-header { flex-direction: column; gap: 8px; }
+    .proj-metrics { gap: 16px; }
+    .tl-item { grid-template-columns: 60px 1fr; gap: 12px; }
+    .response-block { padding: 32px 0; }
+    .contact-links { flex-wrap: wrap; }
 }
-a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
-    </style>
+
+@media (max-width: 380px) {
+    .chip { font-size: 11px; padding: 5px 10px; }
+    #input { font-size: 14px; padding: 10px 16px; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-    <a href="/" class="nav-name">Nick0</a>
-    <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#path">Path</a>
-        <a href="#stack">Stack</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-    <span class="hero-label reveal">Paris, France — 19 years old</span>
-    <h1 class="reveal">I build things that shouldn't work yet.</h1>
-    <p class="hero-sub reveal">Self-taught since 16. No formal CS degree. Currently building a universal artificial brain for robots at 20n Research Laboratory. The kind of work that attracts MIT professors and top-tier VCs.</p>
-</section>
-
-<hr class="sep">
-
-<!-- 01 — ABOUT -->
-<section class="section" id="about">
-    <div class="container">
-        <span class="section-num reveal">01 — About</span>
-        <h2 class="section-title reveal">19. Self-taught. Already shipping research.</h2>
-        <div class="bio">
-            <p class="reveal">I dropped the traditional path at 16 and started building. Not toys — real systems. AI agents that control entire operating systems. Cloud orchestrators that optimize GPU spend. A biomimetic brain architecture grounded in theoretical neuroscience.</p>
-            <p class="reveal">I don't have a degree from MIT. But MIT professors are reading my work.</p>
-            <p class="quote reveal">I learn by building things that are too hard for me, then figuring it out anyway.</p>
+<div id="app">
+    <div id="feed">
+        <div id="welcome">
+            <div class="welcome-label">nick0.xyz</div>
+            <div class="welcome-title" id="typewriter"></div>
         </div>
-        <div class="stats reveal">
-            <div><div class="stat-val">7+</div><div class="stat-label">Projects shipped</div></div>
-            <div><div class="stat-val">3 yrs</div><div class="stat-label">Self-taught</div></div>
-            <div><div class="stat-val">19</div><div class="stat-label">Age</div></div>
-            <div><div class="stat-val">Paris</div><div class="stat-label">Based in</div></div>
+        <div id="responses"></div>
+    </div>
+    <div id="bar">
+        <div id="suggestions"></div>
+        <div id="input-row">
+            <input type="text" id="input" placeholder="Ask me anything..." autocomplete="off">
+            <button id="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
         </div>
     </div>
-</section>
+</div>
 
-<hr class="sep">
+<script>
+// ===== DATA =====
+const RESPONSES = {
 
-<!-- 02 — WORK -->
-<section class="section" id="work">
-    <div class="container">
-        <span class="section-num reveal">02 — Work</span>
-        <h2 class="section-title reveal">Selected projects.</h2>
-        <div class="projects">
+who: {
+    query: "Who is Nick0?",
+    html: `
+    <div class="bio-hero">
+        <h1>Nick0</h1>
+        <p class="tagline">19 years old. Self-taught since 16. Based in Paris. Building the universal brain for robots at 20n Research Laboratory.</p>
+    </div>
+    <div class="bio-stats">
+        <div><div class="bio-stat-val">19</div><div class="bio-stat-label">Age</div></div>
+        <div><div class="bio-stat-val">3 yrs</div><div class="bio-stat-label">Self-taught</div></div>
+        <div><div class="bio-stat-val">7+</div><div class="bio-stat-label">Projects</div></div>
+        <div><div class="bio-stat-val">Paris</div><div class="bio-stat-label">Based in</div></div>
+    </div>
+    <p class="bio-text">No formal CS education. Taught himself Python at 16, then JavaScript, React, ML, reinforcement learning, and computational neuroscience. <strong>Builds things that shouldn't work yet — and ships them.</strong></p>
+    <p class="bio-text">Currently running 20n Research Laboratory, where the work is attracting attention from <strong>J12 Ventures, Plug and Play, and MIT professors</strong>.</p>
+    `,
+    next: ["Tell me about 20n", "What's his stack?", "Show me all projects"]
+},
 
-            <div class="project reveal">
-                <div>
-                    <div class="project-name">20n</div>
-                    <div class="project-tag">Founder — 2025–present</div>
-                </div>
-                <div>
-                    <div class="project-desc">A universal artificial brain for humanoid robots. Biomimetic architecture based on Active Inference (Friston, 2010). Runs at 1000 Hz on a CPU. No training, no cloud, 20 watts. Same brain controls Walker2d, Ant, and Humanoid with zero retraining.</div>
-                    <a href="https://20n.dev" class="project-link" target="_blank" rel="noopener">20n.dev &rarr;</a>
-                </div>
-            </div>
+"20n": {
+    query: "What is 20n?",
+    html: `
+    <div class="r-heading">Current focus</div>
+    <div class="r-title">20n Research Laboratory</div>
+    <p class="r-text">A universal artificial brain for humanoid robots. One architecture, grounded in theoretical neuroscience, that can control any robot body. No training, no cloud, no GPU. 20 watts.</p>
+    <div class="proj-metrics" style="border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 24px;">
+        <div class="proj-metric"><strong>20W</strong><span>Power</span></div>
+        <div class="proj-metric"><strong>0</strong><span>Training steps</span></div>
+        <div class="proj-metric"><strong>1kHz</strong><span>Inference</span></div>
+        <div class="proj-metric"><strong>3</strong><span>Bodies</span></div>
+    </div>
+    <p class="r-text">The architecture is biomimetic — modeled after the biological brain. Spinal cord for reflexes, cerebellum for body model, cortex for world model, hippocampus for memory, basal ganglia for action selection. All unified by Active Inference (Friston, 2010).</p>
+    <div class="r-quote">Drop it into a humanoid and it discovers how to balance. A quadruped and it learns to move. No retraining. The same brain.</div>
+    <p class="r-text">The same architecture that controlled a Mac screen with Friday now controls physical robot bodies. From pixels to physics.</p>
+    <a href="https://20n.dev" class="proj-link" target="_blank" rel="noopener">Visit 20n.dev &rarr;</a>
+    `,
+    next: ["How does it compare to others?", "Show me results", "Who is Nick0?"]
+},
 
-            <div class="project reveal">
-                <div>
-                    <div class="project-name">Friday</div>
-                    <div class="project-tag">Founder — 2024–2025</div>
-                </div>
-                <div>
-                    <div class="project-desc">AI agent that controlled any Mac interface autonomously — no APIs, no cloud, just vision and reasoning. 100% on-device. Proved a brain could understand and act on a digital environment in real time. The proof-of-concept that led to 20n.</div>
-                    <a href="https://usefriday.app" class="project-link" target="_blank" rel="noopener">usefriday.app &rarr;</a>
-                </div>
-            </div>
-
-            <div class="project reveal">
-                <div>
-                    <div class="project-name">NERVE</div>
-                    <div class="project-tag">Builder — 2025</div>
-                </div>
-                <div>
-                    <div class="project-desc">Cloud FinOps/GreenOps orchestrator. Full-stack platform that monitors GPU spend, optimizes workloads, and reduces carbon footprint. Built the backend, frontend (Wattless dashboard in React + TypeScript), and autonomous training agent (Eve).</div>
-                    <a href="https://github.com/Nick0-ai/nerve-backend" class="project-link" target="_blank" rel="noopener">GitHub &rarr;</a>
-                </div>
-            </div>
-
-            <div class="project reveal">
-                <div>
-                    <div class="project-name">Eve</div>
-                    <div class="project-tag">Builder — 2025</div>
-                </div>
-                <div>
-                    <div class="project-desc">AI that creates AI models from a single conversation. Generates the code, picks the optimal GPU, deploys, trains — fully autonomous. Powered by NERVE.</div>
-                    <a href="https://github.com/Nick0-ai/eve" class="project-link" target="_blank" rel="noopener">GitHub &rarr;</a>
-                </div>
-            </div>
-
-            <div class="project reveal">
-                <div>
-                    <div class="project-name">PAACT</div>
-                    <div class="project-tag">Builder — 2025</div>
-                </div>
-                <div>
-                    <div class="project-desc">Commitment contracts app. Put money on your goals — if you fail, you pay. Behavioral economics applied to personal accountability.</div>
-                    <a href="https://github.com/Nick0-ai/paact-landing" class="project-link" target="_blank" rel="noopener">GitHub &rarr;</a>
-                </div>
-            </div>
-
+compare: {
+    query: "How does 20n compare?",
+    html: `
+    <div class="r-title">Traditional AI vs. 20n</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); margin: 20px 0;">
+        <div style="padding: 24px; border-right: 1px solid var(--border);">
+            <div class="r-heading" style="margin-bottom: 12px;">Industry standard</div>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&times; Millions of GPU hours</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&times; One model per task</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&times; Brittle outside training data</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 0;">&times; Hundreds of watts</p>
+        </div>
+        <div style="padding: 24px;">
+            <div class="r-heading" style="margin-bottom: 12px;">20n / Active Inference</div>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&rarr; Real-time, no pre-training</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&rarr; One brain, all skills</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 8px;">&rarr; Adapts on the fly</p>
+            <p class="r-text" style="font-size: 13px; margin-bottom: 0;">&rarr; 20 watts on CPU</p>
         </div>
     </div>
-</section>
+    <div class="r-quote">$20 billion poured into the traditional approach. Zero general-purpose robots shipping at scale.</div>
+    `,
+    next: ["Show me results", "Tell me about 20n", "Contact"]
+},
 
-<hr class="sep">
+results: {
+    query: "Results",
+    html: `
+    <div class="r-title">Same brain. Different bodies. Zero tuning.</div>
+    <p class="r-text">Validated on multiple robot morphologies with zero retraining. One set of parameters. Three bodies.</p>
+    <table style="width:100%; border-collapse:collapse; font-size:14px; margin:24px 0; border:1px solid var(--border);">
+        <thead><tr style="background:var(--text); color:var(--bg);">
+            <th style="padding:12px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;">Robot</th>
+            <th style="padding:12px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;">Joints</th>
+            <th style="padding:12px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;">Max Score</th>
+            <th style="padding:12px 16px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;">Status</th>
+        </tr></thead>
+        <tbody>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;"><strong>Walker2d</strong></td><td style="padding:12px 16px;">6</td><td style="padding:12px 16px;"><strong style="background:var(--text);color:var(--bg);padding:2px 8px;">1000</strong></td><td style="padding:12px 16px; color:var(--dim);">Near-perfect</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;"><strong>Ant</strong></td><td style="padding:12px 16px;">8</td><td style="padding:12px 16px;"><strong style="background:var(--text);color:var(--bg);padding:2px 8px;">1000</strong></td><td style="padding:12px 16px; color:var(--dim);">Solved</td></tr>
+            <tr><td style="padding:12px 16px;"><strong>Humanoid</strong></td><td style="padding:12px 16px;">17</td><td style="padding:12px 16px;"><strong>474</strong></td><td style="padding:12px 16px; color:var(--dim);">Hardest. Improving.</td></tr>
+        </tbody>
+    </table>
+    <p class="r-text">No training phase. No GPU cluster. The brain runs at 1000 Hz on a laptop CPU and figures out each body from scratch.</p>
+    `,
+    next: ["Tell me about 20n", "Show me all projects", "Contact"]
+},
 
-<!-- 03 — PATH -->
-<section class="section section--alt" id="path">
-    <div class="container">
-        <span class="section-num reveal">03 — Path</span>
-        <h2 class="section-title reveal">No school. Just shipping.</h2>
-        <div class="timeline reveal">
-            <div class="tl-item"><div class="tl-year now">Now</div><div class="tl-text"><strong>20n Research Laboratory</strong> — Building the universal brain for robots. Active Inference, biomimetic architecture, real results on humanoid control. Attracting attention from J12, Plug and Play, MIT.</div></div>
-            <div class="tl-item"><div class="tl-year">2025</div><div class="tl-text"><strong>NERVE + Eve</strong> — Built a full cloud FinOps platform and an autonomous AI training agent. Full-stack, from scratch.</div></div>
-            <div class="tl-item"><div class="tl-year">2024</div><div class="tl-text"><strong>Friday V1 & V2</strong> — Shipped a local AI agent that could control macOS autonomously. Vision + reasoning, zero cloud. Hundreds of users.</div></div>
-            <div class="tl-item"><div class="tl-year">2023</div><div class="tl-text"><strong>Started building</strong> — First lines of code at 16. Taught myself Python, JS, React, then dove into ML, reinforcement learning, computational neuroscience.</div></div>
+projects: {
+    query: "All projects",
+    html: `
+    <div class="r-title">Selected work</div>
+    <div class="proj-card">
+        <div class="proj-header"><div class="proj-name">20n</div><div class="proj-tag">2025 &mdash; present</div></div>
+        <div class="proj-body">
+            <p class="proj-desc">Universal artificial brain for robots. Biomimetic, Active Inference, runs at 1kHz on CPU. Same brain, any body, zero retraining.</p>
+            <a href="https://20n.dev" class="proj-link" target="_blank" rel="noopener">20n.dev &rarr;</a>
         </div>
     </div>
-</section>
+    <div class="proj-card">
+        <div class="proj-header"><div class="proj-name">Friday</div><div class="proj-tag">2024 &mdash; 2025</div></div>
+        <div class="proj-body">
+            <p class="proj-desc">AI agent that controlled any Mac interface autonomously. No APIs, no cloud — just vision and reasoning. 100% on-device. The proof that led to 20n.</p>
+            <a href="https://usefriday.app" class="proj-link" target="_blank" rel="noopener">usefriday.app &rarr;</a>
+        </div>
+    </div>
+    <div class="proj-card">
+        <div class="proj-header"><div class="proj-name">NERVE</div><div class="proj-tag">2025</div></div>
+        <div class="proj-body">
+            <p class="proj-desc">Cloud FinOps/GreenOps orchestrator. Full-stack platform — backend, React dashboard (Wattless), and Eve, an autonomous AI training agent.</p>
+            <a href="https://github.com/Nick0-ai/nerve-backend" class="proj-link" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+    </div>
+    <div class="proj-card">
+        <div class="proj-header"><div class="proj-name">Eve</div><div class="proj-tag">2025</div></div>
+        <div class="proj-body">
+            <p class="proj-desc">AI that creates AI. Give it a conversation, it generates code, picks the optimal GPU, deploys, and trains — fully autonomous.</p>
+            <a href="https://github.com/Nick0-ai/eve" class="proj-link" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+    </div>
+    <div class="proj-card">
+        <div class="proj-header"><div class="proj-name">PAACT</div><div class="proj-tag">2025</div></div>
+        <div class="proj-body">
+            <p class="proj-desc">Commitment contracts. Put money on your goals — fail and you pay. Behavioral economics for personal accountability.</p>
+            <a href="https://github.com/Nick0-ai/paact-landing" class="proj-link" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+    </div>
+    `,
+    next: ["Tell me about 20n", "Who is Nick0?", "Contact"]
+},
 
-<hr class="sep">
+friday: {
+    query: "What was Friday?",
+    html: `
+    <div class="r-heading">Phase 1 &mdash; 2024</div>
+    <div class="r-title">Friday</div>
+    <p class="r-text">An AI agent that could control any Mac interface autonomously. No APIs, no cloud — just vision and reasoning. It watched the screen, understood what it saw, and acted.</p>
+    <p class="r-text">100% on-device. Zero data sent anywhere. The user said what they wanted, and Friday figured out how to do it — clicking, typing, navigating, organizing.</p>
+    <div class="r-quote">The goal wasn't file organization. It was proving that a brain could understand and act on a digital environment in real time.</div>
+    <p class="r-text">That proof unlocked a bigger question: <strong>if the same architecture can control a screen, can it control a physical body?</strong> The answer became 20n.</p>
+    <a href="https://usefriday.app" class="proj-link" target="_blank" rel="noopener">usefriday.app &rarr;</a>
+    `,
+    next: ["Tell me about 20n", "Show me all projects", "Who is Nick0?"]
+},
 
-<!-- 04 — STACK -->
-<section class="section" id="stack">
-    <div class="container">
-        <span class="section-num reveal">04 — Stack</span>
-        <h2 class="section-title reveal">Tools I build with.</h2>
-        <div class="stack-grid reveal">
+stack: {
+    query: "Tech stack",
+    html: `
+    <div class="r-title">Tools I build with.</div>
+    <div class="stack-section">
+        <div class="stack-label">Languages</div>
+        <div class="stack-grid">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">JavaScript</span>
             <span class="stack-tag">TypeScript</span>
-            <span class="stack-tag">React</span>
-            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">C</span>
+        </div>
+    </div>
+    <div class="stack-section">
+        <div class="stack-label">AI / Robotics</div>
+        <div class="stack-grid">
             <span class="stack-tag">MuJoCo</span>
             <span class="stack-tag">PyTorch</span>
             <span class="stack-tag">NumPy</span>
             <span class="stack-tag">Active Inference</span>
             <span class="stack-tag">Reinforcement Learning</span>
             <span class="stack-tag">Computational Neuroscience</span>
-            <span class="stack-tag">Git</span>
-            <span class="stack-tag">Linux</span>
-            <span class="stack-tag">Docker</span>
-            <span class="stack-tag">Vercel</span>
-            <span class="stack-tag">Figma</span>
         </div>
     </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="contact">
-    <h2 class="reveal">Let's talk.</h2>
-    <p class="reveal">Building something ambitious? Interested in 20n? Just want to say hi?</p>
-    <a href="mailto:contact@20n.dev" class="cta-email reveal">contact@20n.dev</a>
-    <div class="cta-links reveal">
-        <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
-        <a href="https://usefriday.app" target="_blank" rel="noopener">Friday</a>
+    <div class="stack-section">
+        <div class="stack-label">Web / Infra</div>
+        <div class="stack-grid">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">Linux</span>
+            <span class="stack-tag">Git</span>
+            <span class="stack-tag">Vercel</span>
+        </div>
     </div>
-</section>
+    <div class="stack-section">
+        <div class="stack-label">Design</div>
+        <div class="stack-grid">
+            <span class="stack-tag">Figma</span>
+            <span class="stack-tag">CSS / HTML</span>
+        </div>
+    </div>
+    `,
+    next: ["Show me all projects", "Who is Nick0?", "Contact"]
+},
 
-<footer>&copy; 2026 Nick0 — Paris</footer>
+timeline: {
+    query: "Timeline",
+    html: `
+    <div class="r-title">No school. Just shipping.</div>
+    <div class="tl-item"><div class="tl-year now">Now</div><div class="tl-text"><strong>20n Research Laboratory</strong> — Building the universal brain for robots. Active Inference, biomimetic architecture. Attracting J12, Plug and Play, MIT professors.</div></div>
+    <div class="tl-item"><div class="tl-year">2025</div><div class="tl-text"><strong>NERVE + Eve</strong> — Full cloud FinOps platform and autonomous AI training agent. Full-stack, from scratch.</div></div>
+    <div class="tl-item"><div class="tl-year">2024</div><div class="tl-text"><strong>Friday V1 & V2</strong> — Local AI agent controlling macOS. Vision + reasoning, zero cloud. Hundreds of users.</div></div>
+    <div class="tl-item"><div class="tl-year">2023</div><div class="tl-text"><strong>Started building</strong> — First code at 16. Python, JS, React, then ML, RL, computational neuroscience.</div></div>
+    `,
+    next: ["Tell me about 20n", "What's his stack?", "Contact"]
+},
 
-<script>
-const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+contact: {
+    query: "Contact",
+    html: `
+    <div class="contact-card">
+        <h2>Let's talk.</h2>
+        <p class="r-text" style="text-align:center; margin-bottom:28px;">Building something ambitious? Interested in 20n? Investor? Researcher?</p>
+        <a href="mailto:contact@20n.dev" class="email-btn">contact@20n.dev</a>
+        <div class="contact-links">
+            <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
+            <a href="https://usefriday.app" target="_blank" rel="noopener">Friday</a>
+        </div>
+    </div>
+    `,
+    next: ["Who is Nick0?", "Tell me about 20n", "Show me all projects"]
+}
+
+};
+
+// ===== KEYWORD MATCHING =====
+const MATCHERS = [
+    { keys: ["who", "nick", "about", "qui", "yourself", "bio", "him", "toi", "present"], id: "who" },
+    { keys: ["20n", "brain", "robot", "cerveau", "lab", "research", "laboratory"], id: "20n" },
+    { keys: ["compare", "vs", "traditional", "different", "paradigm", "versus"], id: "compare" },
+    { keys: ["result", "score", "benchmark", "walker", "ant", "humanoid", "proof", "preuve"], id: "results" },
+    { keys: ["project", "work", "portfolio", "built", "ship", "projets", "tous"], id: "projects" },
+    { keys: ["friday", "mac", "agent", "screen"], id: "friday" },
+    { keys: ["stack", "tech", "tool", "language", "skill", "compet"], id: "stack" },
+    { keys: ["timeline", "path", "history", "parcours", "journey", "story", "histoire"], id: "timeline" },
+    { keys: ["contact", "email", "mail", "reach", "talk", "hire", "parler"], id: "contact" },
+    { keys: ["nerve", "eve", "finops", "greenops", "wattless", "gpu"], id: "projects" },
+    { keys: ["paact", "pact", "commitment"], id: "projects" },
+];
+
+function matchQuery(q) {
+    const lower = q.toLowerCase();
+    for (const m of MATCHERS) {
+        for (const k of m.keys) {
+            if (lower.includes(k)) return m.id;
+        }
+    }
+    return "who"; // default
+}
+
+// ===== SUGGESTION CHIP MAPPING =====
+const CHIP_MAP = {
+    "Who is Nick0?": "who",
+    "Tell me about 20n": "20n",
+    "How does it compare to others?": "compare",
+    "Show me results": "results",
+    "Show me all projects": "projects",
+    "What was Friday?": "friday",
+    "What's his stack?": "stack",
+    "His timeline": "timeline",
+    "Contact": "contact",
+};
+
+// ===== DOM =====
+const feed = document.getElementById("feed");
+const responses = document.getElementById("responses");
+const welcome = document.getElementById("welcome");
+const typewriterEl = document.getElementById("typewriter");
+const suggestionsEl = document.getElementById("suggestions");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("send");
+
+let answered = false;
+let isTyping = false;
+
+// ===== TYPEWRITER =====
+function typewrite(el, html, speed = 40) {
+    return new Promise(resolve => {
+        // Parse the HTML to extract text and tags
+        const text = "What do you want to know about Nick0?";
+        let i = 0;
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        el.innerHTML = "";
+        el.appendChild(cursor);
+
+        function tick() {
+            if (i < text.length) {
+                const before = text.slice(0, i + 1);
+                // Bold "Nick0"
+                const display = before.replace("Nick0", "<strong>Nick0</strong>");
+                el.innerHTML = display;
+                el.appendChild(cursor);
+                i++;
+                setTimeout(tick, speed + Math.random() * 30);
+            } else {
+                resolve();
+            }
+        }
+        setTimeout(tick, 600);
     });
-}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// ===== RENDER SUGGESTIONS =====
+function renderSuggestions(labels) {
+    suggestionsEl.innerHTML = "";
+    labels.forEach((label, i) => {
+        const chip = document.createElement("button");
+        chip.className = "chip";
+        chip.textContent = label;
+        chip.style.opacity = "0";
+        chip.style.transform = "translateY(6px)";
+        chip.style.transition = "all 0.25s ease";
+        chip.onclick = () => handleInput(label);
+        suggestionsEl.appendChild(chip);
+        setTimeout(() => {
+            chip.style.opacity = "1";
+            chip.style.transform = "translateY(0)";
+        }, 80 + i * 60);
+    });
+}
+
+// ===== INITIAL SUGGESTIONS =====
+const INITIAL_CHIPS = ["Who is Nick0?", "Tell me about 20n", "Show me all projects", "Contact"];
+
+// ===== HANDLE INPUT =====
+function handleInput(text) {
+    if (isTyping || !text.trim()) return;
+    isTyping = true;
+
+    // Hide welcome
+    if (!answered) {
+        welcome.classList.add("hidden");
+        answered = true;
+    }
+
+    // Clear input
+    input.value = "";
+
+    // Resolve the response ID
+    const id = CHIP_MAP[text] || matchQuery(text);
+    const data = RESPONSES[id] || RESPONSES["who"];
+
+    // Clear suggestions
+    suggestionsEl.innerHTML = "";
+
+    // Show typing dots
+    const dots = document.createElement("div");
+    dots.className = "typing";
+    dots.innerHTML = "<span></span><span></span><span></span>";
+    responses.appendChild(dots);
+    feed.scrollTo({ top: feed.scrollHeight, behavior: "smooth" });
+
+    // After delay, show response
+    const delay = 600 + Math.random() * 400;
+    setTimeout(() => {
+        dots.remove();
+
+        const block = document.createElement("div");
+        block.className = "response-block";
+        block.innerHTML = `<div class="user-query">${data.query}</div>${data.html}`;
+        responses.appendChild(block);
+
+        // Scroll to new response
+        setTimeout(() => {
+            feed.scrollTo({ top: feed.scrollHeight, behavior: "smooth" });
+        }, 50);
+
+        // Show next suggestions
+        setTimeout(() => {
+            renderSuggestions(data.next || INITIAL_CHIPS);
+            isTyping = false;
+        }, 400);
+
+    }, delay);
+}
+
+// ===== EVENTS =====
+input.addEventListener("keydown", e => {
+    if (e.key === "Enter") handleInput(input.value);
+});
+sendBtn.addEventListener("click", () => handleInput(input.value));
+
+// ===== INIT =====
+typewrite(typewriterEl).then(() => {
+    renderSuggestions(INITIAL_CHIPS);
+});
+input.focus();
 </script>
 </body>
 </html>
