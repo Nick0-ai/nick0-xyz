@@ -10,7 +10,8 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -20,22 +21,22 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
+.nav-logo{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
 .nav-back{font-size:13px;color:#666;transition:color 0.15s}
 .nav-back:hover{color:#0a0a0a}
 
 /* HERO */
 .project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
-.project-hero h1{font-size:clamp(42px,5.5vw,64px);font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-bottom:16px}
+.project-hero h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(42px,5.5vw,64px);font-weight:400;letter-spacing:-0.02em;line-height:1.08;margin-bottom:16px}
 .project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
-.project-hero .meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+.project-hero .meta{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
 
 /* SECTIONS */
 .content{max-width:1080px;margin:0 auto;padding:0 48px}
 .content-section{padding:80px 0;border-top:1px solid #f0f0f0}
 .content-section:first-child{border-top:none}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
-.content-section h2{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:24px}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
+.content-section h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:24px}
 .content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
 .content-section p:last-child{margin-bottom:0}
 .content-section strong{color:#0a0a0a;font-weight:600}
@@ -48,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 /* STATS ROW */
 .stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:32px 0}
 .stat-card{border:1px solid #eee;padding:24px;text-align:center}
-.stat-card .stat-v{font-family:'JetBrains Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
+.stat-card .stat-v{font-family:'DM Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
 .stat-card .stat-l{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
 
 /* FEATURES LIST */
@@ -60,15 +61,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 /* STACK GRID */
 .stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px}
 .stack-item{border:1px solid #eee;padding:20px}
-.stack-item .stack-name{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
+.stack-item .stack-name{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
 .stack-item .stack-desc{font-size:12px;color:#888;line-height:1.6}
 
 /* STATUS BADGE */
-.status-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #0a0a0a;color:#0a0a0a;margin-top:8px;font-weight:500}
+.status-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #0a0a0a;color:#0a0a0a;margin-top:8px;font-weight:500}
 
 /* FOOTER */
 footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
-footer p{font-size:12px;color:#bbb;font-family:'JetBrains Mono',monospace}
+footer p{font-size:12px;color:#bbb;font-family:'DM Mono',monospace}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
