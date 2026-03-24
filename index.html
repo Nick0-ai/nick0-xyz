@@ -74,17 +74,11 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 
 /* ===================== 20n BAND ===================== */
 .band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0}
-.band-head{margin-bottom:36px}
-.band-name{font-family:var(--serif);font-size:clamp(52px,10vw,100px);font-weight:400;letter-spacing:-.04em;line-height:.88;display:inline}
-.band-tag{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:var(--dim);margin-left:16px}
-.band-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
-.band-desc{font-size:15px;color:var(--dim);line-height:1.85}
-.band-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.band-stat{padding:20px 24px 20px 0;border-bottom:1px solid var(--line)}
-.band-stat:nth-child(even){padding-left:24px;padding-right:0;border-left:1px solid var(--line)}
-.b-val{font-family:var(--mono);font-size:24px;font-weight:500}
-.b-lbl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px}
-.band-foot{margin-top:28px}
+.band-head{margin-bottom:28px}
+.band-name{font-family:var(--serif);font-size:clamp(48px,9vw,88px);font-weight:400;letter-spacing:-.04em;line-height:.88}
+.band-tag{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:var(--dim);margin-top:12px}
+.band-body{font-size:15px;color:var(--dim);line-height:1.85;max-width:640px;margin-bottom:28px}
+.band-foot{margin-top:0}
 .arr{font-family:var(--mono);font-size:13px;font-weight:500;display:inline-block;transition:transform .15s}
 .arr:hover{transform:translateX(4px)}
 
@@ -149,8 +143,7 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
 /* ===================== RESPONSIVE ===================== */
 @media(max-width:768px){
   .about-grid{grid-template-columns:140px 1fr;gap:28px}
-  .band-grid{grid-template-columns:1fr}
-  .band-tag{display:block;margin-left:0;margin-top:8px}
+  .band-tag{margin-top:8px}
   .pj-top{flex-direction:column;gap:2px}
   .tl-grid{grid-template-columns:1fr}
   .tl-title{position:static;margin-bottom:24px}
@@ -206,23 +199,11 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
 <section class="band" id="work">
   <div class="w">
     <div class="band-head rv">
-      <span class="band-name">20n</span>
-      <span class="band-tag">The universal brain for robots.</span>
+      <div class="band-name">20n</div>
+      <div class="band-tag">The universal brain for robots.</div>
     </div>
-    <div class="band-grid">
-      <div class="rv">
-        <p class="band-desc">A biomimetic AI architecture that gives any robot a general purpose brain. One architecture, any body, zero training, 20 watts. Grounded in Karl Friston's Active Inference and Liquid Neural Networks from MIT.</p>
-        <div class="band-foot"><a href="20n.html" class="arr">Deep dive &rarr;</a></div>
-      </div>
-      <div class="rv">
-        <div class="band-stats">
-          <div class="band-stat"><div class="b-val">20W</div><div class="b-lbl">Power</div></div>
-          <div class="band-stat"><div class="b-val">0</div><div class="b-lbl">Training steps</div></div>
-          <div class="band-stat"><div class="b-val">1kHz</div><div class="b-lbl">Inference</div></div>
-          <div class="band-stat"><div class="b-val">3</div><div class="b-lbl">Bodies validated</div></div>
-        </div>
-      </div>
-    </div>
+    <p class="band-body rv">A biomimetic AI architecture that gives any robot a general purpose brain. One architecture, any body, zero training, 20 watts. It runs inference at 1 kHz on a single CPU and has been validated on three different morphologies in simulation. Grounded in Karl Friston's Active Inference and Liquid Neural Networks from MIT.</p>
+    <div class="band-foot rv"><a href="20n.html" class="arr">Deep dive &rarr;</a></div>
   </div>
 </section>
 
