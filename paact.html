@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PAACT — Nick0</title>
-<meta name="description" content="PAACT: an iOS app where you bet real money on your goals. Built in seven days after winning Innov Hack Paris. Commitment contracts powered by behavioral economics.">
+<meta name="description" content="PAACT: an iOS app where you bet real money on your goals. Built in seven days after winning first place at Innov Hack Paris. Commitment contracts powered by behavioral economics.">
 <meta property="og:title" content="PAACT — Nick0">
-<meta property="og:description" content="Bet real money on your goals.">
+<meta property="og:description" content="Bet real money on your goals. Commitment contracts meet behavioral economics.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,165 +19,199 @@ body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSys
 ::selection{background:#0a0a0a;color:#fff}
 a{color:inherit;text-decoration:none}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
-.nav-back{font-size:13px;color:#666;transition:color 0.15s}
-.nav-back:hover{color:#0a0a0a}
+/* BACK NAV */
+.back-nav{padding:28px 48px;border-bottom:1px solid #f0f0f0}
+.back-link{font-family:'DM Mono',monospace;font-size:13px;color:#999;transition:color 0.15s;letter-spacing:0.01em}
+.back-link:hover{color:#0a0a0a}
 
 /* HERO */
-.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
-.project-hero h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(42px,5.5vw,64px);font-weight:400;letter-spacing:-0.02em;line-height:1.08;margin-bottom:16px}
-.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
-.project-hero .meta{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+.project-hero{padding:80px 48px 72px;max-width:720px;margin:0 auto;text-align:center}
+.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px}
+.project-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(48px,7vw,72px);font-weight:400;letter-spacing:-0.02em;line-height:1.05;margin-bottom:16px}
+.project-subtitle{font-size:18px;color:#555;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.project-meta{font-family:'DM Mono',monospace;font-size:12px;color:#bbb;letter-spacing:0.04em}
+.project-meta span{margin:0 6px}
 
-/* SECTIONS */
-.content{max-width:1080px;margin:0 auto;padding:0 48px}
-.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
-.content-section:first-child{border-top:none}
-.section-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
-.content-section h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:24px}
-.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
-.content-section p:last-child{margin-bottom:0}
-.content-section strong{color:#0a0a0a;font-weight:600}
+/* CONTENT */
+.content{max-width:680px;margin:0 auto;padding:0 48px}
+.content-section{margin-bottom:72px}
+.content-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
+.content-heading{font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:16px}
+.content p{font-size:15px;color:#444;line-height:1.9;margin-bottom:16px}
+.content p:last-child{margin-bottom:0}
+.content strong{color:#0a0a0a;font-weight:600}
 
-/* HIGHLIGHT BOX */
-.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
-.highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
-.highlight-box p:last-child{margin-bottom:0}
-
-/* STATS ROW */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:32px 0}
-.stat-card{border:1px solid #eee;padding:24px;text-align:center}
-.stat-card .stat-v{font-family:'DM Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
-.stat-card .stat-l{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
+/* METRICS ROW */
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0}
+.metric-card{border:1px solid #eee;padding:24px;text-align:center}
+.metric-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:700;line-height:1}
+.metric-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
 
 /* FEATURES LIST */
-.features-list{list-style:none;margin:24px 0;padding:0}
-.features-list li{font-size:14px;color:#444;line-height:1.9;padding:12px 0;border-bottom:1px solid #f0f0f0;font-family:'Inter',sans-serif}
+.features-list{list-style:none;margin:24px 0}
+.features-list li{font-size:15px;color:#444;line-height:1.9;padding:12px 0;border-bottom:1px solid #f5f5f5;padding-left:20px;position:relative}
 .features-list li:last-child{border-bottom:none}
-.features-list li strong{color:#0a0a0a;font-weight:600;margin-right:8px}
+.features-list li::before{content:'';position:absolute;left:0;top:21px;width:6px;height:6px;background:#0a0a0a;border-radius:50%}
+.features-list li strong{color:#0a0a0a;font-weight:600}
 
-/* STACK GRID */
-.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px}
-.stack-item{border:1px solid #eee;padding:20px}
-.stack-item .stack-name{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
-.stack-item .stack-desc{font-size:12px;color:#888;line-height:1.6}
+/* STACK ROW */
+.stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stack-tag{font-family:'DM Mono',monospace;font-size:12px;padding:8px 16px;border:1px solid #eee;color:#555;transition:all 0.15s}
+.stack-tag:hover{border-color:#0a0a0a;color:#0a0a0a}
+
+/* LINKS */
+.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.project-link{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#0a0a0a;padding:12px 24px;border:1px solid #ddd;transition:all 0.15s;letter-spacing:0.01em}
+.project-link:hover{border-color:#0a0a0a}
 
 /* STATUS BADGE */
-.status-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #0a0a0a;color:#0a0a0a;margin-top:8px;font-weight:500}
+.status-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #0a0a0a;color:#0a0a0a;margin-top:12px;font-weight:500}
+
+/* QUOTE BLOCK */
+.insight{border-left:3px solid #0a0a0a;padding:20px 24px;margin:28px 0;background:#fafafa}
+.insight p{font-size:15px;color:#333;line-height:1.8;font-weight:500;margin-bottom:0}
+
+/* HIGHLIGHT BOX */
+.highlight{background:#fafafa;border:1px solid #eee;padding:28px 32px;margin:24px 0}
+.highlight p{font-size:14px;color:#555;line-height:1.9;margin-bottom:0}
+
+/* DIVIDER */
+.divider{width:48px;height:2px;background:#eee;margin:72px auto}
 
 /* FOOTER */
-footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer{text-align:center;padding:48px;border-top:1px solid #f0f0f0;margin-top:40px}
 footer p{font-size:12px;color:#bbb;font-family:'DM Mono',monospace}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.back-nav{padding:20px}
+.project-hero{padding:48px 20px 56px}
+.content{padding:0 20px}
+.metrics-row{grid-template-columns:1fr}
+.features-list li{padding-left:18px}
+}
+@media(max-width:480px){
+.project-title{font-size:40px}
+.content{padding:0 16px}
+.project-links{flex-direction:column}
+}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-nav{padding:0 20px}
-.project-hero{padding:120px 20px 60px}
-.content{padding:0 20px}
-.content-section{padding:60px 0}
-.stats-row{grid-template-columns:1fr 1fr}
-.stack-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:480px){
-.project-hero h1{font-size:36px}
-.stats-row{grid-template-columns:1fr}
-.stack-grid{grid-template-columns:1fr}
-}
 </style>
 </head>
 <body>
 
-<nav>
-<a href="index.html" class="nav-logo">Nick0</a>
-<a href="index.html" class="nav-back">&larr; Back to portfolio</a>
-</nav>
+<div class="back-nav">
+<a href="index.html" class="back-link">&larr; Back to portfolio</a>
+</div>
 
-<div class="project-hero">
-<div>
-<div class="meta">January &middot; February 2026</div>
-<h1>PAACT</h1>
-<p class="subtitle">Bet real money on your goals.</p>
+<header class="project-hero">
+<div class="project-tag reveal">iOS App &middot; Commitment Contracts &middot; Behavioral Economics</div>
+<h1 class="project-title reveal">PAACT</h1>
+<p class="project-subtitle reveal">Bet real money on your goals.</p>
+<div class="project-meta reveal">
+<span>January</span> &middot; <span>February 2026</span> &middot; <span>Solo project</span>
 </div>
-</div>
+</header>
 
 <div class="content">
 
-<!-- ORIGIN STORY -->
+<!-- 01 ORIGIN -->
 <div class="content-section reveal">
-<div class="section-label">01 · Origin</div>
-<h2>How PAACT was born</h2>
-<p>PAACT started at Innov Hack Paris in January 2026. Nicolas Philippe and his team of four won first place among 150 participants in a 10 hour nonstop hackathon. The concept was too good to leave as a prototype, so Nick0 went home and built the full iOS app in seven days.</p>
-<p>The idea is simple: people fail their goals because there are no real consequences. What if quitting actually cost you money?</p>
-<div class="stats-row">
-<div class="stat-card"><div class="stat-v">1st</div><div class="stat-l">Place, Innov Hack</div></div>
-<div class="stat-card"><div class="stat-v">150</div><div class="stat-l">Participants</div></div>
-<div class="stat-card"><div class="stat-v">7</div><div class="stat-l">Days to build</div></div>
-<div class="stat-card"><div class="stat-v">10h</div><div class="stat-l">Hackathon duration</div></div>
+<div class="content-label">01 &middot; Origin</div>
+<h2 class="content-heading">Born at a hackathon, built in a week</h2>
+<p>PAACT was born at Innov Hack Paris, January 2026. Nicolas Philippe (Nick0) and his team of four won first place among 150 participants in a 10-hour nonstop hackathon. First hackathon he ever entered. The concept was too good to leave as a prototype, so he went home and built the full iOS app in seven days.</p>
+<p>The core insight: people fail their goals because quitting is free. There are no real consequences. What if giving up actually cost you money?</p>
+
+<div class="metrics-row">
+<div class="metric-card">
+<div class="metric-val">1st</div>
+<div class="metric-label">Place, Innov Hack</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">150</div>
+<div class="metric-label">Participants</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">7</div>
+<div class="metric-label">Days to ship</div>
+</div>
 </div>
 </div>
 
-<!-- HOW IT WORKS -->
+<!-- 02 THE PROBLEM -->
 <div class="content-section reveal">
-<div class="section-label">02 · Mechanism</div>
-<h2>How it works</h2>
-<p>PAACT runs on commitment contracts. You set a goal, put real money on it, and pick a deadline. Hit the goal, keep your money. Fail, you pay. No extensions, no excuses. The psychology behind it is <strong>loss aversion</strong>: people are roughly twice as motivated to avoid losing something as they are to gain something of equal value. PAACT turns that wiring into a productivity tool. Instead of fighting human nature, it uses it.</p>
+<div class="content-label">02 &middot; The problem</div>
+<h2 class="content-heading">Quitting is free. That's the problem.</h2>
+<p>New Year's resolutions have a <strong>9% success rate</strong>. Gym memberships spike in January and flatline by March. People set goals, feel motivated for a week, then quietly abandon them. The issue isn't willpower or motivation. It's that there's no penalty for quitting.</p>
+<p>You can drop a goal at any time and nothing happens. No one notices, no one cares, no money lost. PAACT fixes that by making quitting expensive.</p>
 </div>
 
-<!-- FEATURES -->
+<!-- 03 HOW IT WORKS -->
 <div class="content-section reveal">
-<div class="section-label">03 · Features</div>
-<h2>What you can do</h2>
-<p>Every screen serves one loop: set a goal, commit money, track progress, hit the deadline or pay.</p>
+<div class="content-label">03 &middot; How it works</div>
+<h2 class="content-heading">Commitment contracts backed by real money</h2>
+<p>You set a goal, stake real money on it, and pick a deadline. Hit the goal, keep your money. Fail, you lose it. No extensions, no excuses.</p>
+<p>The psychology behind it is <strong>loss aversion</strong>. People are roughly twice as motivated to avoid losing something as they are to gain something of equal value. Daniel Kahneman and Amos Tversky proved this in 1979 with Prospect Theory. PAACT turns that cognitive bias into a productivity tool. Instead of fighting human nature, it weaponizes it.</p>
+<p>Research from Yale and the University of Pennsylvania has shown that commitment contracts increase goal completion rates by <strong>2-3x</strong> compared to simple intention-setting.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- 04 FEATURES -->
+<div class="content-section reveal">
+<div class="content-label">04 &middot; Features</div>
+<h2 class="content-heading">One loop, no gimmicks</h2>
 <ul class="features-list">
-<li><strong>Goal creation</strong> Set clear, measurable goals with specific deadlines. No vague intentions, only concrete targets.</li>
-<li><strong>Financial stakes</strong> Commit real money to each goal. You choose the amount, and the stakes are real.</li>
-<li><strong>Progress tracking</strong> Visual progress indicators so you always know where you stand relative to your deadline.</li>
-<li><strong>Deadline management</strong> Automated deadline tracking with notifications as your commitment date approaches.</li>
-<li><strong>Clean minimal interface</strong> Every screen is stripped to its essentials. No clutter, no gamification gimmicks, just your goals and your money on the line.</li>
+<li><strong>Goal creation.</strong> Set clear, measurable goals with specific deadlines. No vague intentions. "Lose 5kg by March 15" not "get in shape."</li>
+<li><strong>Financial stakes.</strong> Commit real money to each goal. You choose the amount. Could be 5 euros, could be 500. The stakes are real and the amount is locked.</li>
+<li><strong>Progress tracking.</strong> Visual progress indicators so you always know where you stand relative to your deadline. Clean graphs, no gamification gimmicks.</li>
+<li><strong>Smart notifications.</strong> Automated reminders as your deadline approaches. Gentle at first, increasingly urgent as time runs out.</li>
+<li><strong>Minimal interface.</strong> Every screen stripped to essentials. Black and white. Your goals, your money, your deadline. Nothing else.</li>
 </ul>
 </div>
 
-<!-- TECHNICAL DETAILS -->
+<!-- 05 HOW IT WAS BUILT -->
 <div class="content-section reveal">
-<div class="section-label">04 · Technical</div>
-<h2>How it was built</h2>
-<p>Nick0 had never written a line of <strong>Swift</strong> before this project. Picked up the language, learned <strong>SwiftUI</strong>'s declarative paradigm, and shipped a complete iOS app in seven days. All design, from information architecture to individual screens, done from scratch. No templates, no design kits.</p>
-<p>Data persistence uses <strong>Core Data</strong>, keeping everything on device. Solo project start to finish: designed, coded, tested, and submitted by one person.</p>
-<div class="stack-grid">
-<div class="stack-item">
-<div class="stack-name">Swift</div>
-<div class="stack-desc">Primary language</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">SwiftUI</div>
-<div class="stack-desc">Declarative UI framework</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">Core Data</div>
-<div class="stack-desc">Local persistence layer</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">Xcode</div>
-<div class="stack-desc">Development environment</div>
-</div>
+<div class="content-label">05 &middot; How it was built</div>
+<h2 class="content-heading">Zero Swift experience to App Store in seven days</h2>
+<p>Nick0 had never written a single line of Swift before this project. Zero iOS experience. Picked up Swift, learned SwiftUI's declarative paradigm, understood Core Data for local persistence, and shipped a complete, polished iOS app in seven days.</p>
+<p>All design done from scratch. No templates, no Figma kits, no UI libraries. Every screen, every interaction, every micro-animation designed and built by one person. The information architecture was planned on paper, then translated directly into SwiftUI views.</p>
+<p>Data stays entirely on device using Core Data. No server, no account creation, no cloud sync. Your goals and your money commitments are private by default.</p>
+
+<div class="stack-row">
+<span class="stack-tag">Swift</span>
+<span class="stack-tag">SwiftUI</span>
+<span class="stack-tag">Core Data</span>
+<span class="stack-tag">Xcode</span>
 </div>
 </div>
 
-<!-- WHAT IT PROVED -->
+<!-- 06 WHAT IT PROVED -->
 <div class="content-section reveal">
-<div class="section-label">05 · Takeaway</div>
-<h2>What it proved</h2>
-<p>Zero Swift knowledge to a complete iOS app on the App Store in seven days. The app is clean, well designed, and does exactly what it promises. The feature set is deliberately constrained, the UX is built for one specific use case, and every decision reflects real product thinking.</p>
-<div class="highlight-box">
-<p><strong>Hackathon win to App Store in seven days.</strong> New language, new framework, new platform. Solo.</p>
+<div class="content-label">06 &middot; What it proved</div>
+<h2 class="content-heading">Speed, taste, and deliberate constraint</h2>
+<p>Zero knowledge of a language to a complete App Store app in seven days. New language, new framework, new platform, new paradigm (declarative UI). Solo.</p>
+<p>The feature set is deliberately constrained. One loop: create goal, stake money, track, resolve. No social features, no leaderboards, no streaks. Constraint is a design choice, not a limitation.</p>
+
+<div class="insight">
+<p>Hackathon prototype to App Store in seven days. The speed matters less than the taste: knowing exactly what to build and what to leave out.</p>
 </div>
-<span class="status-badge">Completed</span>
+</div>
+
+<div class="divider"></div>
+
+<!-- 07 LINKS -->
+<div class="content-section reveal">
+<div class="content-label">07 &middot; Links</div>
+<p>PAACT is live. The app does one thing and does it well.</p>
+<div class="project-links">
+<a href="https://paact.app" target="_blank" rel="noopener" class="project-link">paact.app &rarr;</a>
+<a href="index.html" class="project-link">&larr; Back to portfolio</a>
+</div>
+<div><span class="status-badge">Completed</span></div>
 </div>
 
 </div>
