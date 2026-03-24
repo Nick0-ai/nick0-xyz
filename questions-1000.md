@@ -253,7 +253,6 @@
 244. What's usefriday.app?
 245. What was the tech stack for Friday?
 246. Did Friday use GPT?
-247. Did Friday use Claude?
 248. Was Friday successful?
 249. What did you learn from Friday?
 250. Friday was Phase 1 of what?
@@ -599,11 +598,9 @@
 576. Is this a real AI?
 577. C'est une vraie IA ?
 578. Is this powered by ChatGPT?
-579. Is this powered by Claude?
 580. Do you use AI tools?
 581. Tu utilises des outils IA ?
 582. Do you use GitHub Copilot?
-583. Do you use Claude Code?
 584. What tools do you use daily?
 585. Tu utilises quels outils au quotidien ?
 586. Do you use Git?
