@@ -19,169 +19,161 @@ body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSys
 ::selection{background:#0a0a0a;color:#fff}
 a{color:inherit;text-decoration:none}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
-.nav-back{font-size:13px;color:#666;transition:color 0.15s}
-.nav-back:hover{color:#0a0a0a}
+/* BACK NAV */
+.back-nav{padding:28px 48px;border-bottom:1px solid #f0f0f0}
+.back-link{font-family:'DM Mono',monospace;font-size:13px;color:#999;transition:color 0.15s;letter-spacing:0.01em}
+.back-link:hover{color:#0a0a0a}
 
 /* HERO */
-.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
-.project-hero h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(42px,5.5vw,64px);font-weight:400;letter-spacing:-0.02em;line-height:1.08;margin-bottom:16px}
-.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
-.project-hero .meta{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+.project-hero{padding:80px 48px 72px;max-width:720px;margin:0 auto;text-align:center}
+.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px}
+.project-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(48px,7vw,72px);font-weight:400;letter-spacing:-0.02em;line-height:1.05;margin-bottom:16px}
+.project-subtitle{font-size:18px;color:#555;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.project-meta{font-family:'DM Mono',monospace;font-size:12px;color:#bbb;letter-spacing:0.04em}
+.project-meta span{margin:0 6px}
 
-/* SECTIONS */
-.content{max-width:1080px;margin:0 auto;padding:0 48px}
-.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
-.content-section:first-child{border-top:none}
-.section-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
-.content-section h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:24px}
-.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
-.content-section p:last-child{margin-bottom:0}
-.content-section strong{color:#0a0a0a;font-weight:600}
+/* CONTENT */
+.content{max-width:680px;margin:0 auto;padding:0 48px}
+.content-section{margin-bottom:72px}
+.content-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
+.content-heading{font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:16px}
+.content p{font-size:15px;color:#444;line-height:1.9;margin-bottom:16px}
+.content p:last-child{margin-bottom:0}
+.content strong{color:#0a0a0a;font-weight:600}
+
+/* METRICS ROW */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:32px 0}
+.metric-card{border:1px solid #eee;padding:24px;text-align:center}
+.metric-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:700;line-height:1}
+.metric-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
 
 /* HIGHLIGHT BOX */
-.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
+.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:28px 0}
 .highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
 .highlight-box p:last-child{margin-bottom:0}
 
-/* STATS ROW */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:32px 0}
-.stat-card{border:1px solid #eee;padding:24px;text-align:center}
-.stat-card .stat-v{font-family:'DM Mono',monospace;font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1}
-.stat-card .stat-l{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.08em;margin-top:6px}
+/* CAPABILITY LIST */
+.capability-list{list-style:none;margin:20px 0}
+.capability-list li{font-size:15px;color:#444;line-height:1.9;padding:8px 0;border-bottom:1px solid #f5f5f5;padding-left:20px;position:relative}
+.capability-list li:last-child{border-bottom:none}
+.capability-list li::before{content:'';position:absolute;left:0;top:17px;width:6px;height:6px;background:#0a0a0a;border-radius:50%}
 
-/* SKILLS LEARNED */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:24px 0}
-.skill-card{border:1px solid #eee;padding:24px}
-.skill-card h4{font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em}
-.skill-card p{font-size:13px;color:#666;line-height:1.8;margin-bottom:0;max-width:none}
+/* LINKS */
+.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.project-link{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#0a0a0a;padding:12px 24px;border:1px solid #ddd;transition:all 0.15s;letter-spacing:0.01em}
+.project-link:hover{border-color:#0a0a0a}
 
 /* STATUS BADGE */
 .status-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #eee;color:#999;margin-top:8px}
 
-/* SOCIAL LINK */
-.social-link{display:inline-block;font-family:'DM Mono',monospace;font-size:12px;color:#666;border:1px solid #eee;padding:10px 20px;margin-top:16px;transition:all 0.15s}
-.social-link:hover{border-color:#0a0a0a;color:#0a0a0a}
+/* DIVIDER */
+.divider{width:48px;height:2px;background:#eee;margin:72px auto}
 
 /* FOOTER */
-footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer{text-align:center;padding:48px;border-top:1px solid #f0f0f0;margin-top:40px}
 footer p{font-size:12px;color:#bbb;font-family:'DM Mono',monospace}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.back-nav{padding:20px}
+.project-hero{padding:48px 20px 56px}
+.content{padding:0 20px}
+.metrics-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+.project-title{font-size:40px}
+.content{padding:0 16px}
+.metrics-row{grid-template-columns:1fr}
+.project-links{flex-direction:column}
+}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-nav{padding:0 20px}
-.project-hero{padding:120px 20px 60px}
-.content{padding:0 20px}
-.content-section{padding:60px 0}
-.stats-row{grid-template-columns:1fr 1fr}
-.skills-grid{grid-template-columns:1fr}
-}
-@media(max-width:480px){
-.project-hero h1{font-size:36px}
-.stats-row{grid-template-columns:1fr}
-}
 </style>
 </head>
 <body>
 
-<nav>
-<a href="/" class="nav-logo">Nick0</a>
-<a href="/" class="nav-back">&larr; Back to portfolio</a>
-</nav>
+<div class="back-nav">
+<a href="/" class="back-link">&larr; Back to portfolio</a>
+</div>
 
-<div class="project-hero">
-<div>
-<div class="meta">March &middot; June 2025</div>
-<h1>GlowGum</h1>
-<p class="subtitle">The first gum that takes care of your skin.</p>
+<header class="project-hero">
+<div class="project-tag reveal">Brand &middot; E-commerce &middot; TikTok Growth</div>
+<h1 class="project-title reveal">GlowGum</h1>
+<p class="project-subtitle reveal">The first gum that takes care of your skin.</p>
+<div class="project-meta reveal">
+<span>March 2025</span> &middot; <span>June 2025</span> &middot; <span>Solo project</span>
 </div>
-</div>
+</header>
 
 <div class="content">
 
 <!-- WHAT WAS GLOWGUM -->
 <div class="content-section reveal">
-<div class="section-label">01 &middot; Concept</div>
-<h2>What was GlowGum</h2>
+<div class="content-label">Concept</div>
+<h2 class="content-heading">What was GlowGum</h2>
 <p>GlowGum was a beauty chewing gum brand created entirely from scratch. The concept was simple: a chewing gum with ingredients that actively benefit skin health. Not a supplement, not a cream, not a serum. A gum. Something you chew every day without thinking about it, except this one also happens to make your skin look better.</p>
 <p>Zero tech involved. No codebase, no API, no algorithm. That's exactly why it mattered. None of my technical skills applied here. Everything had to be learned from zero, every lesson earned through action.</p>
-<div class="stats-row">
-<div class="stat-card"><div class="stat-v">12k</div><div class="stat-l">TikTok followers</div></div>
-<div class="stat-card"><div class="stat-v">15</div><div class="stat-l">Days to reach 12k</div></div>
-<div class="stat-card"><div class="stat-v">4</div><div class="stat-l">Months active</div></div>
-<div class="stat-card"><div class="stat-v">1</div><div class="stat-l">Person, everything</div></div>
+<div class="metrics-row">
+<div class="metric-card"><div class="metric-val">12k</div><div class="metric-label">TikTok followers</div></div>
+<div class="metric-card"><div class="metric-val">15</div><div class="metric-label">Days to reach 12k</div></div>
+<div class="metric-card"><div class="metric-val">4</div><div class="metric-label">Months active</div></div>
+<div class="metric-card"><div class="metric-val">1</div><div class="metric-label">Person, everything</div></div>
 </div>
 </div>
 
 <!-- BUILDING THE BRAND -->
 <div class="content-section reveal">
-<div class="section-label">02 &middot; Building</div>
-<h2>Building the brand from zero</h2>
+<div class="content-label">Building</div>
+<h2 class="content-heading">Building the brand from zero</h2>
 <p>I started with a blank page and built every layer myself. Brand name, visual identity, product formulation, supplier sourcing, packaging design, e-commerce store, marketing strategy. Each of these would normally be handled by a different specialist. I did all of it solo, learning each skill as I needed it.</p>
 <p>Supplier negotiation taught me the most. Finding manufacturers for a cosmetic chewing gum meant researching ingredient suppliers, understanding food safety regulations, negotiating MOQs, and managing quality across multiple sample rounds. Packaging had to stop someone scrolling but still look credible enough to buy. I iterated on the design myself, learning print production along the way.</p>
 </div>
 
 <!-- TIKTOK GROWTH -->
 <div class="content-section reveal">
-<div class="section-label">03 &middot; Growth</div>
-<h2>The TikTok growth</h2>
+<div class="content-label">Growth</div>
+<h2 class="content-heading">The TikTok growth</h2>
 <p>All marketing was organic TikTok. No paid ads, no influencer deals, no growth hacks. Just content. Within fifteen days the account hit 12,000 followers with zero budget.</p>
 <p>The entire content strategy sat on one idea: this gum improves your skin. Novel enough to stop someone scrolling, specific enough to stick, polarizing enough to generate shares. Most brands spend months and real ad budgets trying to hit those numbers. I did it in two weeks by understanding how the platform actually works.</p>
 </div>
 
 <!-- WHAT HE LEARNED -->
 <div class="content-section reveal">
-<div class="section-label">04 &middot; Lessons</div>
-<h2>What I learned</h2>
+<div class="content-label">Lessons</div>
+<h2 class="content-heading">What I learned</h2>
 <p>Four months, zero technical skills involved. Everything I took from GlowGum compounds in the background of everything else I build.</p>
-<div class="skills-grid">
-<div class="skill-card">
-<h4>Digital marketing and content creation</h4>
-<p>How to hook attention in the first second, structure a narrative in fifteen, and make content people share without being asked.</p>
-</div>
-<div class="skill-card">
-<h4>E commerce operations and logistics</h4>
-<p>Store setup, inventory, orders, shipping. All the unglamorous operational work that keeps a product business running.</p>
-</div>
-<div class="skill-card">
-<h4>Supplier negotiation</h4>
-<p>Finding manufacturers, requesting samples, negotiating MOQs, managing quality across production runs. Business is relationships and trust.</p>
-</div>
-<div class="skill-card">
-<h4>Brand strategy and positioning</h4>
-<p>Defining what a brand stands for and how it communicates. Positioning GlowGum in the crowded beauty space required clarity and discipline.</p>
-</div>
-<div class="skill-card">
-<h4>How to sell a physical product</h4>
-<p>Margins, packaging, shipping, returns. Selling physical products is a completely different game from selling code. Every unit teaches you something new.</p>
-</div>
-</div>
+<ul class="capability-list">
+<li><strong>Digital marketing and content creation</strong> — how to hook attention in the first second, structure a narrative in fifteen, and make content people share without being asked</li>
+<li><strong>E-commerce operations and logistics</strong> — store setup, inventory, orders, shipping. All the unglamorous operational work that keeps a product business running</li>
+<li><strong>Supplier negotiation</strong> — finding manufacturers, requesting samples, negotiating MOQs, managing quality across production runs</li>
+<li><strong>Brand strategy and positioning</strong> — defining what a brand stands for and how it communicates in a crowded space</li>
+<li><strong>How to sell a physical product</strong> — margins, packaging, shipping, returns. Every unit teaches you something new</li>
+</ul>
 <div class="highlight-box">
 <p><strong>Bottom line:</strong> GlowGum had nothing to do with code. That was the point. Building and selling a physical product from scratch forced me to operate way outside my comfort zone. The skills transferred to everything I've done since.</p>
 </div>
 </div>
 
+<div class="divider"></div>
+
 <!-- WHY IT STOPPED -->
 <div class="content-section reveal">
-<div class="section-label">05 &middot; Transition</div>
-<h2>Why it stopped</h2>
+<div class="content-label">Transition</div>
+<h2 class="content-heading">Why it stopped</h2>
 <p>The brand was working. The audience was growing. The product had traction. But after four months, the pull toward AI and robots was stronger than the pull toward scaling a consumer goods brand. I moved on deliberately, bringing everything I'd learned about sales, marketing, content, and operations back into the world of technology.</p>
 </div>
 
 <!-- STATUS -->
 <div class="content-section reveal">
-<div class="section-label">06 &middot; Status</div>
-<h2>Current status</h2>
-<p>GlowGum is no longer active. The brand and TikTok account still exist but aren't maintained. No plans to revive it.</p>
-<a href="https://tiktok.com/@glowgum_" target="_blank" class="social-link">@glowgum_ on TikTok</a>
-<br>
-<span class="status-badge">Inactive</span>
+<div class="content-label">Status</div>
+<p>GlowGum is no longer active. The brand and TikTok account still exist but aren't maintained.</p>
+<div class="project-links">
+<a href="https://tiktok.com/@glowgum_" target="_blank" rel="noopener" class="project-link">@glowgum_ on TikTok &rarr;</a>
+<a href="/" class="project-link">&larr; Back to portfolio</a>
+</div>
+<div><span class="status-badge">Inactive</span></div>
 </div>
 
 </div>

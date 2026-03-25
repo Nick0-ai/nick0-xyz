@@ -19,148 +19,138 @@ body{background:#fff;color:#0a0a0a;font-family:'Inter',-apple-system,BlinkMacSys
 ::selection{background:#0a0a0a;color:#fff}
 a{color:inherit;text-decoration:none}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #f0f0f0;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:-0.02em}
-.nav-back{font-size:13px;color:#666;transition:color 0.15s}
-.nav-back:hover{color:#0a0a0a}
+/* BACK NAV */
+.back-nav{padding:28px 48px;border-bottom:1px solid #f0f0f0}
+.back-link{font-family:'DM Mono',monospace;font-size:13px;color:#999;transition:color 0.15s;letter-spacing:0.01em}
+.back-link:hover{color:#0a0a0a}
 
 /* HERO */
-.project-hero{min-height:60vh;display:flex;align-items:flex-end;padding:160px 48px 80px;max-width:1080px;margin:0 auto}
-.project-hero h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(42px,5.5vw,64px);font-weight:400;letter-spacing:-0.02em;line-height:1.08;margin-bottom:16px}
-.project-hero .subtitle{font-size:18px;color:#555;line-height:1.7;max-width:600px;margin-bottom:20px}
-.project-hero .meta{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em}
+.project-hero{padding:80px 48px 72px;max-width:720px;margin:0 auto;text-align:center}
+.project-tag{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:24px}
+.project-title{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(48px,7vw,72px);font-weight:400;letter-spacing:-0.02em;line-height:1.05;margin-bottom:16px}
+.project-subtitle{font-size:18px;color:#555;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.project-meta{font-family:'DM Mono',monospace;font-size:12px;color:#bbb;letter-spacing:0.04em}
+.project-meta span{margin:0 6px}
 
-/* SECTIONS */
-.content{max-width:1080px;margin:0 auto;padding:0 48px}
-.content-section{padding:80px 0;border-top:1px solid #f0f0f0}
-.content-section:first-child{border-top:none}
-.section-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:32px}
-.content-section h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:24px}
-.content-section p{font-size:15px;color:#444;line-height:1.9;margin-bottom:20px;max-width:720px}
-.content-section p:last-child{margin-bottom:0}
-.content-section strong{color:#0a0a0a;font-weight:600}
+/* CONTENT */
+.content{max-width:680px;margin:0 auto;padding:0 48px}
+.content-section{margin-bottom:72px}
+.content-label{font-family:'DM Mono',monospace;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px}
+.content-heading{font-family:'Instrument Serif',Georgia,serif;font-size:24px;font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:16px}
+.content p{font-size:15px;color:#444;line-height:1.9;margin-bottom:16px}
+.content p:last-child{margin-bottom:0}
+.content strong{color:#0a0a0a;font-weight:600}
 
 /* HIGHLIGHT BOX */
-.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:32px 0}
+.highlight-box{background:#fafafa;border:1px solid #eee;padding:32px;margin:28px 0}
 .highlight-box p{font-size:14px;color:#555;line-height:1.9;margin-bottom:12px}
 .highlight-box p:last-child{margin-bottom:0}
 
-/* STACK GRID */
-.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px}
-.stack-item{border:1px solid #eee;padding:20px}
-.stack-item .stack-name{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;margin-bottom:4px}
-.stack-item .stack-desc{font-size:12px;color:#888;line-height:1.6}
+/* STACK */
+.stack-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stack-tag{font-family:'DM Mono',monospace;font-size:12px;padding:8px 16px;border:1px solid #eee;color:#555;transition:all 0.15s}
+.stack-tag:hover{border-color:#0a0a0a;color:#0a0a0a}
 
-/* LINK */
-.ext-link{display:inline-block;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;background:#0a0a0a;color:#fff;padding:12px 28px;margin-top:24px;transition:opacity 0.15s;letter-spacing:0.01em}
-.ext-link:hover{opacity:0.8}
+/* LINKS */
+.project-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.project-link{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#0a0a0a;padding:12px 24px;border:1px solid #ddd;transition:all 0.15s;letter-spacing:0.01em}
+.project-link:hover{border-color:#0a0a0a}
 
 /* STATUS BADGE */
 .status-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:1px solid #eee;color:#999;margin-top:8px}
 
+/* DIVIDER */
+.divider{width:48px;height:2px;background:#eee;margin:72px auto}
+
 /* FOOTER */
-footer{text-align:center;padding:40px 48px;border-top:1px solid #f0f0f0;margin-top:80px}
+footer{text-align:center;padding:48px;border-top:1px solid #f0f0f0;margin-top:40px}
 footer p{font-size:12px;color:#bbb;font-family:'DM Mono',monospace}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.back-nav{padding:20px}
+.project-hero{padding:48px 20px 56px}
+.content{padding:0 20px}
+}
+@media(max-width:480px){
+.project-title{font-size:40px}
+.content{padding:0 16px}
+.project-links{flex-direction:column}
+}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-nav{padding:0 20px}
-.project-hero{padding:120px 20px 60px}
-.content{padding:0 20px}
-.content-section{padding:60px 0}
-.stack-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:480px){
-.project-hero h1{font-size:36px}
-.stack-grid{grid-template-columns:1fr}
-}
 </style>
 </head>
 <body>
 
-<nav>
-<a href="/" class="nav-logo">Nick0</a>
-<a href="/" class="nav-back">&larr; Back to portfolio</a>
-</nav>
+<div class="back-nav">
+<a href="/" class="back-link">&larr; Back to portfolio</a>
+</div>
 
-<div class="project-hero">
-<div>
-<div class="meta">February 2026 · Hack'Europe</div>
-<h1>NERVE + Eve</h1>
-<p class="subtitle">Built in one session at Hack'Europe, Paris Saclay.</p>
+<header class="project-hero">
+<div class="project-tag reveal">Cloud FinOps &middot; GreenOps &middot; Autonomous Agent</div>
+<h1 class="project-title reveal">NERVE + Eve</h1>
+<p class="project-subtitle reveal">Built in one session at Hack'Europe, Paris Saclay.</p>
+<div class="project-meta reveal">
+<span>February 2026</span> &middot; <span>Hack'Europe</span> &middot; <span>Solo project</span>
 </div>
-</div>
+</header>
 
 <div class="content">
 
 <!-- WHAT IS NERVE -->
 <div class="content-section reveal">
-<div class="section-label">01 · Overview</div>
-<h2>What is NERVE</h2>
+<div class="content-label">What is NERVE</div>
+<h2 class="content-heading">A Cloud FinOps and GreenOps orchestrator</h2>
 <p>Nick0 built NERVE from scratch during Hack'Europe at Paris Saclay, one of Europe's largest student hackathons. NERVE is a Cloud FinOps and GreenOps orchestrator. It monitors GPU usage across multiple cloud providers, spots waste in real time, and recommends optimizations to cut both cost and carbon emissions from AI workloads.</p>
 <p>The frontend was a dashboard called <strong>Wattless</strong>, built in React and TypeScript. Wattless visualized spending, carbon metrics, and workload performance in a single view. The Node.js backend handled cloud provider integrations and the data aggregation layer powering it all.</p>
 </div>
 
 <!-- WHAT IS EVE -->
 <div class="content-section reveal">
-<div class="section-label">02 · The agent</div>
-<h2>What is Eve</h2>
+<div class="content-label">What is Eve</div>
+<h2 class="content-heading">An autonomous AI agent on top of NERVE</h2>
 <p>Eve is an autonomous AI agent built on top of NERVE. Describe the model you want in plain language, and Eve handles the rest: generates training code, picks the optimal GPU on cost and performance, deploys to the right cloud provider, and monitors the run end to end. If something breaks, she adjusts without human intervention.</p>
 <p>The best analogy is AutoML, but fully conversational and fully autonomous. You could say "I need a sentiment classifier for French restaurant reviews, keep costs under fifty dollars" and Eve would figure out the architecture, the dataset pipeline, the training schedule, and the deployment target. Natural language in, deployed model out.</p>
 </div>
 
 <!-- WHY IT MATTERS -->
 <div class="content-section reveal">
-<div class="section-label">03 · Significance</div>
-<h2>Why it matters</h2>
+<div class="content-label">Why it matters</div>
+<h2 class="content-heading">An AI system that creates other AI systems</h2>
 <p>Eve is an AI system that creates other AI systems. That means bridging ambiguous human intent and precise technical execution across the full stack: code generation, infrastructure selection, deployment, monitoring. All of it built solo at a hackathon.</p>
 <div class="highlight-box">
 <p><strong>The core insight:</strong> NERVE made AI infrastructure legible. Eve made it invisible. One gives you control, the other removes the need for it.</p>
 </div>
 </div>
 
+<div class="divider"></div>
+
 <!-- TECHNICAL STACK -->
 <div class="content-section reveal">
-<div class="section-label">04 · Stack</div>
-<h2>Technical details</h2>
+<div class="content-label">Technical stack</div>
+<h2 class="content-heading">Built with</h2>
 <p>Two codebases. NERVE and Wattless in JavaScript/TypeScript, Eve in Python for the ML ecosystem.</p>
-<div class="stack-grid">
-<div class="stack-item">
-<div class="stack-name">React</div>
-<div class="stack-desc">Wattless dashboard frontend</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">TypeScript</div>
-<div class="stack-desc">Type safe frontend codebase</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">Node.js</div>
-<div class="stack-desc">Backend API and data pipelines</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">Cloud APIs</div>
-<div class="stack-desc">Multi provider integrations</div>
-</div>
-<div class="stack-item">
-<div class="stack-name">Python</div>
-<div class="stack-desc">Eve autonomous agent</div>
-</div>
+<div class="stack-row">
+<span class="stack-tag">React</span>
+<span class="stack-tag">TypeScript</span>
+<span class="stack-tag">Node.js</span>
+<span class="stack-tag">Cloud APIs</span>
+<span class="stack-tag">Python</span>
 </div>
 </div>
 
-<!-- CURRENT STATUS -->
+<!-- STATUS -->
 <div class="content-section reveal">
-<div class="section-label">05 · Status</div>
-<h2>Current status</h2>
-<p>NERVE and Eve are archived. Nick0 moved on to Friday, then to 20n Research Laboratory. The progression was natural: NERVE proved he could build complex cloud infrastructure, Eve proved he could build autonomous agents, and that combination fed directly into the more ambitious work that followed. Backend source is on GitHub.</p>
-<a href="https://github.com/Nick0-ai/nerve-backend" target="_blank" class="ext-link">View on GitHub &rarr;</a>
-<br>
-<span class="status-badge">Archived</span>
+<div class="content-label">Status</div>
+<p>NERVE and Eve are archived. Nick0 moved on to Friday, then to 20n Research Laboratory. The progression was natural: NERVE proved he could build complex cloud infrastructure, Eve proved he could build autonomous agents, and that combination fed directly into the more ambitious work that followed.</p>
+<div class="project-links">
+<a href="https://github.com/Nick0-ai/nerve-backend" target="_blank" rel="noopener" class="project-link">GitHub &rarr;</a>
+<a href="/" class="project-link">&larr; Back to portfolio</a>
+</div>
+<div><span class="status-badge">Archived</span></div>
 </div>
 
 </div>
