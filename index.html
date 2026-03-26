@@ -68,7 +68,7 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .hero-links a{display:flex;align-items:center;justify-content:center;transition:opacity .3s var(--ease)}
 .hero-links a:hover{opacity:.5}
 .hero-links a svg{width:36px;height:36px;fill:var(--text)}
-.hero-links a .ico-20n{display:block;width:42px;height:42px;position:relative;top:4px}
+.hero-links a .ico-20n{display:block;width:43px;height:43px;position:relative;top:4px}
 
 /* ===================== ABOUT (photo + text) ===================== */
 .about{padding:60px 0 100px}
@@ -81,11 +81,15 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 
 /* ===================== 20n BAND ===================== */
 .band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0}
+.band-grid{display:flex;align-items:center;justify-content:space-between;gap:48px}
+.band-content{flex:1;min-width:0}
 .band-head{margin-bottom:28px}
 .band-name{font-family:var(--serif);font-size:clamp(48px,9vw,88px);font-weight:400;letter-spacing:-.04em;line-height:.88}
 .band-tag{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:var(--dim);margin-top:12px}
 .band-body{font-size:15px;color:var(--dim);line-height:1.85;max-width:640px;margin-bottom:28px}
 .band-foot{margin-top:0}
+.band-viz{flex-shrink:0;width:200px}
+.band-viz img{width:100%;mix-blend-mode:multiply;opacity:.8}
 .arr{font-family:var(--mono);font-size:13px;font-weight:500;display:inline-block;transition:transform .15s}
 .arr:hover{transform:translateX(4px)}
 
@@ -153,6 +157,7 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
 @media(max-width:768px){
   .about-grid{grid-template-columns:200px 1fr;gap:28px}
   .band-tag{margin-top:8px}
+  .band-viz{display:none}
   .pj-top{flex-direction:column;gap:2px}
   .tl-grid{grid-template-columns:1fr}
   .tl-title{position:static;margin-bottom:24px}
@@ -325,12 +330,17 @@ nav.s{border-bottom-color:var(--line)}
 <!-- 20n FEATURED -->
 <section class="band" id="work">
   <div class="w">
-    <div class="band-head rv">
-      <div class="band-name"><span class="band-name-text">20n</span></div>
-      <div class="band-tag">The universal brain for robots.</div>
+    <div class="band-grid">
+      <div class="band-content">
+        <div class="band-head rv">
+          <div class="band-name"><span class="band-name-text">20n</span></div>
+          <div class="band-tag">The universal brain for robots.</div>
+        </div>
+        <p class="band-body rv">Most robotics labs train one model per task, burn millions of GPU hours, and still produce controllers that break the moment something unexpected happens. 20n takes a different route. One brain, inspired by how biological nervous systems actually work, that adapts to any robot body in real time. No training phase, no cloud, no reward function. It runs at 1 kHz on a laptop CPU drawing 20 watts, and it has already been validated on three different morphologies in simulation. The science comes from Karl Friston's Active Inference and Liquid Neural Networks developed at MIT.</p>
+        <div class="band-foot rv"><a href="20n" class="arr">Deep dive &rarr;</a></div>
+      </div>
+      <div class="band-viz rv"><img src="brain-ascii.gif" alt="Brain visualization"></div>
     </div>
-    <p class="band-body rv">Most robotics labs train one model per task, burn millions of GPU hours, and still produce controllers that break the moment something unexpected happens. 20n takes a different route. One brain, inspired by how biological nervous systems actually work, that adapts to any robot body in real time. No training phase, no cloud, no reward function. It runs at 1 kHz on a laptop CPU drawing 20 watts, and it has already been validated on three different morphologies in simulation. The science comes from Karl Friston's Active Inference and Liquid Neural Networks developed at MIT.</p>
-    <div class="band-foot rv"><a href="20n" class="arr">Deep dive &rarr;</a></div>
   </div>
 </section>
 
