@@ -45,6 +45,8 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 
 /* ===================== HERO ===================== */
 .hero{padding:180px 0 100px}
+.hero .w{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.hero-text{flex:1;min-width:0}
 .hero h1{
   font-family:var(--serif);
   font-size:clamp(60px,11vw,130px);
@@ -62,13 +64,13 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
   font-family:var(--mono);font-size:13px;
   color:var(--muted);letter-spacing:.02em;
 }
-.hero-links{display:flex;gap:16px;margin-top:24px;align-items:center}
-.hero-links a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.hero-links{display:flex;flex-direction:column;gap:14px;align-items:center;flex-shrink:0;padding-bottom:6px}
+.hero-links a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;transition:border-color .3s var(--ease),background .3s var(--ease)}
 .hero-links a:hover{border-color:var(--text);background:var(--text)}
-.hero-links a svg{width:16px;height:16px;fill:var(--dim);transition:fill .3s var(--ease)}
+.hero-links a svg{width:17px;height:17px;fill:var(--dim);transition:fill .3s var(--ease)}
 .hero-links a:hover svg{fill:var(--bg)}
-.hero-links a .ico-20n{font-family:var(--serif);font-size:13px;font-weight:400;color:var(--dim);line-height:1;transition:color .3s var(--ease)}
-.hero-links a:hover .ico-20n{color:var(--bg)}
+.hero-links a .ico-20n{display:block;width:18px;height:18px;filter:grayscale(100%) brightness(0.6);transition:filter .3s var(--ease)}
+.hero-links a:hover .ico-20n{filter:grayscale(100%) brightness(10)}
 
 /* ===================== ABOUT (photo + text) ===================== */
 .about{padding:60px 0 100px}
@@ -166,6 +168,8 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .w{width:84%}
   .nr a:not(.cta){display:none}
   .hero{padding:140px 0 60px}
+  .hero .w{flex-direction:column;align-items:flex-start}
+  .hero-links{flex-direction:row;padding-bottom:0;margin-top:8px}
   .about-grid{grid-template-columns:1fr;text-align:center}
   .about-photo{max-width:200px;margin:0 auto}
   .about-caption{text-align:center}
@@ -184,14 +188,14 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
 
 /* --- HERO --- stagger with blur dissolve */
 .hero .w.rv{opacity:1!important;transform:none!important;filter:none!important}
-.hero h1,.hero .hero-sub,.hero .hero-meta{
+.hero h1,.hero .hero-sub,.hero .hero-meta,.hero .hero-links{
   opacity:0;transform:translateY(50px);filter:blur(6px);
   animation:heroIn 1s var(--ease) forwards;
 }
 .hero h1{animation-delay:.05s}
 .hero .hero-sub{animation-delay:.2s}
 .hero .hero-meta{animation-delay:.4s}
-.hero .hero-links{opacity:0;transform:translateY(50px);filter:blur(6px);animation:heroIn 1s var(--ease) forwards;animation-delay:.55s}
+.hero .hero-links{animation-delay:.55s}
 @keyframes heroIn{to{opacity:1;transform:translateY(0);filter:blur(0)}}
 
 /* --- TEXT CLIP REVEAL --- for large headings entering viewport */
@@ -287,16 +291,18 @@ nav.s{border-bottom-color:var(--line)}
 <div class="scroll-bar" aria-hidden="true"></div>
 <nav><div class="w"><a href="#" class="nl">Nick0</a><div class="nr"><a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="cta">Get in touch</a></div></div></nav>
 
-<!-- HERO : texte seulement, grand et aéré -->
+<!-- HERO : texte gauche, icônes droite -->
 <section class="hero">
   <div class="w rv">
-    <h1>Nick0</h1>
-    <div class="hero-sub">Building the universal brain for robots.</div>
-    <div class="hero-meta">Nicolas Philippe &middot; 19 &middot; Paris &middot; Founder, 20n Research Laboratory</div>
+    <div class="hero-text">
+      <h1>Nick0</h1>
+      <div class="hero-sub">Building the universal brain for robots.</div>
+      <div class="hero-meta">Nicolas Philippe &middot; 19 &middot; Paris &middot; Founder, 20n Research Laboratory</div>
+    </div>
     <div class="hero-links">
       <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 00-1.33-1.76c-1.09-.74.08-.73.08-.73a2.52 2.52 0 011.84 1.24 2.56 2.56 0 003.5 1 2.56 2.56 0 01.76-1.6c-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.22 4.3 4.3 0 01.12-3.18s1-.32 3.3 1.23a11.38 11.38 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23a4.3 4.3 0 01.12 3.18 4.64 4.64 0 011.23 3.22c0 4.61-2.8 5.63-5.48 5.92a2.86 2.86 0 01.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg></a>
       <a href="https://linkedin.com/in/nick0-" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77A1.75 1.75 0 000 1.73v20.54A1.75 1.75 0 001.77 24h20.45A1.76 1.76 0 0024 22.27V1.73A1.76 1.76 0 0022.22 0z"/></svg></a>
-      <a href="https://20n.dev" target="_blank" rel="noopener" aria-label="20n"><span class="ico-20n">20n</span></a>
+      <a href="https://20n.dev" target="_blank" rel="noopener" aria-label="20n"><img src="20n-logo.png" alt="20n" class="ico-20n"></a>
     </div>
   </div>
 </section>
