@@ -64,13 +64,11 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
   font-family:var(--mono);font-size:13px;
   color:var(--muted);letter-spacing:.02em;
 }
-.hero-links{display:flex;flex-direction:column;gap:14px;align-items:center;flex-shrink:0;padding-bottom:6px}
-.hero-links a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;transition:border-color .3s var(--ease),background .3s var(--ease)}
-.hero-links a:hover{border-color:var(--text);background:var(--text)}
-.hero-links a svg{width:17px;height:17px;fill:var(--dim);transition:fill .3s var(--ease)}
-.hero-links a:hover svg{fill:var(--bg)}
-.hero-links a .ico-20n{display:block;width:18px;height:18px;filter:grayscale(100%) brightness(0.6);transition:filter .3s var(--ease)}
-.hero-links a:hover .ico-20n{filter:grayscale(100%) brightness(10)}
+.hero-links{display:flex;flex-direction:row;gap:20px;align-items:center;flex-shrink:0;padding-bottom:6px}
+.hero-links a{display:flex;align-items:center;justify-content:center;transition:opacity .3s var(--ease)}
+.hero-links a:hover{opacity:.5}
+.hero-links a svg{width:28px;height:28px;fill:var(--text)}
+.hero-links a .ico-20n{display:block;width:30px;height:30px}
 
 /* ===================== ABOUT (photo + text) ===================== */
 .about{padding:60px 0 100px}
@@ -169,7 +167,7 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .nr a:not(.cta){display:none}
   .hero{padding:140px 0 60px}
   .hero .w{flex-direction:column;align-items:flex-start}
-  .hero-links{flex-direction:row;padding-bottom:0;margin-top:8px}
+  .hero-links{padding-bottom:0;margin-top:8px}
   .about-grid{grid-template-columns:1fr;text-align:center}
   .about-photo{max-width:200px;margin:0 auto}
   .about-caption{text-align:center}
