@@ -89,7 +89,7 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .band-body{font-size:15px;color:var(--dim);line-height:1.85;max-width:640px;margin-bottom:28px}
 .band-foot{margin-top:0}
 .band-viz{flex-shrink:0;width:200px}
-.band-viz img{width:100%;mix-blend-mode:multiply;opacity:.8}
+.band-viz img{width:100%;mix-blend-mode:multiply;opacity:.8;-webkit-user-drag:none;user-select:none;pointer-events:none}
 .arr{font-family:var(--mono);font-size:13px;font-weight:500;display:inline-block;transition:transform .15s}
 .arr:hover{transform:translateX(4px)}
 
@@ -339,7 +339,7 @@ nav.s{border-bottom-color:var(--line)}
         <p class="band-body rv">Most robotics labs train one model per task, burn millions of GPU hours, and still produce controllers that break the moment something unexpected happens. 20n takes a different route. One brain, inspired by how biological nervous systems actually work, that adapts to any robot body in real time. No training phase, no cloud, no reward function. It runs at 1 kHz on a laptop CPU drawing 20 watts, and it has already been validated on three different morphologies in simulation. The science comes from Karl Friston's Active Inference and Liquid Neural Networks developed at MIT.</p>
         <div class="band-foot rv"><a href="20n" class="arr">Deep dive &rarr;</a></div>
       </div>
-      <div class="band-viz rv"><img src="brain-ascii.gif" alt="Brain visualization"></div>
+      <div class="band-viz rv"><img src="brain-ascii.gif" alt="Brain visualization" draggable="false" oncontextmenu="return false"></div>
     </div>
   </div>
 </section>
