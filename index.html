@@ -94,14 +94,9 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .arr:hover{transform:translateX(4px)}
 
 /* ===================== CONTACT ===================== */
-.ct{padding:72px 0 56px;overflow:hidden}
-.ct .w{display:flex;align-items:center;justify-content:space-between;gap:48px}
-.ct-text{flex:1;min-width:0}
+.ct{padding:72px 0 56px}
 .ct h2{font-family:var(--serif);font-style:italic;font-size:clamp(32px,5vw,56px);font-weight:400;margin-bottom:14px}
-.ct-text p{font-size:15px;color:var(--dim);line-height:1.75;max-width:440px;margin-bottom:20px}
-.ct-photo{flex-shrink:0;width:400px;overflow:hidden;border-radius:6px}
-.ct-photo img{width:100%;display:block;filter:grayscale(1);transition:filter .5s var(--ease);-webkit-user-drag:none;user-select:none;pointer-events:none}
-.ct-photo:hover img{filter:grayscale(0)}
+.ct>div>p{font-size:15px;color:var(--dim);line-height:1.75;max-width:440px;margin-bottom:20px}
 .ce{font-family:var(--mono);font-size:15px;font-weight:500;display:inline-block;border-bottom:1px solid var(--text);padding-bottom:1px;margin-bottom:20px;transition:opacity .15s}
 .ce:hover{opacity:.5}
 .cl{display:flex;gap:20px;flex-wrap:wrap}
@@ -167,10 +162,8 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .tl-grid{grid-template-columns:1fr}
   .tl-title{position:static;margin-bottom:24px}
   .sb .w{grid-template-columns:1fr}
-  .ct .w{flex-direction:column}
-  .ct-photo{width:100%}
-  .ct h2,.ct-text p{text-align:center}
-  .ct-text p{margin-left:auto;margin-right:auto}
+  .ct h2,.ct>div>p{text-align:center}
+  .ct>div>p{margin-left:auto;margin-right:auto}
   .ce{display:block;text-align:center}
   .cl{justify-content:center}
 }
@@ -439,17 +432,14 @@ nav.s{border-bottom-color:var(--line)}
 <!-- CONTACT -->
 <section class="ct" id="contact">
   <div class="w rv">
-    <div class="ct-text">
-      <h2>Let's talk.</h2>
-      <p>Whether you are an investor, a researcher, a fellow builder, or just someone who thinks this is interesting. I always reply.</p>
-      <a href="mailto:nick0@20n.dev" class="ce">nick0@20n.dev</a>
-      <div class="cl">
-        <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/nick0-" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
-      </div>
+    <h2>Let's talk.</h2>
+    <p>Whether you are an investor, a researcher, a fellow builder, or just someone who thinks this is interesting. I always reply.</p>
+    <a href="mailto:nick0@20n.dev" class="ce">nick0@20n.dev</a>
+    <div class="cl">
+      <a href="https://github.com/Nick0-ai" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/nick0-" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://20n.dev" target="_blank" rel="noopener">20n.dev</a>
     </div>
-    <div class="ct-photo"><img src="contact-photo.jpeg" alt="" draggable="false" oncontextmenu="return false"></div>
   </div>
 </section>
 
