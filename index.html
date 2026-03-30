@@ -99,8 +99,8 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .ct-text{flex:1;min-width:0}
 .ct h2{font-family:var(--serif);font-style:italic;font-size:clamp(32px,5vw,56px);font-weight:400;margin-bottom:14px}
 .ct-text p{font-size:15px;color:var(--dim);line-height:1.75;max-width:440px;margin-bottom:20px}
-.ct-photo{flex-shrink:0;width:320px;height:240px;overflow:hidden;border-radius:6px}
-.ct-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .5s var(--ease);-webkit-user-drag:none;user-select:none;pointer-events:none}
+.ct-photo{flex-shrink:0;width:400px;overflow:hidden;border-radius:6px}
+.ct-photo img{width:100%;display:block;filter:grayscale(1);transition:filter .5s var(--ease);-webkit-user-drag:none;user-select:none;pointer-events:none}
 .ct-photo:hover img{filter:grayscale(0)}
 .ce{font-family:var(--mono);font-size:15px;font-weight:500;display:inline-block;border-bottom:1px solid var(--text);padding-bottom:1px;margin-bottom:20px;transition:opacity .15s}
 .ce:hover{opacity:.5}
@@ -168,7 +168,7 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
   .tl-title{position:static;margin-bottom:24px}
   .sb .w{grid-template-columns:1fr}
   .ct .w{flex-direction:column}
-  .ct-photo{width:100%;height:200px}
+  .ct-photo{width:100%}
   .ct h2,.ct-text p{text-align:center}
   .ct-text p{margin-left:auto;margin-right:auto}
   .ce{display:block;text-align:center}
