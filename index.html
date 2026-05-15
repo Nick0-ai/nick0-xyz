@@ -145,6 +145,13 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .stmt blockquote{font-family:var(--serif);font-size:clamp(20px,3.2vw,36px);line-height:1.35;max-width:720px;margin:0 auto;font-weight:400}
 .stmt .at{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:16px}
 
+/* ===================== FREELANCE ===================== */
+.fl{padding:48px 0 24px;border-top:1px solid var(--line2)}
+.fl h3{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,28px);font-weight:400;margin-bottom:12px}
+.fl p{font-size:14px;color:var(--dim);line-height:1.75;max-width:560px}
+.fl a{font-family:var(--mono);font-size:13px;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .15s}
+.fl a:hover{border-color:var(--text)}
+
 footer{border-top:1px solid var(--line);padding:24px 0}
 footer .w{display:flex;justify-content:space-between}
 footer span{font-family:var(--mono);font-size:11px;color:var(--muted)}
@@ -337,7 +344,7 @@ nav.s{border-bottom-color:var(--line)}
           <div class="band-name"><span class="band-name-text">20n</span></div>
           <div class="band-tag">The universal brain for robots.</div>
         </div>
-        <p class="band-body rv">Most robotics labs train one model per task, burn millions of GPU hours, and still produce controllers that break the moment something unexpected happens. 20n takes a different route. One brain, inspired by how biological nervous systems actually work, that adapts to any robot body in real time. No training phase, no cloud, no reward function. It runs at 1 kHz on a laptop CPU drawing 20 watts, and it has already been validated on three different morphologies in simulation. The science comes from Karl Friston's Active Inference and Liquid Neural Networks developed at MIT.</p>
+        <p class="band-body rv">Most robotics labs train one model per task, burn millions of GPU hours, and still produce controllers that break the moment something unexpected happens. 20n takes a different route. One brain, inspired by how biological nervous systems actually work, that adapts to any robot body in real time. No training phase, no cloud, no reward function. Runs on a laptop CPU with no GPU. Validated across multiple morphologies in simulation with zero code changes between bodies. The science comes from Karl Friston's Free Energy Principle, Active Inference, and the homeokinesis work of Der and Martius.</p>
         <div class="band-foot rv"><a href="20n" class="arr">Deep dive &rarr;</a></div>
       </div>
       <div class="band-viz rv"><img src="brain-ascii.gif" alt="Brain visualization" draggable="false" oncontextmenu="return false"></div>
@@ -352,7 +359,7 @@ nav.s{border-bottom-color:var(--line)}
 
     <div class="pj rv">
       <div class="pj-top"><span class="pj-name">20n</span><span class="pj-date">January 2026 &middot; present</span></div>
-      <p class="pj-desc">A single AI architecture that can control any robot body without training. Runs on a laptop CPU at 20 watts. Three simulated morphologies, zero retraining. Backed by conversations with J12 Ventures, Plug and Play, and MIT researchers.</p>
+      <p class="pj-desc">A single AI architecture that can control any robot body without training. Runs on a laptop CPU at 20 watts. Three simulated morphologies, zero retraining.</p>
       <div class="pj-link"><a href="20n" class="arr">Case study &rarr;</a></div>
     </div>
 
@@ -427,6 +434,14 @@ nav.s{border-bottom-color:var(--line)}
 <section class="stmt">
   <div class="w rv">
     <blockquote>I taught myself everything. I built things nobody asked me to build. I failed at some and shipped others. I am nineteen and I know exactly what I want to spend the rest of my life working on.</blockquote>
+  </div>
+</section>
+
+<!-- FREELANCE -->
+<section class="fl">
+  <div class="w rv">
+    <h3>Freelance</h3>
+    <p>I take a limited number of freelance engineering missions to fund 20n. Full stack, AI integration, mobile, automation. Remote from Paris, contractor billing in EUR or USD. Reach out at <a href="mailto:nick0@20n.dev">nick0@20n.dev</a>.</p>
   </div>
 </section>
 
