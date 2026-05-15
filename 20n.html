@@ -212,15 +212,8 @@ section{padding:60px 0 0}
 <p>The architecture rests on two ideas: <strong>Active Inference</strong> (Karl Friston's framework for how biological brains minimize surprise) and <strong>homeokinesis</strong> (Der and Martius's principle of self-organized exploration through internal predictive dynamics). No retraining. No fine tuning. Just drop and go.</p>
 </div>
 
-<div class="metrics">
-<div class="metric"><div class="metric-v">20W</div><div class="metric-l">Power draw</div></div>
-<div class="metric"><div class="metric-v">0</div><div class="metric-l">Training steps</div></div>
-<div class="metric"><div class="metric-v">1kHz</div><div class="metric-l">Inference speed</div></div>
-<div class="metric"><div class="metric-v">3</div><div class="metric-l">Bodies validated</div></div>
-</div>
-
 <div class="prose">
-<p>No cloud. No GPU cluster. The brain runs on a laptop CPU at 1000 Hz, drawing roughly 20 watts. An A100 draws 400. The entire 20n system uses less power than a light bulb.</p>
+<p>No cloud. No GPU. No cluster. The brain runs entirely on a laptop CPU.</p>
 </div>
 </div>
 </section>
@@ -342,7 +335,7 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. No ba
 <p><strong>Walker2d.</strong> Planar biped, 6 joints. Mean score 952/1000. Near perfect locomotion, smooth and stable gait.</p>
 <p><strong>Ant.</strong> Quadruped, 8 joints, full 3D. Max 1000, mean 667. Learns to coordinate all four legs within seconds of deployment.</p>
 <p><strong>Humanoid.</strong> The hardest benchmark in MuJoCo. 17 joints, full 3D, inherently unstable. Currently at 474 max and improving. Zero training, a fraction of the compute.</p>
-<p>Same brain, same parameters, all three bodies. No retraining between morphologies.</p>
+<p>Same brain, same parameters, every body above. No retraining between morphologies.</p>
 </div>
 </div>
 </section>
@@ -363,7 +356,7 @@ All five layers are unified by the <strong>Free Energy Principle</strong>. No ba
 <div class="roadmap-phase current">Now</div>
 <div class="roadmap-content">
 <h4>Core architecture validation</h4>
-<p>Three bodies validated in simulation. Improving Humanoid performance.</p>
+<p>Multiple bodies validated in simulation. Improving Humanoid performance.</p>
 </div>
 </div>
 <div class="roadmap-item">
